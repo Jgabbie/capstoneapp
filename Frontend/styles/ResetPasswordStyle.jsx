@@ -1,32 +1,32 @@
 import { StyleSheet } from "react-native";
 
 
-const SignupStyle = StyleSheet.create({
+const ResetPasswordStyle = StyleSheet.create({
 
 
-    signupheading: {
-        fontSize: 60,
+    resetpasswordheading: {
+        fontSize: 40,
         fontWeight: 600,
         fontFamily: "Montserrat_700Bold",
         color: "#305797",
         marginBottom: 0,
         margin: 20,
-        height: 60
+        height: 40
     },
-    signupsecondheading: {
-        fontSize: 35,
+    resetpasswordsecondheading: {
+        fontSize: 25,
         fontWeight: 600,
         fontFamily: "Montserrat_500Medium",
         color: "#305797",
         marginTop: 0,
         margin: 20,
     },
-    signuplabel: {
+    resetpasswordlabel: {
         fontSize: 16,
         color: "#305797",
         marginLeft: 20
     },
-    signupinputs: {
+    resetpasswordinputs: {
         fontSize: 20,
         borderWidth: 1,
         borderRadius: 10,
@@ -52,14 +52,14 @@ const SignupStyle = StyleSheet.create({
         width: 170,
         height: 45
     },
-    signuplinks: {
+    resetpasswordlinks: {
         fontSize: 16,
         color: "#305797",
     },
-    signuplinkscontainer: {
+    resetpasswordlinkscontainer: {
         margin: 20
     },
-    signupbutton: {
+    resetpasswordbutton: {
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "#305797",
@@ -68,7 +68,7 @@ const SignupStyle = StyleSheet.create({
         marginLeft: 20,
         borderRadius: 10
     },
-    signupbuttontext: {
+    resetpasswordbuttontext: {
         color: "#fff",
         fontSize: 16,
         fontFamily: "Roboto_500Medium",
@@ -108,7 +108,17 @@ const SignupStyle = StyleSheet.create({
         color: "#fff",
         fontSize: 16,
         fontFamily: "Roboto_500Medium"
+    },
+    otpInput: {
+        fontSize: 20,
+        borderWidth: 1,
+        borderRadius: 10,
+        borderColor: "#6d6d6d",
+        padding: 10,
+        width: 150,
+        textAlign: "center",
+        marginBottom: 20
     }
 })
 
-export default SignupStyle
+export default ResetPasswordStyle
