@@ -70,11 +70,18 @@ export default StyleSheet.create({
     marginBottom: 16,
     elevation: 3,
     overflow: "hidden",
+    flexDirection: "row",
+  },
+
+  imageWrapper: {
+    position: "relative",
+    width: 100,
+    height: 100,
   },
 
   cardImage: {
-    width: "100%",
-    height: 140,
+    width: 100,
+    height: 100,
   },
 
   discountBadge: {
@@ -85,6 +92,7 @@ export default StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 20,
+    zIndex: 10,
   },
 
   discountText: {
@@ -94,41 +102,45 @@ export default StyleSheet.create({
 
   cardContent: {
     padding: 12,
+    flex: 1,
+    justifyContent: "space-between",
   },
 
   packageTitle: {
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: "700",
     marginBottom: 4,
   },
 
   description: {
-    fontSize: 12,
+    fontSize: 11,
     color: Colors.muted,
-    marginBottom: 10,
+    marginBottom: 6,
   },
 
   priceRow: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 10,
+    gap: 8,
+    marginTop: 8,
   },
 
   oldPrice: {
     textDecorationLine: "line-through",
     color: "#aaa",
+    fontSize: 13,
   },
 
   price: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: "700",
   },
 
   viewButton: {
     marginLeft: "auto",
     backgroundColor: Colors.primary,
-    paddingHorizontal: 14,
-    paddingVertical: 6,
+    paddingHorizontal: 18,
+    paddingVertical: 8,
     borderRadius: 20,
   },
 

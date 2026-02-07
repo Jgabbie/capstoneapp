@@ -39,10 +39,11 @@ const PACKAGES = [
 export default function WishlistCard() {
   const renderItem = ({ item }) => (
     <View style={styles.card}>
-      <Image source={{ uri: item.image }} style={styles.cardImage} />
-
-      <View style={styles.discountBadge}>
-        <Text style={styles.discountText}>{item.discount}</Text>
+      <View style={styles.imageWrapper}>
+        <Image source={{ uri: item.image }} style={styles.cardImage} />
+        <View style={styles.discountBadge}>
+          <Text style={styles.discountText}>{item.discount}</Text>
+        </View>
       </View>
 
       <View style={styles.cardContent}>
