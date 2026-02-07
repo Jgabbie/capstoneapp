@@ -1,32 +1,32 @@
 import { StyleSheet } from "react-native";
 
 
-const SignupStyle = StyleSheet.create({
+const NewPasswordStyle = StyleSheet.create({
 
 
-    signupheading: {
-        fontSize: 60,
+    newpasswordheading: {
+        fontSize: 40,
         fontWeight: 600,
         fontFamily: "Montserrat_700Bold",
         color: "#305797",
         marginBottom: 0,
         margin: 20,
-        height: 60
+        height: 40
     },
-    signupsecondheading: {
-        fontSize: 35,
+    newpasswordsecondheading: {
+        fontSize: 25,
         fontWeight: 600,
         fontFamily: "Montserrat_500Medium",
         color: "#305797",
         marginTop: 0,
         margin: 20,
     },
-    signuplabel: {
+    newpasswordlabel: {
         fontSize: 16,
         color: "#305797",
         marginLeft: 20
     },
-    signupinputs: {
+    newpasswordinputs: {
         fontSize: 20,
         borderWidth: 1,
         borderRadius: 10,
@@ -52,14 +52,14 @@ const SignupStyle = StyleSheet.create({
         width: 170,
         height: 45
     },
-    signuplinks: {
+    newpasswordlinks: {
         fontSize: 16,
         color: "#305797",
     },
-    signuplinkscontainer: {
+    newpasswordlinkscontainer: {
         margin: 20
     },
-    signupbutton: {
+    newpasswordbutton: {
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "#305797",
@@ -68,7 +68,7 @@ const SignupStyle = StyleSheet.create({
         marginLeft: 20,
         borderRadius: 10
     },
-    signupbuttontext: {
+    newpasswordbuttontext: {
         color: "#fff",
         fontSize: 16,
         fontFamily: "Roboto_500Medium",
@@ -111,4 +111,4 @@ const SignupStyle = StyleSheet.create({
     }
 })
 
-export default SignupStyle
+export default NewPasswordStyle

@@ -1,5 +1,5 @@
-import { View, Text, TextInput, TouchableOpacity } from 'react-native'
-import React from 'react'
+import { View, Text, TextInput, TouchableOpacity, Modal } from 'react-native'
+import React, { useState } from 'react'
 import { useFonts } from 'expo-font'
 import {
     Montserrat_400Regular,
@@ -19,6 +19,8 @@ export default function Signup() {
 
     const cs = useNavigation()
 
+    const [modalVisible, setModalVisible] = useState(false)
+
     const [fontsLoaded] = useFonts({
         Montserrat_400Regular,
         Montserrat_500Medium,
@@ -27,6 +29,10 @@ export default function Signup() {
         Roboto_500Medium,
         Roboto_700Bold
     })
+
+    const handleSignup = () => {
+        setModalVisible(true)
+    }
 
     return (
         <View>
@@ -62,13 +68,39 @@ export default function Signup() {
 
             <View style={SignupStyle.signuplinkscontainer}>
                 <Text onPress={() => { cs.navigate("login") }} style={SignupStyle.signuplinks}>Already have an account? Login here</Text>
-                <Text style={SignupStyle.signuplinks}>Forgot your password?</Text>
             </View>
 
 
             <TouchableOpacity style={SignupStyle.signupbutton} >
-                <Text style={SignupStyle.signupbuttontext}>Signup</Text>
+                <Text style={SignupStyle.signupbuttontext} onPress={() => { handleSignup() }}>Signup</Text>
             </TouchableOpacity>
+
+            <Modal
+                transparent
+                animationType='fade'
+                visible={modalVisible}
+                onRequestClose={() => { setModalVisible }}
+            >
+
+                <View style={SignupStyle.modalOverlay}>
+                    <View style={SignupStyle.modalBox}>
+                        <Text style={SignupStyle.modalTitle}>Account Created</Text>
+                        <Text style={SignupStyle.modalText}>Your Account has been successfully created</Text>
+
+                        <TouchableOpacity
+                            style={SignupStyle.modalButton}
+                            onPress={() => {
+                                setModalVisible(false)
+                                cs.navigate("login")
+                            }}
+                        >
+                            <Text style={SignupStyle.modalButtonText}>Go to Login</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+
+
+            </Modal>
         </View>
     )
 }
