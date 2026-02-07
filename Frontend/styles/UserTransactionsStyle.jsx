@@ -63,7 +63,7 @@ const UserTransactionsStyle = StyleSheet.create({
         backgroundColor: "#305797",
         paddingVertical: 5,
         paddingHorizontal: 10,
-        borderRadius: 5
+        borderRadius: 5,
     },
     viewButtonText: {
         color: "#fff",

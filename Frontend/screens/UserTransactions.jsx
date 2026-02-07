@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity, FlatList } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, FlatList, } from 'react-native'
 import React, { useState } from 'react'
 import { Picker } from '@react-native-picker/picker'
 import { useFonts } from 'expo-font'
@@ -53,6 +53,9 @@ export default function UserTransactions() {
             <Text style={UserTransactionsStyle.tableCell}>{item.method}</Text>
             <TouchableOpacity
                 style={UserTransactionsStyle.viewButton}
+                onPress={() => {
+                    cs.navigate('transactionreceipt')
+                }}
             >
                 <Text style={UserTransactionsStyle.viewButtonText}>View</Text>
             </TouchableOpacity>
