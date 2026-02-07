@@ -2,6 +2,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from './screens/Login';
 import Signup from './screens/Signup';
+import Packages from './screens/Packages';
+import PackageDetails from './screens/PackageDetails';
 
 import WishlistScreen from './screens/WishlistScreen';
 
@@ -19,7 +21,7 @@ export default function App() {
     <NavigationContainer>
 
 
-      <Stack.Navigator initialRouteName="wishlist">
+      <Stack.Navigator initialRouteName="packages">
         <Stack.Screen name="login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="signup" component={Signup} options={{ headerShown: false }} />
         <Stack.Screen name="resetpassword" component={ResetPassword} options={{ headerShown: false }} />
@@ -28,6 +30,8 @@ export default function App() {
         <Stack.Screen name="userbookings" component={UserBookings} options={{ headerShown: false }} />
         <Stack.Screen name="usertransactions" component={UserTransactions} options={{ headerShown: false }} />
         <Stack.Screen name="wishlist" component={WishlistScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="packages" component={Packages} options={{ headerShown: false }} />
+        <Stack.Screen name="package-details" component={PackageDetails} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
