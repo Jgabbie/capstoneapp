@@ -2,6 +2,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from './screens/Login';
 import Signup from './screens/Signup';
+import Home from './screens/Home';
+import Packages from './screens/Packages';
+import PackageDetails from './screens/PackageDetails';
+
+import WishlistScreen from './screens/WishlistScreen';
+
 import ResetPassword from './screens/ResetPassword';
 import NewPassword from './screens/NewPassword';
 import Profile from './screens/Profile';
@@ -17,9 +23,10 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="userbookings">
+      <Stack.Navigator initialRouteName="packages">
         <Stack.Screen name="login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="signup" component={Signup} options={{ headerShown: false }} />
+        <Stack.Screen name="home" component={Home} options={{ headerShown: false }} />
         <Stack.Screen name="resetpassword" component={ResetPassword} options={{ headerShown: false }} />
         <Stack.Screen name="newpassword" component={NewPassword} options={{ headerShown: false }} />
         <Stack.Screen name="profile" component={Profile} options={{ headerShown: false }} />
@@ -28,6 +35,9 @@ export default function App() {
         <Stack.Screen name="bookinginvoice" component={UserInvoice} options={{ headerShown: false }} />
         <Stack.Screen name="transactionreceipt" component={TransactionReceipt} options={{ headerShown: false }} />
         <Stack.Screen name="paymentmethod" component={PaymentMethod} options={{ headerShown: false }} />
+        <Stack.Screen name="wishlist" component={WishlistScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="packages" component={Packages} options={{ headerShown: false }} />
+        <Stack.Screen name="package-details" component={PackageDetails} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
