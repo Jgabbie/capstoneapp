@@ -5,6 +5,7 @@ import LoginPageReal from './components/LoginPageReal';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from './screens/Login';
 import Signup from './screens/Signup';
+import Home from './screens/Home';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +15,7 @@ export default function App() {
       <Stack.Navigator initialRouteName="signup">
         <Stack.Screen name="login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="signup" component={Signup} options={{ headerShown: false }} />
+        <Stack.Screen name="home" component={Home} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

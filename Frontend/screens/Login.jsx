@@ -22,7 +22,7 @@ export default function Login() {
                 <Text onPress={() => { cs.navigate("signup") }} style={LoginStyle.loginlinks}>Don't have an account? Signup here</Text>
             </View>
 
-            <TouchableOpacity style={LoginStyle.loginbutton} >
+            <TouchableOpacity style={LoginStyle.loginbutton} onPress={() => { cs.navigate("home") }}>
                 <Text style={LoginStyle.loginbuttontext}>Login</Text>
             </TouchableOpacity>
         </View>
