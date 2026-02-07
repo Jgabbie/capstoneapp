@@ -25,7 +25,7 @@ export default StyleSheet.create({
   title: {
     fontSize: 22,
     fontWeight: "700",
-    color: colors.primary,
+    color: Colors.primary,
     marginVertical: 12,
   },
 
@@ -60,7 +60,7 @@ export default StyleSheet.create({
   },
 
   statusText: {
-    color: colors.primary,
+    color: Colors.primary,
     fontWeight: "600",
   },
 
@@ -104,7 +104,7 @@ export default StyleSheet.create({
 
   description: {
     fontSize: 12,
-    color: colors.muted,
+    color: Colors.muted,
     marginBottom: 10,
   },
 
@@ -126,7 +126,7 @@ export default StyleSheet.create({
 
   viewButton: {
     marginLeft: "auto",
-    backgroundColor: colors.primary,
+    backgroundColor: Colors.primary,
     paddingHorizontal: 14,
     paddingVertical: 6,
     borderRadius: 20,
