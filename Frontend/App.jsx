@@ -16,6 +16,8 @@ import UserTransactions from './screens/UserTransactions';
 import UserInvoice from './screens/UserInvoice';
 import TransactionReceipt from './screens/TransactionReceipt';
 import PaymentMethod from './screens/PaymentMethod';
+import VisaAssistance from './screens/VisaAssistance';
+import VisaDetails from './screens/VisaDetails';
 
 
 const Stack = createNativeStackNavigator();
@@ -23,7 +25,8 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="home">
+
+      <Stack.Navigator initialRouteName="VisaAssistance">
         <Stack.Screen name="login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="signup" component={Signup} options={{ headerShown: false }} />
         <Stack.Screen name="home" component={Home} options={{ headerShown: false }} />
@@ -38,6 +41,9 @@ export default function App() {
         <Stack.Screen name="wishlist" component={WishlistScreen} options={{ headerShown: false }} />
         <Stack.Screen name="packages" component={Packages} options={{ headerShown: false }} />
         <Stack.Screen name="package-details" component={PackageDetails} options={{ headerShown: false }} />
+        <Stack.Screen name="VisaAssistance" component={VisaAssistance} options={{ headerShown: false }} />
+        <Stack.Screen name="VisaDetails" component={VisaDetails} options={{ headerShown: false }} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
