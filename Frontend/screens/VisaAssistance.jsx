@@ -7,11 +7,8 @@ import styles from "../styles/VisaStyles";
 export default function VisaAssistance({ navigation }) {
   return (
     <View style={styles.container}>
-
-      {/* HEADER */}
       <Text style={styles.title}>VISA Assistance</Text>
 
-      {/* SEARCH */}
       <View style={styles.searchBox}>
         <Ionicons name="search" size={18} color="#999" />
         <TextInput

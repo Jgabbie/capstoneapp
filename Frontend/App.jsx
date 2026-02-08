@@ -28,7 +28,7 @@ export default function App() {
   return (
     <NavigationContainer>
 
-      <Stack.Navigator initialRouteName="PassportAssistance">
+      <Stack.Navigator initialRouteName="login">
         <Stack.Screen name="login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="signup" component={Signup} options={{ headerShown: false }} />
         <Stack.Screen name="home" component={Home} options={{ headerShown: false }} />
@@ -46,7 +46,7 @@ export default function App() {
         <Stack.Screen name="VisaAssistance" component={VisaAssistance} options={{ headerShown: false }} />
         <Stack.Screen name="VisaDetails" component={VisaDetails} options={{ headerShown: false }} />
         <Stack.Screen name="PassportAssistance" component={PassportAssistance} options={{ headerShown: false }} />
-        <Stack.Screen name="PassportDetails" component={PassportDetails} options={{ headerShown: false }} />  
+        <Stack.Screen name="PassportDetails" component={PassportDetails} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
