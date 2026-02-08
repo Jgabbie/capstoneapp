@@ -132,7 +132,7 @@ const PaymentMethodStyle = StyleSheet.create({
         alignItems: "center"
     },
     modalBox: {
-        width: 300,
+        width: 360,
         backgroundColor: "#fff",
         borderRadius: 15,
         padding: 20,
