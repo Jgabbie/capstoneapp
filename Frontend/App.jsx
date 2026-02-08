@@ -16,6 +16,8 @@ import TransactionReceipt from './screens/TransactionReceipt';
 import PaymentMethod from './screens/PaymentMethod';
 import VisaAssistance from './screens/VisaAssistance';
 import VisaDetails from './screens/VisaDetails';
+import PassportAssistance from './screens/PassportAssistance';
+import PassportDetails from './screens/PassportDetails';
 
 const Stack = createNativeStackNavigator();
 
@@ -40,8 +42,10 @@ export default function App() {
         <Stack.Screen name="package-details" component={PackageDetails} options={{ headerShown: false }} />
         <Stack.Screen name="VisaAssistance" component={VisaAssistance} options={{ headerShown: false }} />
         <Stack.Screen name="VisaDetails" component={VisaDetails} options={{ headerShown: false }} />
+        <Stack.Screen name="PassportAssistance" component={PassportAssistance} options={{ headerShown: false }} />
+        <Stack.Screen name="PassportDetails" component={PassportDetails} options={{ headerShown: false }} />  
       </Stack.Navigator>
-      
+
     </NavigationContainer>
   );
 }
