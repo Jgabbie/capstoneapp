@@ -1,0 +1,178 @@
+import { StyleSheet } from "react-native";
+import Colors from "./Colors";
+
+export default StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    padding: 16,
+  },
+
+  title: {
+    fontSize: 22,
+    fontWeight: "700",
+    color: Colors.primary,
+    marginBottom: 12,
+  },
+
+  searchBox: {
+    flexDirection: "row",
+    backgroundColor: "#eee",
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    alignItems: "center",
+    marginBottom: 16,
+  },
+
+  searchInput: {
+    marginLeft: 8,
+    flex: 1,
+  },
+
+  card: {
+    flexDirection: "row",
+    backgroundColor: "#fff",
+    borderRadius: 14,
+    elevation: 3,
+    marginBottom: 16,
+    overflow: "hidden",
+  },
+
+  cardImage: {
+    width: 100,
+    height: 100,
+  },
+
+  cardContent: {
+    flex: 1,
+    padding: 12,
+    justifyContent: "space-between",
+  },
+
+  packageTitle: {
+    fontSize: 16,
+    fontWeight: "700",
+    marginBottom: 4,
+  },
+
+  description: {
+    fontSize: 12,
+    color: "#777",
+  },
+
+  priceRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 8,
+  },
+
+  price: {
+    fontSize: 16,
+    fontWeight: "700",
+  },
+
+  applyButton: {
+    marginLeft: "auto",
+    backgroundColor: Colors.primary,
+    paddingHorizontal: 18,
+    paddingVertical: 8,
+    borderRadius: 20,
+  },
+
+  applyText: {
+    color: "#fff",
+    fontWeight: "600",
+  },
+
+  /* DETAILS */
+  detailsCard: {
+    backgroundColor: "#fff",
+    borderRadius: 14,
+    padding: 16,
+    elevation: 3,
+    marginBottom: 20,
+  },
+
+  detailsTitle: {
+    fontSize: 18,
+    fontWeight: "700",
+  },
+
+  detailsPrice: {
+    color: Colors.primary,
+    fontWeight: "600",
+    marginBottom: 12,
+  },
+
+  requirementRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+    marginBottom: 12,
+  },
+
+  reqImage: {
+    width: 60,
+    height: 60,
+    borderRadius: 8,
+  },
+
+  reqTitle: {
+    fontWeight: "700",
+  },
+
+  reqText: {
+    fontSize: 12,
+    color: "#777",
+  },
+
+  uploadBtn: {
+    backgroundColor: Colors.primary,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 10,
+  },
+
+  uploadText: {
+    color: "#fff",
+    fontSize: 12,
+  },
+
+  processCard: {
+    backgroundColor: "#fff",
+    borderRadius: 14,
+    padding: 16,
+    elevation: 3,
+    marginBottom: 20,
+  },
+
+  processTitle: {
+    fontSize: 18,
+    fontWeight: "700",
+    marginBottom: 10,
+  },
+
+  stepTitle: {
+    fontWeight: "700",
+    marginTop: 10,
+  },
+
+  stepText: {
+    fontSize: 12,
+    color: "#666",
+  },
+
+  proceedBtn: {
+    backgroundColor: Colors.primary,
+    paddingVertical: 14,
+    borderRadius: 30,
+    alignItems: "center",
+    marginBottom: 30,
+  },
+
+  proceedText: {
+    color: "#fff",
+    fontWeight: "700",
+    fontSize: 16,
+  },
+});

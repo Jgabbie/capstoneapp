@@ -13,6 +13,11 @@ import NewPassword from './screens/NewPassword';
 import Profile from './screens/Profile';
 import UserBookings from './screens/UserBookings';
 import UserTransactions from './screens/UserTransactions';
+import UserInvoice from './screens/UserInvoice';
+import TransactionReceipt from './screens/TransactionReceipt';
+import PaymentMethod from './screens/PaymentMethod';
+import VisaAssistance from './screens/VisaAssistance';
+import VisaDetails from './screens/VisaDetails';
 
 
 const Stack = createNativeStackNavigator();
@@ -23,6 +28,7 @@ export default function App() {
 
 
       <Stack.Navigator initialRouteName="login">
+      <Stack.Navigator initialRouteName="VisaAssistance">
         <Stack.Screen name="login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="signup" component={Signup} options={{ headerShown: false }} />
         <Stack.Screen name="home" component={Home} options={{ headerShown: false }} />
@@ -31,9 +37,15 @@ export default function App() {
         <Stack.Screen name="profile" component={Profile} options={{ headerShown: false }} />
         <Stack.Screen name="userbookings" component={UserBookings} options={{ headerShown: false }} />
         <Stack.Screen name="usertransactions" component={UserTransactions} options={{ headerShown: false }} />
+        <Stack.Screen name="bookinginvoice" component={UserInvoice} options={{ headerShown: false }} />
+        <Stack.Screen name="transactionreceipt" component={TransactionReceipt} options={{ headerShown: false }} />
+        <Stack.Screen name="paymentmethod" component={PaymentMethod} options={{ headerShown: false }} />
         <Stack.Screen name="wishlist" component={WishlistScreen} options={{ headerShown: false }} />
         <Stack.Screen name="packages" component={Packages} options={{ headerShown: false }} />
         <Stack.Screen name="package-details" component={PackageDetails} options={{ headerShown: false }} />
+        <Stack.Screen name="VisaAssistance" component={VisaAssistance} options={{ headerShown: false }} />
+        <Stack.Screen name="VisaDetails" component={VisaDetails} options={{ headerShown: false }} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

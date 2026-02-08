@@ -54,17 +54,69 @@ const UserBookingStyle = StyleSheet.create({
         alignItems: "center"
     },
     tableCell: {
-        flex: 1
+        flex: 1,
+        fontSize: 10,
+        textAlign: "center",
     },
     viewButton: {
         backgroundColor: "#305797",
-        paddingVertical: 5,
-        paddingHorizontal: 10,
-        borderRadius: 5
+        paddingVertical: 3,
+        paddingHorizontal: 8,
+        borderRadius: 5,
+        margin: 3
+    },
+    cancelButton: {
+        backgroundColor: "#9E2847",
+        paddingVertical: 3,
+        paddingHorizontal: 8,
+        borderRadius: 5,
     },
     viewButtonText: {
         color: "#fff",
-        fontWeight: '500'
+        fontWeight: '500',
+        fontSize: 8
+    },
+    modalOverlay: {
+        flex: 1,
+        backgroundColor: "rgba(0,0,0,0.4)",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    modalBox: {
+        width: 300,
+        backgroundColor: "#fff",
+        borderRadius: 15,
+        padding: 20,
+        alignItems: "center"
+    },
+    modalTitle: {
+        fontSize: 22,
+        fontFamily: "Montserrat_700Bold",
+        color: "#305797",
+        marginBottom: 10
+    },
+    modalText: {
+        fontSize: 16,
+        fontFamily: "Roboto_400Regular",
+        textAlign: "center",
+        marginBottom: 20,
+    },
+    modalButton: {
+        backgroundColor: "#305797",
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 8
+    },
+    modalCancelButton: {
+        backgroundColor: "#9E2847",
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 8
+    },
+    modalButtonText: {
+        color: "#fff",
+        fontSize: 16,
+        fontFamily: "Roboto_500Medium"
     }
 
 })
