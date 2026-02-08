@@ -5,9 +5,7 @@ import Signup from './screens/Signup';
 import Home from './screens/Home';
 import Packages from './screens/Packages';
 import PackageDetails from './screens/PackageDetails';
-
 import WishlistScreen from './screens/WishlistScreen';
-
 import ResetPassword from './screens/ResetPassword';
 import NewPassword from './screens/NewPassword';
 import Profile from './screens/Profile';
@@ -20,7 +18,6 @@ import VisaAssistance from './screens/VisaAssistance';
 import VisaDetails from './screens/VisaDetails';
 import PassportAssistance from './screens/PassportAssistance';
 import PassportDetails from './screens/PassportDetails';
-
 
 const Stack = createNativeStackNavigator();
 
@@ -48,6 +45,7 @@ export default function App() {
         <Stack.Screen name="PassportAssistance" component={PassportAssistance} options={{ headerShown: false }} />
         <Stack.Screen name="PassportDetails" component={PassportDetails} options={{ headerShown: false }} />
       </Stack.Navigator>
+
     </NavigationContainer>
   );
 }

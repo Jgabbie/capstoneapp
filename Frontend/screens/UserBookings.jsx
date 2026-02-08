@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity, FlatList, Modal } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, FlatList, Modal, Image } from 'react-native'
 import React, { useState } from 'react'
 import { Picker } from '@react-native-picker/picker'
 import { useFonts } from 'expo-font'
@@ -14,12 +14,13 @@ import {
 } from "@expo-google-fonts/roboto"
 import { useNavigation } from '@react-navigation/native'
 import UserBookingStyle from '../styles/UserBookingStyle'
-
+import Sidebar from '../components/Sidebar'
 
 export default function UserBookings() {
     const cs = useNavigation()
     const [modalVisible, setModalVisible] = useState(false)
     const [modalCancelVisible, setModalCancelVisible] = useState(false)
+    const [isSidebarVisible, setSidebarVisible] = useState(false);
 
     const [fontsLoaded] = useFonts({
         Montserrat_400Regular,
@@ -91,6 +92,48 @@ export default function UserBookings() {
 
     return (
         <View style={UserBookingStyle.container}>
+
+            <Sidebar 
+                visible={isSidebarVisible} 
+                onClose={() => setSidebarVisible(false)} 
+            />
+            
+            <View style={UserBookingStyle.headerContainer}>
+                
+                <TouchableOpacity 
+                    style={UserBookingStyle.sideBarButton}
+                    onPress={() => setSidebarVisible(true)}
+                >
+                    <Image 
+                        source={require('../materials/sidebar_btn.png')} 
+                        style={UserBookingStyle.sideBarImage}
+                    />
+                </TouchableOpacity>
+
+                <Image 
+                    source={require('../materials/mrc_logo2.png')} 
+                    style={UserBookingStyle.logo}
+                />
+
+                <View style={UserBookingStyle.rightIconsContainer}>
+                    
+                    <TouchableOpacity style={UserBookingStyle.bellButton}>
+                        <Image 
+                            source={require('../materials/bell_icon.png')} 
+                            style={UserBookingStyle.bellIcon}
+                        />
+                    </TouchableOpacity>
+
+                    <Image 
+                        source={require('../materials/profile_icon.png')} 
+                        style={UserBookingStyle.profileIcon}
+                    />
+                </View>
+
+            </View>
+
+
+
             <Text style={UserBookingStyle.userbookingheading}>User Bookings</Text>
             <TextInput
                 style={UserBookingStyle.SearchBar}

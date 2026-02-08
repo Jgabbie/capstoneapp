@@ -3,6 +3,58 @@ import { StyleSheet } from "react-native";
 
 const ProfileStyle = StyleSheet.create({
 
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        paddingTop: 25,
+    },
+    headerContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingHorizontal: 30,
+        marginBottom: 20,
+    },
+    sideBarButton: {
+        backgroundColor: '#E0E0E0', 
+        width: 45,
+        height: 45,
+        borderRadius: 22.5,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    sideBarImage: {
+        width: 45,
+        height: 45,
+        resizeMode: 'contain',
+    },
+    logo: {
+        width: 60,
+        height: 60,
+        resizeMode: 'contain',
+    },
+    rightIconsContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        position: 'relative',
+    },
+    profileIcon: {
+        width: 45,
+        height: 45,
+        borderRadius: 22.5,
+    },
+    bellButton: {
+        position: 'absolute',
+        top: -5,
+        left: -10,
+        zIndex: 1,
+    },
+    bellIcon: {
+        width: 25,
+        height: 25,
+    },
+
 
     profileheading: {
         fontSize: 30,
@@ -78,8 +130,8 @@ const ProfileStyle = StyleSheet.create({
         alignItems: "center",
     },
     profileImage: {
-        width: 170,
-        height: 170,
+        width: 100,
+        height: 100,
         borderRadius: 60,
         marginBottom: 10,
         marginTop: 80

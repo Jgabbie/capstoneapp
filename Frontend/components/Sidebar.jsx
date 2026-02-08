@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, Modal, TouchableWithoutFeedback } from 'react-native';
 import SidebarStyle from '../styles/SidebarStyle';
-import { useNavigation } from '@react-navigation/native'; // Import navigation hook
+import { useNavigation } from '@react-navigation/native';
 
 const Sidebar = ({ visible, onClose }) => {
-    // Initialize navigation to allow the logout button to work
-    const navigation = useNavigation();
 
-    // Helper function to create menu buttons easily
+    const navigation = useNavigation();
+    const [logoutModalVisible, setLogoutModalVisible] = useState(false);
+
     const MenuItem = ({ icon, title, onPress }) => (
         <TouchableOpacity style={SidebarStyle.navItem} onPress={onPress}>
             <Image source={icon} style={SidebarStyle.navIcon} />
@@ -15,25 +15,32 @@ const Sidebar = ({ visible, onClose }) => {
         </TouchableOpacity>
     );
 
-    // This function closes the sidebar first, then jumps to the login screen
-    const handleLogout = () => {
-        onClose(); // Hide the sidebar
-        navigation.navigate("login"); // Navigate to Login.jsx
+    const handleNavigation = (screenName) => {
+        onClose();
+        navigation.navigate(screenName);
+    };
+
+    const openLogoutConfirm = () => {
+        setLogoutModalVisible(true);
+    };
+
+    const confirmLogout = () => {
+        setLogoutModalVisible(false);
+        onClose();
+        navigation.navigate("login");
     };
 
     return (
         <Modal transparent={true} visible={visible} animationType="none">
-            {/* The dark background overlay - clicking this closes the sidebar */}
+            
             <TouchableOpacity 
                 style={SidebarStyle.overlay} 
                 activeOpacity={1} 
                 onPress={onClose} 
             >
-                {/* This stops clicks on the blue area from closing the menu */}
                 <TouchableWithoutFeedback>
                     <View style={SidebarStyle.sidebarContainer}>
                         
-                        {/* Profile Section: Image and Name are side-by-side */}
                         <View style={SidebarStyle.profileSection}>
                             <Image 
                                 source={require('../materials/profile_icon60.png')} 
@@ -45,37 +52,94 @@ const Sidebar = ({ visible, onClose }) => {
                             </View>
                         </View>
 
-                        {/* Top Divider */}
                         <View style={SidebarStyle.divider} />
 
-                        {/* Navigation List */}
-                        {/* Home Page will close the sidebar when clicked */}
                         <MenuItem 
                             title="Home Page" 
                             icon={require('../materials/home_icon.png')} 
-                            onPress={onClose} 
+                            onPress={() => handleNavigation("home")} 
+                        />
+                        <MenuItem 
+                            title="User Profile" 
+                            icon={require('../materials/user_icon.png')} 
+                            onPress={() => handleNavigation("profile")} 
+                        />
+                        <MenuItem 
+                            title="Bookings" 
+                            icon={require('../materials/booking_icon.png')} 
+                            onPress={() => handleNavigation("userbookings")}
+                        />
+                        <MenuItem
+                            title="Destinations"
+                            icon={require('../materials/destination_icon.png')}
+                            onPress={() => handleNavigation("packages")}
+                        />
+                        <MenuItem
+                            title="Featured"
+                            icon={require('../materials/featured_icon.png')}
+                            onPress={() => handleNavigation("wishlist")}
+                        />
+                        <MenuItem
+                            title="Transactions"
+                            icon={require('../materials/transactions_icon.png')}
+                            onPress={() => handleNavigation("usertransactions")}
+                        />
+                        <MenuItem
+                            title="Passport & Visa Assistance"
+                            icon={require('../materials/visa_icon.png')}
+                            onPress={() => handleNavigation("VisaAssistance")}
                         />
                         
-                        <MenuItem title="User Profile" icon={require('../materials/user_icon.png')} />
-                        <MenuItem title="Bookings" icon={require('../materials/booking_icon.png')} />
-                        <MenuItem title="Destinations" icon={require('../materials/destination_icon.png')} />
-                        <MenuItem title="Featured" icon={require('../materials/featured_icon.png')} />
-                        <MenuItem title="Transactions" icon={require('../materials/transactions_icon.png')} />
-                        <MenuItem title="Visa Assistance" icon={require('../materials/visa_icon.png')} />
-                        <MenuItem title="Passport Assistance" icon={require('../materials/passport_icon.png')} />
-
-                        {/* Bottom Divider */}
                         <View style={SidebarStyle.divider} />
 
-                        {/* Logout Button: Now connected to handleLogout */}
                         <MenuItem 
                             title="Logout" 
                             icon={require('../materials/logout_icon.png')} 
-                            onPress={handleLogout}
+                            onPress={openLogoutConfirm}
                         />
                     </View>
                 </TouchableWithoutFeedback>
             </TouchableOpacity>
+
+            <Modal
+                transparent={true}
+                visible={logoutModalVisible}
+                animationType="none"
+            >
+                <View style={SidebarStyle.modalOverlay}>
+                    <View style={SidebarStyle.modalBox}>
+                        
+                        <TouchableOpacity 
+                            style={SidebarStyle.closeButton} 
+                            onPress={() => setLogoutModalVisible(false)}
+                        >
+                            <Image source={require('../materials/x_icon.png')} style={SidebarStyle.xIcon} />
+                        </TouchableOpacity>
+
+                        <Text style={SidebarStyle.modalTitle}>CONFIRM LOGOUT</Text>
+                        
+                        <Image source={require('../materials/logout_iconbig.png')} style={SidebarStyle.logoutIconBig} />
+
+                        <Text style={SidebarStyle.modalText}>Are you sure you want to Logout?</Text>
+
+                        <View style={SidebarStyle.buttonRow}>
+                            <TouchableOpacity 
+                                style={SidebarStyle.cancelBtn} 
+                                onPress={() => setLogoutModalVisible(false)}
+                            >
+                                <Text style={SidebarStyle.buttonText}>Cancel</Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity 
+                                style={SidebarStyle.logoutBtn} 
+                                onPress={confirmLogout}
+                            >
+                                <Text style={SidebarStyle.buttonText}>Logout</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+            </Modal>
         </Modal>
     );
 };

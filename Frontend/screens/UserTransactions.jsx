@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity, FlatList, } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, FlatList, Image} from 'react-native'
 import React, { useState } from 'react'
 import { Picker } from '@react-native-picker/picker'
 import { useFonts } from 'expo-font'
@@ -14,9 +14,11 @@ import {
 } from "@expo-google-fonts/roboto"
 import { useNavigation } from '@react-navigation/native'
 import UserTransactionsStyle from '../styles/UserTransactionsStyle'
+import Sidebar from '../components/Sidebar'
 
 export default function UserTransactions() {
     const cs = useNavigation()
+    const [isSidebarVisible, setSidebarVisible] = useState(false);
 
     const [fontsLoaded] = useFonts({
         Montserrat_400Regular,
@@ -63,6 +65,44 @@ export default function UserTransactions() {
     )
     return (
         <View style={UserTransactionsStyle.container}>
+
+            <Sidebar 
+                visible={isSidebarVisible} 
+                onClose={() => setSidebarVisible(false)} 
+            />
+            
+            <View style={UserTransactionsStyle.headerContainer}>
+                <TouchableOpacity 
+                    style={UserTransactionsStyle.sideBarButton}
+                    onPress={() => setSidebarVisible(true)}
+                >
+                    <Image 
+                        source={require('../materials/sidebar_btn.png')} 
+                        style={UserTransactionsStyle.sideBarImage}
+                    />
+                </TouchableOpacity>
+
+                <Image 
+                    source={require('../materials/mrc_logo2.png')} 
+                    style={UserTransactionsStyle.logo}
+                />
+
+                <View style={UserTransactionsStyle.rightIconsContainer}>
+                    <TouchableOpacity style={UserTransactionsStyle.bellButton}>
+                        <Image 
+                            source={require('../materials/bell_icon.png')} 
+                            style={UserTransactionsStyle.bellIcon}
+                        />
+                    </TouchableOpacity>
+
+                    <Image 
+                        source={require('../materials/profile_icon.png')} 
+                        style={UserTransactionsStyle.profileIcon}
+                    />
+                </View>
+            </View>
+
+
             <Text style={UserTransactionsStyle.usertransactionheading}>User Transactions</Text>
             <TextInput
                 style={UserTransactionsStyle.SearchBar}
