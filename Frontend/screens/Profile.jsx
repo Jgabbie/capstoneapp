@@ -13,12 +13,13 @@ import {
 } from "@expo-google-fonts/roboto"
 import { useNavigation } from '@react-navigation/native'
 import ProfileStyle from '../styles/ProfileStyle'
-
+import Sidebar from '../components/Sidebar'
 
 export default function Profile() {
     const [editing, setEditing] = useState(false)
     const [modalVisible, setModalVisible] = useState(false)
     const [saveModalVisible, setSaveModalVisible] = useState(false)
+    const [isSidebarVisible, setSidebarVisible] = useState(false);
 
     const [fontsLoaded] = useFonts({
         Montserrat_400Regular,
@@ -55,6 +56,43 @@ export default function Profile() {
 
     return (
         <View style={ProfileStyle.container}>
+
+            <Sidebar 
+                visible={isSidebarVisible} 
+                onClose={() => setSidebarVisible(false)} 
+            />
+            
+            <View style={ProfileStyle.headerContainer}>
+                <TouchableOpacity 
+                    style={ProfileStyle.sideBarButton}
+                    onPress={() => setSidebarVisible(true)}
+                >
+                    <Image 
+                        source={require('../materials/sidebar_btn.png')} 
+                        style={ProfileStyle.sideBarImage}
+                    />
+                </TouchableOpacity>
+
+                <Image 
+                    source={require('../materials/mrc_logo2.png')} 
+                    style={ProfileStyle.logo}
+                />
+
+                <View style={ProfileStyle.rightIconsContainer}>
+                    <TouchableOpacity style={ProfileStyle.bellButton}>
+                        <Image 
+                            source={require('../materials/bell_icon.png')} 
+                            style={ProfileStyle.bellIcon}
+                        />
+                    </TouchableOpacity>
+
+                    <Image 
+                        source={require('../materials/profile_icon.png')} 
+                        style={ProfileStyle.profileIcon}
+                    />
+                </View>
+            </View>
+
             <View style={ProfileStyle.profileImageContainer}>
                 <Image
                     source={require("../assets/images/ProfilePicture.png")}
