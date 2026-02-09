@@ -18,6 +18,14 @@ import VisaAssistance from './screens/VisaAssistance';
 import VisaDetails from './screens/VisaDetails';
 import PassportAssistance from './screens/PassportAssistance';
 import PassportDetails from './screens/PassportDetails';
+import AdminDashboard from './screens/admin/AdminDashboard';
+import BookingManagement from './screens/admin/BookingManagement';
+import PackageManagement from './screens/admin/PackageManagement';
+import PassportAndVisaApplications from './screens/admin/PassportAndVisaApplications';
+import ReviewManagement from './screens/admin/ReviewManagement';
+import TransactionManagement from './screens/admin/TransactionManagement';
+import UserManagement from './screens/admin/UserManagement';
+import CancellationRequests from './screens/admin/CancellationRequests';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,7 +33,7 @@ export default function App() {
   return (
     <NavigationContainer>
 
-      <Stack.Navigator initialRouteName="login">
+      <Stack.Navigator initialRouteName="admindashboard">
         <Stack.Screen name="login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="signup" component={Signup} options={{ headerShown: false }} />
         <Stack.Screen name="home" component={Home} options={{ headerShown: false }} />
@@ -44,6 +52,14 @@ export default function App() {
         <Stack.Screen name="VisaDetails" component={VisaDetails} options={{ headerShown: false }} />
         <Stack.Screen name="PassportAssistance" component={PassportAssistance} options={{ headerShown: false }} />
         <Stack.Screen name="PassportDetails" component={PassportDetails} options={{ headerShown: false }} />
+        <Stack.Screen name="admindashboard" component={AdminDashboard} options={{ headerShown: false }} />
+        <Stack.Screen name="usermanagement" component={UserManagement} options={{ headerShown: false }} />
+        <Stack.Screen name="bookingmanagement" component={BookingManagement} options={{ headerShown: false }} />
+        <Stack.Screen name="transactionmanagement" component={TransactionManagement} options={{ headerShown: false }} />
+        <Stack.Screen name="packagemanagement" component={PackageManagement} options={{ headerShown: false }} />
+        <Stack.Screen name="cancelmanagement" component={CancellationRequests} options={{ headerShown: false }} />
+        <Stack.Screen name="ratingmanagement" component={ReviewManagement} options={{ headerShown: false }} />
+        <Stack.Screen name="passvisamanagement" component={PassportAndVisaApplications} options={{ headerShown: false }} />
       </Stack.Navigator>
 
     </NavigationContainer>

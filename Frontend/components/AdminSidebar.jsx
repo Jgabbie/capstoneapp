@@ -14,7 +14,7 @@ import {
     Roboto_700Bold
 } from "@expo-google-fonts/roboto"
 
-const Sidebar = ({ visible, onClose }) => {
+const AdminSidebar = ({ visible, onClose }) => {
 
     const [fontsLoaded] = useFonts({
         Montserrat_400Regular,
@@ -30,8 +30,7 @@ const Sidebar = ({ visible, onClose }) => {
 
     const MenuItem = ({ icon, title, onPress }) => (
         <TouchableOpacity style={SidebarStyle.navItem} onPress={onPress}>
-            <Image source={icon} style={SidebarStyle.navIcon} />
-            <Text style={SidebarStyle.navText}>{title}</Text>
+            <Text style={[SidebarStyle.navText, { fontSize: 22 }]}>{title}</Text>
         </TouchableOpacity>
     );
 
@@ -75,51 +74,42 @@ const Sidebar = ({ visible, onClose }) => {
                         <View style={SidebarStyle.divider} />
 
                         <MenuItem
-                            title="Home Page"
-                            icon={require('../materials/home_icon.png')}
-                            onPress={() => handleNavigation("home")}
+                            title="Dashboard"
+                            onPress={() => handleNavigation("admindashboard")}
                         />
                         <MenuItem
-                            title="User Profile"
-                            icon={require('../materials/user_icon.png')}
-                            onPress={() => handleNavigation("profile")}
+                            title="User Management"
+                            onPress={() => handleNavigation("usermanagement")}
                         />
                         <MenuItem
-                            title="Bookings"
-                            icon={require('../materials/booking_icon.png')}
-                            onPress={() => handleNavigation("userbookings")}
+                            title="Booking Management"
+                            onPress={() => handleNavigation("bookingmanagement")}
                         />
                         <MenuItem
-                            title="Destinations"
-                            icon={require('../materials/destination_icon.png')}
-                            onPress={() => handleNavigation("packages")}
+                            title="Transaction Management"
+                            onPress={() => handleNavigation("transactionmanagement")}
                         />
                         <MenuItem
-                            title="Featured"
-                            icon={require('../materials/featured_icon.png')}
-                            onPress={() => handleNavigation("wishlist")}
+                            title="Package Management"
+                            onPress={() => handleNavigation("packagemanagement")}
                         />
                         <MenuItem
-                            title="Transactions"
-                            icon={require('../materials/transactions_icon.png')}
-                            onPress={() => handleNavigation("usertransactions")}
+                            title="Cancellation Requests"
+                            onPress={() => handleNavigation("cancelmanagement")}
                         />
                         <MenuItem
-                            title="Visa Assistance"
-                            icon={require('../materials/visa_icon.png')}
-                            onPress={() => handleNavigation("VisaAssistance")}
+                            title="Review and Ratings"
+                            onPress={() => handleNavigation("ratingmanagement")}
                         />
                         <MenuItem
-                            title="Passport Assistance"
-                            icon={require('../materials/passport_icon.png')}
-                            onPress={() => handleNavigation("PassportAssistance")}
+                            title="Passport and Visa Applications"
+                            onPress={() => handleNavigation("passvisamanagement")}
                         />
 
                         <View style={SidebarStyle.divider} />
 
                         <MenuItem
                             title="Logout"
-                            icon={require('../materials/logout_icon.png')}
                             onPress={openLogoutConfirm}
                         />
                     </View>
@@ -169,4 +159,4 @@ const Sidebar = ({ visible, onClose }) => {
     );
 };
 
-export default Sidebar;
+export default AdminSidebar;

@@ -2,13 +2,14 @@ import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React, { useState } from 'react'
 import AdminSidebar from '../../components/AdminSidebar'
 import HomeStyle from '../../styles/HomeStyle';
-import RatingManagementStyles from '../../styles/adminstyles/RatingManagementStyles';
+import CancellationRequestStyles from '../../styles/adminstyles/CancellationRequestStyles';
 
-export default function ReviewManagement() {
+
+export default function CancellationRequests() {
     const [isSidebarVisible, setSidebarVisible] = useState(false);
 
     return (
-        <View style={RatingManagementStyles.container}>
+        <View style={CancellationRequestStyles.container}>
             <AdminSidebar visible={isSidebarVisible} onClose={() => setSidebarVisible(false)} />
 
             {/* Header Section */}
@@ -24,33 +25,33 @@ export default function ReviewManagement() {
                     <Image source={require('../../materials/profile_icon.png')} style={HomeStyle.profileIcon} />
                 </View>
             </View>
-            <Text style={RatingManagementStyles.header}>Ratings Management</Text>
-            <View style={RatingManagementStyles.statsContainer}>
-                <View style={RatingManagementStyles.statsRow}>
-                    <View style={RatingManagementStyles.card}>
-                        <Text style={RatingManagementStyles.cardValue}>40</Text>
-                        <Text style={RatingManagementStyles.cardLabel}>Bookings</Text>
+
+            <Text style={CancellationRequestStyles.header}>Cancellation Requests</Text>
+            <View style={CancellationRequestStyles.statsContainer}>
+                <View style={CancellationRequestStyles.statsRow}>
+                    <View style={CancellationRequestStyles.card}>
+                        <Text style={CancellationRequestStyles.cardValue}>40</Text>
+                        <Text style={CancellationRequestStyles.cardLabel}>Bookings</Text>
                     </View>
 
-                    <View style={RatingManagementStyles.card}>
-                        <Text style={RatingManagementStyles.cardValue}>20</Text>
-                        <Text style={RatingManagementStyles.cardLabel}>Users</Text>
+                    <View style={CancellationRequestStyles.card}>
+                        <Text style={CancellationRequestStyles.cardValue}>20</Text>
+                        <Text style={CancellationRequestStyles.cardLabel}>Users</Text>
                     </View>
                 </View>
 
-                <View style={RatingManagementStyles.statsRow}>
-                    <View style={RatingManagementStyles.card}>
-                        <Text style={RatingManagementStyles.cardValue}>34</Text>
-                        <Text style={RatingManagementStyles.cardLabel}>Transactions</Text>
+                <View style={CancellationRequestStyles.statsRow}>
+                    <View style={CancellationRequestStyles.card}>
+                        <Text style={CancellationRequestStyles.cardValue}>34</Text>
+                        <Text style={CancellationRequestStyles.cardLabel}>Transactions</Text>
                     </View>
 
-                    <View style={RatingManagementStyles.card}>
-                        <Text style={RatingManagementStyles.cardValue}>7</Text>
-                        <Text style={RatingManagementStyles.cardLabel}>Cancellations</Text>
+                    <View style={CancellationRequestStyles.card}>
+                        <Text style={CancellationRequestStyles.cardValue}>7</Text>
+                        <Text style={CancellationRequestStyles.cardLabel}>Cancellations</Text>
                     </View>
                 </View>
             </View>
-
         </View>
     )
 }

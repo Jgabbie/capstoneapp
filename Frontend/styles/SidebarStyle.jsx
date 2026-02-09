@@ -3,7 +3,7 @@ import { StyleSheet, Dimensions } from "react-native";
 const screenHeight = Dimensions.get('window').height;
 
 const SidebarStyle = StyleSheet.create({
-    
+
     overlay: {
         flex: 1,
         backgroundColor: 'rgba(0,0,0,0.5)',
@@ -36,13 +36,13 @@ const SidebarStyle = StyleSheet.create({
     },
     userName: {
         color: '#fff',
-        fontFamily: 'Roboto', 
-        fontWeight: 'bold', 
+        fontFamily: 'Roboto_400Regular',
+        fontWeight: 'bold',
         fontSize: 16,
     },
     userHandle: {
         color: '#fff',
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto_400Regular',
         fontWeight: 'normal',
         fontSize: 14,
     },
@@ -64,7 +64,7 @@ const SidebarStyle = StyleSheet.create({
     },
     navText: {
         color: '#fff',
-        fontFamily: 'Montserrat',
+        fontFamily: 'Montserrat_500Medium',
         fontSize: 22,
         marginLeft: 12,
         fontWeight: '500',
@@ -97,7 +97,7 @@ const SidebarStyle = StyleSheet.create({
         marginTop: 2,
     },
     modalTitle: {
-        fontFamily: 'Montserrat',
+        fontFamily: 'Montserrat_500Medium',
         fontSize: 20,
         fontWeight: '600',
         color: '#305797',

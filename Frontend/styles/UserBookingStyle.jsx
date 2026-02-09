@@ -10,14 +10,14 @@ const UserBookingStyle = StyleSheet.create({
         marginBottom: 20,
     },
     sideBarButton: {
-        backgroundColor: '#E0E0E0', 
+        backgroundColor: '#E0E0E0',
         width: 45,
         height: 45,
         borderRadius: 22.5,
         justifyContent: 'center',
         alignItems: 'center',
     },
-    
+
     sideBarImage: {
         width: 45,
         height: 45,
@@ -125,6 +125,7 @@ const UserBookingStyle = StyleSheet.create({
         fontWeight: '500',
         fontSize: 8
     },
+
     modalOverlay: {
         flex: 1,
         backgroundColor: "rgba(0,0,0,0.4)",
