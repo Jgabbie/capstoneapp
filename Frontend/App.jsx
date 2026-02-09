@@ -36,6 +36,8 @@ import Logging from './screens/admin/Logging';
 
 import PassportApplications from './screens/admin/PassportApplications';
 import PassportDocuments from './screens/admin/PassportDocuments';
+import VisaApplications from './screens/admin/VisaApplications';
+import VisaDocuments from './screens/admin/VisaDocuments';
 
 const Stack = createNativeStackNavigator();
 
@@ -43,11 +45,7 @@ export default function App() {
   return (
     <NavigationContainer>
 
-<<<<<<< HEAD
-      <Stack.Navigator initialRouteName="passportapplications">
-=======
-      <Stack.Navigator initialRouteName="admindashboard">
->>>>>>> 84ca28c2a7a50e55006b2d49f469b27b0b93f32a
+      <Stack.Navigator initialRouteName="visaapplications">
         <Stack.Screen name="login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="signup" component={Signup} options={{ headerShown: false }} />
         <Stack.Screen name="home" component={Home} options={{ headerShown: false }} />
@@ -82,12 +80,11 @@ export default function App() {
         <Stack.Screen name="auditing" component={Auditing} options={{ headerShown: false }} />
         <Stack.Screen name="logging" component={Logging} options={{ headerShown: false }} />
 
-<<<<<<< HEAD
         <Stack.Screen name="passportapplications" component={PassportApplications} options={{ headerShown: false }} />
         <Stack.Screen name="passportdocuments" component={PassportDocuments} options={{ headerShown: false }} />
+        <Stack.Screen name="visaapplications" component={VisaApplications} options={{ headerShown: false }} />
+        <Stack.Screen name="visadocuments" component={VisaDocuments} options={{ headerShown: false }} />
   
-=======
->>>>>>> 84ca28c2a7a50e55006b2d49f469b27b0b93f32a
       </Stack.Navigator>
 
     </NavigationContainer>
