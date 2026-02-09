@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import Header from "../components/Header";
 import styles from "../styles/DestinationStyles";
+import Sidebar from "../components/Sidebar";
+import { useNavigation } from "@react-navigation/native";
 
 const PACKAGES = [
     {
@@ -38,9 +40,49 @@ const PACKAGES = [
 ];
 
 export default function Packages({ navigation }) {
+    
+    const [isSidebarVisible, setSidebarVisible] = useState(false);
+
     return (
         <View style={styles.container}>
-            <Header />
+            
+            <Sidebar 
+                visible={isSidebarVisible} 
+                onClose={() => setSidebarVisible(false)} 
+            />
+
+            <View style={styles.headerContainer}>
+                <TouchableOpacity 
+                    style={styles.sideBarButton}
+                    onPress={() => setSidebarVisible(true)}
+                >
+                    <Image 
+                        source={require('../materials/sidebar_btn.png')} 
+                        style={styles.sideBarImage}
+                    />
+                </TouchableOpacity>
+
+                <Image 
+                    source={require('../materials/mrc_logo2.png')} 
+                    style={styles.logo}
+                />
+
+                <View style={styles.rightIconsContainer}>
+                    <TouchableOpacity style={styles.bellButton}>
+                        <Image 
+                            source={require('../materials/bell_icon.png')} 
+                            style={styles.bellIcon}
+                        />
+                    </TouchableOpacity>
+
+                    <Image 
+                        source={require('../materials/profile_icon.png')} 
+                        style={styles.profileIcon}
+                    />
+                </View>
+            </View>
+
+            {/* <Header /> */}
 
             <Text style={styles.heroTitle}>Featured Packages</Text>
             <Text style={styles.heroSubtitle}>

@@ -1,13 +1,60 @@
 import { StyleSheet } from "react-native";
 import Colors from "./Colors";
 
-
 export default StyleSheet.create({
   container: {
-    padding: 16,
+    paddingHorizontal: 16,
+    paddingTop: 30,
     backgroundColor: "#fff",
     flex: 1,
   },
+
+  headerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 10,
+    marginBottom: 10,
+  },
+  sideBarButton: {
+    backgroundColor: '#E0E0E0', 
+    width: 45,
+    height: 45,
+    borderRadius: 22.5,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  sideBarImage: {
+    width: 45,
+    height: 45,
+    resizeMode: 'contain',
+  },
+  logoHeader: {
+    width: 60,
+    height: 60,
+    resizeMode: 'contain',
+  },
+  rightIconsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    position: 'relative',
+  },
+  profileIcon: {
+    width: 45,
+    height: 45,
+    borderRadius: 22.5,
+  },
+  bellButton: {
+    position: 'absolute',
+    top: -5,
+    left: -10,
+    zIndex: 1,
+  },
+  bellIcon: {
+    width: 25,
+    height: 25,
+  },
+
 
   header: {
     flexDirection: "row",
