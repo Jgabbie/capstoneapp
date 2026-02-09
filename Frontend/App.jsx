@@ -33,17 +33,16 @@ import PassportProgress from './screens/PassportProgress';
 import Auditing from './screens/admin/Auditing';
 import Logging from './screens/admin/Logging';
 
+import PassportApplications from './screens/admin/PassportApplications';
+import PassportDocuments from './screens/admin/PassportDocuments';
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
 
-<<<<<<< HEAD
-      <Stack.Navigator initialRouteName="passvisamanagement">
-=======
-      <Stack.Navigator initialRouteName="auditing">
->>>>>>> 0c2215fd8cf7c6298b736ac66eb89f0ec4d12b0d
+      <Stack.Navigator initialRouteName="passportapplications">
         <Stack.Screen name="login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="signup" component={Signup} options={{ headerShown: false }} />
         <Stack.Screen name="home" component={Home} options={{ headerShown: false }} />
@@ -76,6 +75,9 @@ export default function App() {
         <Stack.Screen name="passportprogress" component={PassportProgress} options={{ headerShown: false }} />
         <Stack.Screen name="auditing" component={Auditing} options={{ headerShown: false }} />
         <Stack.Screen name="logging" component={Logging} options={{ headerShown: false }} />
+
+        <Stack.Screen name="passportapplications" component={PassportApplications} options={{ headerShown: false }} />
+        <Stack.Screen name="passportdocuments" component={PassportDocuments} options={{ headerShown: false }} />
   
       </Stack.Navigator>
 

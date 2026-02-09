@@ -1,0 +1,207 @@
+import { StyleSheet } from "react-native";
+import Colors from "../Colors";
+
+
+
+export default StyleSheet.create({
+  headerContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: 12,
+  },
+
+  logo: {
+    width: 60,
+    height: 35,
+    resizeMode: "contain",
+  },
+
+  profileIcon: {
+    width: 28,
+    height: 28,
+  },
+
+  container: {
+    padding: 10,
+    paddingBottom: 15,
+  },
+
+  pageTitle: {
+    fontSize: 16,
+    fontWeight: "700",
+    color: Colors.primary,
+    marginBottom: 10,
+  },
+
+  statsRow: {
+    flexDirection: "row",
+    gap: 8,
+    marginBottom: 12,
+    flexWrap: "wrap",
+  },
+
+  statCard: {
+    flex: 1,
+    backgroundColor: "#f2f2f2",
+    borderRadius: 10,
+    padding: 10,
+    alignItems: "center",
+    marginRight: 8,
+  },
+
+  statNumber: {
+    fontSize: 16,
+    fontWeight: "700",
+    marginBottom: 3,
+  },
+
+  statLabel: {
+    fontSize: 10,
+    color: "#777",
+    textAlign: "center",
+  },
+
+  searchInput: {
+    backgroundColor: "#eee",
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    marginBottom: 12,
+    fontSize: 13,
+  },
+
+  applicationCard: {
+    flexDirection: "row",
+    backgroundColor: "#fff",
+    borderBottomWidth: 1,
+    borderBottomColor: "#f0f0f0",
+    padding: 10,
+    marginBottom: 0,
+    elevation: 0,
+    alignItems: "center",
+  },
+
+  tableHeader: {
+    flexDirection: "row",
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    backgroundColor: "#fff",
+    borderBottomWidth: 2,
+    borderBottomColor: "#e0e0e0",
+    marginBottom: 2,
+  },
+
+  tableHeaderText: {
+    fontWeight: "700",
+    color: "#0066cc",
+    fontSize: 10,
+  },
+
+  serviceColumn: {
+    flex: 1.2,
+    paddingRight: 8,
+  },
+
+  statusColumn: {
+    flex: 0.9,
+    alignItems: "center",
+    paddingHorizontal: 4,
+  },
+
+  actionColumn: {
+    flex: 0.7,
+    alignItems: "center",
+  },
+
+  appTitle: {
+    fontSize: 11,
+    fontWeight: "700",
+    marginBottom: 2,
+  },
+
+  appRef: {
+    fontSize: 10,
+    color: "#777",
+    marginBottom: 1,
+  },
+
+  appPrice: {
+    fontSize: 10,
+    fontWeight: "700",
+    marginTop: 2,
+    marginBottom: 4,
+  },
+
+  rightColumn: {
+    alignItems: "flex-end",
+    justifyContent: "space-between",
+  },
+
+  statusDropdown: {
+    backgroundColor: "#999",
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 14,
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+
+  dropdownText: {
+    color: "#fff",
+    fontWeight: "600",
+    fontSize: 9,
+  },
+
+  statusBadge: {
+    backgroundColor: "#2ecc71",
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 12,
+    alignSelf: "flex-start",
+    marginTop: 2,
+  },
+
+  statusText: {
+    color: "#fff",
+    fontWeight: "600",
+    fontSize: 9,
+  },
+
+  viewButton: {
+    backgroundColor: "#003d99",
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 3,
+  },
+
+  viewText: {
+    color: "#fff",
+    fontWeight: "700",
+    fontSize: 9,
+  },
+
+  documentCard: {
+    backgroundColor: "#fff",
+    borderBottomWidth: 1,
+    borderBottomColor: "#f0f0f0",
+    padding: 10,
+    marginBottom: 0,
+    elevation: 0,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+
+  docTitle: {
+    fontSize: 11,
+    fontWeight: "700",
+    marginBottom: 2,
+  },
+
+  docMeta: {
+    fontSize: 9,
+    color: "#777",
+    marginBottom: 0,
+  },
+});
