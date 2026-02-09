@@ -106,6 +106,16 @@ const AdminSidebar = ({ visible, onClose }) => {
                             onPress={() => handleNavigation("passvisamanagement")}
                         />
 
+                        <MenuItem
+                            title="Logging"
+                            onPress={() => handleNavigation("logging")}
+                        />
+
+                        <MenuItem
+                            title="Auditing"
+                            onPress={() => handleNavigation("auditing")}
+                        />
+
                         <View style={SidebarStyle.divider} />
 
                         <MenuItem
