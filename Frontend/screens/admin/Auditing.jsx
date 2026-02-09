@@ -14,7 +14,7 @@ export default function Auditing() {
       timestamp: 'November 25, 2024 10:02:00',
       action: 'Deleted Account',
       role: 'Admin',
-      changeDetails: 'Deleted sabrasmith'
+      changeDetails: 'Changed Phone number'
     },
     {
       id: '2',
@@ -46,7 +46,7 @@ export default function Auditing() {
       timestamp: 'November 25, 2024 10:02:00',
       action: 'Deleted Account',
       role: 'User',
-      changeDetails: 'Deleted johnsmith'
+      changeDetails: 'Changed Lastname'
     },
     {
       id: '6',
@@ -70,7 +70,7 @@ export default function Auditing() {
       timestamp: 'November 25, 2024 10:02:00',
       action: 'Deleted Account',
       role: 'User',
-      changeDetails: 'Deleted johnsmith'
+      changeDetails: 'Changed Profile Picture'
     }
   ])
 

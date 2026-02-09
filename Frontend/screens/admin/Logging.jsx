@@ -10,11 +10,11 @@ export default function Logging() {
   const [logs] = useState([
     {
       id: '1',
-      performedBy: 'marionbalmorte@gmail.com',
+      performedBy: 'marionbalmonte@gmail.com',
       timestamp: 'November 25, 2024 10:02:00',
       action: 'Login',
       role: 'Admin',
-      details: 'username: marionbalmorte'
+      details: 'username: marionbalmonte'
     },
     {
       id: '2',
@@ -26,11 +26,11 @@ export default function Logging() {
     },
     {
       id: '3',
-      performedBy: 'marionbalmorte@gmail.com',
+      performedBy: 'marionbalmonte@gmail.com',
       timestamp: 'November 25, 2024 10:02:00',
       action: 'Logout',
       role: 'User',
-      details: 'username: marionbalmorte'
+      details: 'username: marionbalmonte'
     },
     {
       id: '4',

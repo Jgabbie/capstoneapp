@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
 import styles from "../styles/VisaStyles";
 import Sidebar from "../components/Sidebar";
+import { useNavigation } from "@react-navigation/native";
+
 
 export default function VisaDetails() {
-  
+  const navigation = useNavigation();
   const [isSidebarVisible, setSidebarVisible] = useState(false);
 
   return (
@@ -52,7 +54,7 @@ export default function VisaDetails() {
           <Text style={styles.detailsTitle}>Requirements for Japan VISA</Text>
           <Text style={styles.detailsPrice}>₱2,500 / per applicant</Text>
 
-          {/* PASSPORT */}
+         
           <View style={styles.requirementRow}>
             <Image
               source={{ uri: "https://upload.wikimedia.org/wikipedia/commons/6/6d/Philippine_passport.png" }}
@@ -69,7 +71,7 @@ export default function VisaDetails() {
             </TouchableOpacity>
           </View>
 
-          {/* PHOTO */}
+          
           <View style={styles.requirementRow}>
             <Image
               source={{ uri: "https://randomuser.me/api/portraits/men/32.jpg" }}
@@ -87,7 +89,7 @@ export default function VisaDetails() {
           </View>
         </View>
 
-        {/* VISA PROCESS */}
+        
         <View style={styles.processCard}>
           <Text style={styles.processTitle}>VISA Process</Text>
 
@@ -102,9 +104,11 @@ export default function VisaDetails() {
           </Text>
         </View>
 
-        <TouchableOpacity style={styles.proceedBtn}>
-          <Text style={styles.proceedText}>Proceed</Text>
-        </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.proceedBtn}
+        onPress={() => navigation.navigate("visaprogress")}>
+        <Text style={styles.proceedText}>Proceed</Text>
+      </TouchableOpacity>
 
       </ScrollView>
     </View>
