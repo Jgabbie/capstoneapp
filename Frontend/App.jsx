@@ -43,11 +43,7 @@ export default function App() {
   return (
     <NavigationContainer>
 
-<<<<<<< HEAD
-      <Stack.Navigator initialRouteName="passportapplications">
-=======
-      <Stack.Navigator initialRouteName="admindashboard">
->>>>>>> 84ca28c2a7a50e55006b2d49f469b27b0b93f32a
+      <Stack.Navigator initialRouteName="login">
         <Stack.Screen name="login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="signup" component={Signup} options={{ headerShown: false }} />
         <Stack.Screen name="home" component={Home} options={{ headerShown: false }} />
@@ -81,13 +77,9 @@ export default function App() {
         <Stack.Screen name="adminbookinginvoice" component={AdminBookingInvoice} options={{ headerShown: false }} />
         <Stack.Screen name="auditing" component={Auditing} options={{ headerShown: false }} />
         <Stack.Screen name="logging" component={Logging} options={{ headerShown: false }} />
-
-<<<<<<< HEAD
         <Stack.Screen name="passportapplications" component={PassportApplications} options={{ headerShown: false }} />
         <Stack.Screen name="passportdocuments" component={PassportDocuments} options={{ headerShown: false }} />
-  
-=======
->>>>>>> 84ca28c2a7a50e55006b2d49f469b27b0b93f32a
+
       </Stack.Navigator>
 
     </NavigationContainer>
