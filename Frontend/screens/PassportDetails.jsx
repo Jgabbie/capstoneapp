@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
 import styles from "../styles/WishListStyles";
 import Sidebar from "../components/Sidebar";
+import { useNavigation } from "@react-navigation/native";
+
 
 export default function PassportDetails({ route }) {
+  const navigation = useNavigation();
   const { price } = route.params;
   const [isSidebarVisible, setSidebarVisible] = useState(false);
 
@@ -52,7 +55,7 @@ export default function PassportDetails({ route }) {
         </Text>
         <Text style={styles.price}>₱{price} / per applicant</Text>
 
-        {/* VALID ID */}
+        
         <View style={styles.card}>
           <Image
             source={{ uri: "https://picsum.photos/100" }}
@@ -70,7 +73,6 @@ export default function PassportDetails({ route }) {
           </View>
         </View>
 
-        {/* 2x2 PHOTO */}
         <View style={styles.card}>
           <Image
             source={{ uri: "https://picsum.photos/101" }}
@@ -87,7 +89,7 @@ export default function PassportDetails({ route }) {
           </View>
         </View>
 
-        {/* PROCESS */}
+
         <View style={styles.card}>
           <View style={styles.cardContent}>
             <Text style={styles.packageTitle}>Passport Process</Text>
@@ -105,7 +107,9 @@ export default function PassportDetails({ route }) {
           </View>
         </View>
 
-        <TouchableOpacity style={[styles.viewButton, { marginBottom: 30 }]}>
+        <TouchableOpacity
+          style={[styles.viewButton, { marginBottom: 30 }]}
+          onPress={() => navigation.navigate("passportprogress")}>
           <Text style={styles.viewText}>Proceed</Text>
         </TouchableOpacity>
       </ScrollView>

@@ -26,6 +26,9 @@ import ReviewManagement from './screens/admin/ReviewManagement';
 import TransactionManagement from './screens/admin/TransactionManagement';
 import UserManagement from './screens/admin/UserManagement';
 import CancellationRequests from './screens/admin/CancellationRequests';
+import VisaProgress from './screens/VisaProgress';
+import PassportProgress from './screens/PassportProgress';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -33,7 +36,7 @@ export default function App() {
   return (
     <NavigationContainer>
 
-      <Stack.Navigator initialRouteName="admindashboard">
+      <Stack.Navigator initialRouteName="VisaAssistance">
         <Stack.Screen name="login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="signup" component={Signup} options={{ headerShown: false }} />
         <Stack.Screen name="home" component={Home} options={{ headerShown: false }} />
@@ -60,6 +63,9 @@ export default function App() {
         <Stack.Screen name="cancelmanagement" component={CancellationRequests} options={{ headerShown: false }} />
         <Stack.Screen name="ratingmanagement" component={ReviewManagement} options={{ headerShown: false }} />
         <Stack.Screen name="passvisamanagement" component={PassportAndVisaApplications} options={{ headerShown: false }} />
+        <Stack.Screen name="visaprogress" component={VisaProgress} options={{ headerShown: false }} />
+        <Stack.Screen name="passportprogress" component={PassportProgress} options={{ headerShown: false }} />
+  
       </Stack.Navigator>
 
     </NavigationContainer>
