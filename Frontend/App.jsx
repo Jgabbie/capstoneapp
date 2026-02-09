@@ -26,10 +26,13 @@ import ReviewManagement from './screens/admin/ReviewManagement';
 import TransactionManagement from './screens/admin/TransactionManagement';
 import UserManagement from './screens/admin/UserManagement';
 import CancellationRequests from './screens/admin/CancellationRequests';
+import AddPackage from './screens/admin/AddPackage';
+import EditPackage from './screens/admin/EditPackage';
 import VisaProgress from './screens/VisaProgress';
 import PassportProgress from './screens/PassportProgress';
 import AdminBookingInvoice from './screens/admin/AdminBookingInvoice';
-
+import Auditing from './screens/admin/Auditing';
+import Logging from './screens/admin/Logging';
 
 const Stack = createNativeStackNavigator();
 
@@ -64,9 +67,13 @@ export default function App() {
         <Stack.Screen name="cancelmanagement" component={CancellationRequests} options={{ headerShown: false }} />
         <Stack.Screen name="ratingmanagement" component={ReviewManagement} options={{ headerShown: false }} />
         <Stack.Screen name="passvisamanagement" component={PassportAndVisaApplications} options={{ headerShown: false }} />
+        <Stack.Screen name="addpackage" component={AddPackage} options={{ headerShown: false }} />
+        <Stack.Screen name="editpackage" component={EditPackage} options={{ headerShown: false }} />
         <Stack.Screen name="visaprogress" component={VisaProgress} options={{ headerShown: false }} />
         <Stack.Screen name="passportprogress" component={PassportProgress} options={{ headerShown: false }} />
         <Stack.Screen name="adminbookinginvoice" component={AdminBookingInvoice} options={{ headerShown: false }} />
+        <Stack.Screen name="auditing" component={Auditing} options={{ headerShown: false }} />
+        <Stack.Screen name="logging" component={Logging} options={{ headerShown: false }} />
 
       </Stack.Navigator>
 
