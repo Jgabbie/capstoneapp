@@ -10,6 +10,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import Header from "../components/Header";
 import styles from "../styles/DestinationStyles";
+import Sidebar from "../components/Sidebar";
 
 const MODAL_CONTENT = {
   "1": {
@@ -195,6 +196,8 @@ const defaultTravelers = {
 };
 
 export default function PackageDetails({ route, navigation }) {
+  const [isSidebarVisible, setSidebarVisible] = useState(false);
+
   const pkg = route?.params?.pkg ?? {
     id: "1",
     title: "Baguio City Tour",
@@ -341,7 +344,44 @@ export default function PackageDetails({ route, navigation }) {
 
   return (
     <View style={styles.detailsContainer}>
-      <Header onBack={() => navigation.goBack()} />
+      <Sidebar 
+        visible={isSidebarVisible} 
+        onClose={() => setSidebarVisible(false)} 
+      />
+
+      <View style={styles.headerContainer}>
+        <TouchableOpacity 
+          style={styles.sideBarButton}
+          onPress={() => setSidebarVisible(true)}
+        >
+          <Image 
+            source={require('../materials/sidebar_btn.png')} 
+            style={styles.sideBarImage}
+          />
+        </TouchableOpacity>
+
+        <Image 
+          source={require('../materials/mrc_logo2.png')} 
+          style={styles.logo}
+        />
+
+        <View style={styles.rightIconsContainer}>
+          <TouchableOpacity style={styles.bellButton}>
+            <Image 
+              source={require('../materials/bell_icon.png')} 
+              style={styles.bellIcon}
+            />
+          </TouchableOpacity>
+
+          <Image 
+            source={require('../materials/profile_icon.png')} 
+            style={styles.profileIcon}
+          />
+        </View>
+      </View>
+
+      {/* <Header onBack={() => navigation.goBack()} /> */}
+
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.detailsHeader}>
           <View style={styles.titleRow}>

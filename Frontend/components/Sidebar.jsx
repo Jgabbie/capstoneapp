@@ -85,9 +85,14 @@ const Sidebar = ({ visible, onClose }) => {
                             onPress={() => handleNavigation("usertransactions")}
                         />
                         <MenuItem
-                            title="Passport & Visa Assistance"
+                            title="Visa Assistance"
                             icon={require('../materials/visa_icon.png')}
                             onPress={() => handleNavigation("VisaAssistance")}
+                        />
+                        <MenuItem
+                            title="Passport Assistance"
+                            icon={require('../materials/passport_icon.png')}
+                            onPress={() => handleNavigation("PassportAssistance")}
                         />
                         
                         <View style={SidebarStyle.divider} />

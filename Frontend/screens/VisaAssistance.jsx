@@ -1,12 +1,59 @@
-import React from "react";
-import { View, Text, ScrollView, TextInput } from "react-native";
+import React, { useState } from "react";
+import { View, Text, ScrollView, TextInput, TouchableOpacity, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import VisaCard from "../components/VisaCard";
 import styles from "../styles/VisaStyles";
+import Sidebar from "../components/Sidebar";
 
 export default function VisaAssistance({ navigation }) {
+  
+  const [isSidebarVisible, setSidebarVisible] = useState(false);
+
   return (
     <View style={styles.container}>
+<<<<<<< HEAD
+=======
+
+      
+      <Sidebar 
+        visible={isSidebarVisible} 
+        onClose={() => setSidebarVisible(false)} 
+      />
+
+      
+      <View style={styles.headerContainer}>
+          <TouchableOpacity 
+              style={styles.sideBarButton}
+              onPress={() => setSidebarVisible(true)}
+          >
+              <Image 
+                  source={require('../materials/sidebar_btn.png')} 
+                  style={styles.sideBarImage}
+              />
+          </TouchableOpacity>
+
+          <Image 
+              source={require('../materials/mrc_logo2.png')} 
+              style={styles.logo}
+          />
+
+          <View style={styles.rightIconsContainer}>
+              <TouchableOpacity style={styles.bellButton}>
+                  <Image 
+                      source={require('../materials/bell_icon.png')} 
+                      style={styles.bellIcon}
+                  />
+              </TouchableOpacity>
+
+              <Image 
+                  source={require('../materials/profile_icon.png')} 
+                  style={styles.profileIcon}
+              />
+          </View>
+      </View>
+
+      {/* HEADER */}
+>>>>>>> 50ed1ca8294a06f36f9ca9b62d48bf9f33389a3d
       <Text style={styles.title}>VISA Assistance</Text>
 
       <View style={styles.searchBox}>

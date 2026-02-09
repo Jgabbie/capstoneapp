@@ -4,6 +4,10 @@ import { Ionicons } from "@expo/vector-icons";
 import Header from "../components/Header";
 import styles from "../styles/DestinationStyles";
 import Sidebar from "../components/Sidebar";
+<<<<<<< HEAD
+=======
+import { useNavigation } from "@react-navigation/native";
+>>>>>>> 50ed1ca8294a06f36f9ca9b62d48bf9f33389a3d
 
 const PACKAGES = [
     {
@@ -39,6 +43,7 @@ const PACKAGES = [
 ];
 
 export default function Packages({ navigation }) {
+<<<<<<< HEAD
 
     const [isSidebarVisible, setSidebarVisible] = useState(false)
 
@@ -49,6 +54,51 @@ export default function Packages({ navigation }) {
                 visible={isSidebarVisible}
                 onClose={() => setSidebarVisible(false)}
             />
+=======
+    
+    const [isSidebarVisible, setSidebarVisible] = useState(false);
+
+    return (
+        <View style={styles.container}>
+            
+            <Sidebar 
+                visible={isSidebarVisible} 
+                onClose={() => setSidebarVisible(false)} 
+            />
+
+            <View style={styles.headerContainer}>
+                <TouchableOpacity 
+                    style={styles.sideBarButton}
+                    onPress={() => setSidebarVisible(true)}
+                >
+                    <Image 
+                        source={require('../materials/sidebar_btn.png')} 
+                        style={styles.sideBarImage}
+                    />
+                </TouchableOpacity>
+
+                <Image 
+                    source={require('../materials/mrc_logo2.png')} 
+                    style={styles.logo}
+                />
+
+                <View style={styles.rightIconsContainer}>
+                    <TouchableOpacity style={styles.bellButton}>
+                        <Image 
+                            source={require('../materials/bell_icon.png')} 
+                            style={styles.bellIcon}
+                        />
+                    </TouchableOpacity>
+
+                    <Image 
+                        source={require('../materials/profile_icon.png')} 
+                        style={styles.profileIcon}
+                    />
+                </View>
+            </View>
+
+            {/* <Header /> */}
+>>>>>>> 50ed1ca8294a06f36f9ca9b62d48bf9f33389a3d
 
             <Text style={styles.heroTitle}>Featured Packages</Text>
             <Text style={styles.heroSubtitle}>
