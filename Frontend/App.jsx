@@ -26,6 +26,10 @@ import ReviewManagement from './screens/admin/ReviewManagement';
 import TransactionManagement from './screens/admin/TransactionManagement';
 import UserManagement from './screens/admin/UserManagement';
 import CancellationRequests from './screens/admin/CancellationRequests';
+import Logging from './screens/admin/Logging';
+import Auditing from './screens/admin/Auditing';
+
+
 
 const Stack = createNativeStackNavigator();
 
@@ -33,7 +37,7 @@ export default function App() {
   return (
     <NavigationContainer>
 
-      <Stack.Navigator initialRouteName="admindashboard">
+      <Stack.Navigator initialRouteName="logging">
         <Stack.Screen name="login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="signup" component={Signup} options={{ headerShown: false }} />
         <Stack.Screen name="home" component={Home} options={{ headerShown: false }} />
@@ -60,6 +64,8 @@ export default function App() {
         <Stack.Screen name="cancelmanagement" component={CancellationRequests} options={{ headerShown: false }} />
         <Stack.Screen name="ratingmanagement" component={ReviewManagement} options={{ headerShown: false }} />
         <Stack.Screen name="passvisamanagement" component={PassportAndVisaApplications} options={{ headerShown: false }} />
+        <Stack.Screen name="logging" component={Logging} options={{ headerShown: false }} />
+        <Stack.Screen name="auditing" component={Auditing} options={{ headerShown: false }} />
       </Stack.Navigator>
 
     </NavigationContainer>
