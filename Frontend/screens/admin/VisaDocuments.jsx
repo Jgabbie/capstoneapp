@@ -2,12 +2,12 @@ import React from "react";
 import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native";
 import styles from "../../styles/adminstyles/PassportDashboardStyles";
 
-export default function PassportDocuments() {
+export default function VisaDocuments() {
   const documents = [
-    { name: "2 x 2 Photo", submittedBy: "juanlanuza", date: "January 26, 2026" },
-    { name: "Valid ID", submittedBy: "juanlanuza", date: "January 26, 2026" },
-    { name: "PSA Birth Certificate", submittedBy: "juanlanuza", date: "January 26, 2026" },
-    { name: "Application Form", submittedBy: "juanlanuza", date: "January 26, 2026" },
+    { name: "2 x 2 Photo", submittedBy: "marionbalmonte", date: "January 26, 2026" },
+    { name: "Passport", submittedBy: "marionbalmonte", date: "January 26, 2026" },
+    { name: "PSA Birth Certificate", submittedBy: "marionbalmonte", date: "January 26, 2026" },
+    { name: "Application Form", submittedBy: "marionbalmonte", date: "January 26, 2026" },
   ];
 
   return (
@@ -24,10 +24,10 @@ export default function PassportDocuments() {
       </View>
 
       <ScrollView contentContainerStyle={styles.container}>
-        <Text style={styles.pageTitle}>Passport Applications</Text>
+        <Text style={styles.pageTitle}>VISA Applications</Text>
         <Text style={styles.sectionTitle}>Documents</Text>
 
-        {/* Table Headers */}
+        
         <View style={styles.tableHeader}>
           <Text style={[styles.tableHeaderText, styles.serviceColumn]}>DOCUMENT</Text>
           <Text style={[styles.tableHeaderText, styles.statusColumn, { textAlign: "center" }]}>SUBMITTED BY</Text>
@@ -35,25 +35,25 @@ export default function PassportDocuments() {
           <Text style={[styles.tableHeaderText, styles.actionColumn, { textAlign: "center" }]}>ACTION</Text>
         </View>
 
-        {/* Documents List */}
+        
         {documents.map((doc, index) => (
           <View key={index} style={styles.applicationCard}>
-            {/* Document Name Column */}
+            
             <View style={styles.serviceColumn}>
               <Text style={styles.appTitle}>{doc.name}</Text>
             </View>
 
-            {/* Submitted By Column */}
+            
             <View style={[styles.statusColumn, { justifyContent: "center" }]}>
               <Text style={styles.docMeta}>{doc.submittedBy}</Text>
             </View>
 
-            {/* Date Column */}
+            
             <View style={[styles.statusColumn, { justifyContent: "center" }]}>
               <Text style={styles.docMeta}>{doc.date}</Text>
             </View>
 
-            {/* Action Column */}
+            
             <TouchableOpacity
               style={[styles.actionColumn, styles.viewButton]}
             >

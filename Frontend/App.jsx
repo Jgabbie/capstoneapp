@@ -36,6 +36,8 @@ import Logging from './screens/admin/Logging';
 
 import PassportApplications from './screens/admin/PassportApplications';
 import PassportDocuments from './screens/admin/PassportDocuments';
+import VisaApplications from './screens/admin/VisaApplications';
+import VisaDocuments from './screens/admin/VisaDocuments';
 
 const Stack = createNativeStackNavigator();
 
@@ -79,6 +81,8 @@ export default function App() {
         <Stack.Screen name="logging" component={Logging} options={{ headerShown: false }} />
         <Stack.Screen name="passportapplications" component={PassportApplications} options={{ headerShown: false }} />
         <Stack.Screen name="passportdocuments" component={PassportDocuments} options={{ headerShown: false }} />
+        <Stack.Screen name="visaapplications" component={VisaApplications} options={{ headerShown: false }} />
+        <Stack.Screen name="visadocuments" component={VisaDocuments} options={{ headerShown: false }} />
 
       </Stack.Navigator>
 

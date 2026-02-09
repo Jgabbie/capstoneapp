@@ -204,4 +204,51 @@ export default StyleSheet.create({
     color: "#777",
     marginBottom: 0,
   },
+
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: "700",
+    color: "#333",
+    marginBottom: 16,
+    marginTop: 8,
+  },
+
+  documentCardLarge: {
+    backgroundColor: "#fff",
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: "#ddd",
+    padding: 16,
+    marginBottom: 12,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    elevation: 2,
+  },
+
+  docTitleLarge: {
+    fontSize: 16,
+    fontWeight: "700",
+    color: "#333",
+    marginBottom: 6,
+  },
+
+  docSubMeta: {
+    fontSize: 12,
+    color: "#666",
+    marginBottom: 3,
+  },
+
+  viewFileButton: {
+    backgroundColor: "#003d99",
+    paddingHorizontal: 18,
+    paddingVertical: 8,
+    borderRadius: 4,
+  },
+
+  viewFileText: {
+    color: "#fff",
+    fontWeight: "700",
+    fontSize: 11,
+  },
 });
