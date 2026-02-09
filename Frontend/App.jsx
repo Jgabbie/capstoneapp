@@ -26,6 +26,8 @@ import ReviewManagement from './screens/admin/ReviewManagement';
 import TransactionManagement from './screens/admin/TransactionManagement';
 import UserManagement from './screens/admin/UserManagement';
 import CancellationRequests from './screens/admin/CancellationRequests';
+import AddPackage from './screens/admin/AddPackage';
+import EditPackage from './screens/admin/EditPackage';
 
 const Stack = createNativeStackNavigator();
 
@@ -60,6 +62,8 @@ export default function App() {
         <Stack.Screen name="cancelmanagement" component={CancellationRequests} options={{ headerShown: false }} />
         <Stack.Screen name="ratingmanagement" component={ReviewManagement} options={{ headerShown: false }} />
         <Stack.Screen name="passvisamanagement" component={PassportAndVisaApplications} options={{ headerShown: false }} />
+        <Stack.Screen name="addpackage" component={AddPackage} options={{ headerShown: false }} />
+        <Stack.Screen name="editpackage" component={EditPackage} options={{ headerShown: false }} />
       </Stack.Navigator>
 
     </NavigationContainer>
