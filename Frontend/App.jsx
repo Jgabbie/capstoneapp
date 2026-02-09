@@ -30,6 +30,7 @@ import AddPackage from './screens/admin/AddPackage';
 import EditPackage from './screens/admin/EditPackage';
 import VisaProgress from './screens/VisaProgress';
 import PassportProgress from './screens/PassportProgress';
+import AdminBookingInvoice from './screens/admin/AdminBookingInvoice';
 import Auditing from './screens/admin/Auditing';
 import Logging from './screens/admin/Logging';
 
@@ -42,7 +43,11 @@ export default function App() {
   return (
     <NavigationContainer>
 
+<<<<<<< HEAD
       <Stack.Navigator initialRouteName="passportapplications">
+=======
+      <Stack.Navigator initialRouteName="admindashboard">
+>>>>>>> 84ca28c2a7a50e55006b2d49f469b27b0b93f32a
         <Stack.Screen name="login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="signup" component={Signup} options={{ headerShown: false }} />
         <Stack.Screen name="home" component={Home} options={{ headerShown: false }} />
@@ -73,12 +78,16 @@ export default function App() {
         <Stack.Screen name="editpackage" component={EditPackage} options={{ headerShown: false }} />
         <Stack.Screen name="visaprogress" component={VisaProgress} options={{ headerShown: false }} />
         <Stack.Screen name="passportprogress" component={PassportProgress} options={{ headerShown: false }} />
+        <Stack.Screen name="adminbookinginvoice" component={AdminBookingInvoice} options={{ headerShown: false }} />
         <Stack.Screen name="auditing" component={Auditing} options={{ headerShown: false }} />
         <Stack.Screen name="logging" component={Logging} options={{ headerShown: false }} />
 
+<<<<<<< HEAD
         <Stack.Screen name="passportapplications" component={PassportApplications} options={{ headerShown: false }} />
         <Stack.Screen name="passportdocuments" component={PassportDocuments} options={{ headerShown: false }} />
   
+=======
+>>>>>>> 84ca28c2a7a50e55006b2d49f469b27b0b93f32a
       </Stack.Navigator>
 
     </NavigationContainer>

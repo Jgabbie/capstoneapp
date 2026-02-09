@@ -50,25 +50,29 @@ export default function TransactionManagement() {
     }
 
     const [users, setusers] = useState([
-        { id: "1", username: "jglanuza", email: "jglanuza@gmail.com", status: "Verified", role: "Admin", },
-        { id: "2", username: "tayshaun", email: "tayshaun@gmail.com", status: "Unverified", role: "User", },
-        { id: "3", username: "marionblmt", email: "marionblmt@gmail.com", status: "Verified", role: "User", },
-        { id: "4", username: "jsnnsbauca", email: "jnssnbauca@gmail.com", status: "Unverified", role: "User", },
-        { id: "5", username: "jglanuza", email: "jglanuza@gmail.com", status: "Verified", role: "Admin", },
-        { id: "6", username: "tayshaun", email: "tayshaun@gmail.com", status: "Unverified", role: "User", },
-        { id: "7", username: "marionblmt", email: "marionblmt@gmail.com", status: "Verified", role: "User", },
-        { id: "8", username: "jsnnsbauca", email: "jnssnbauca@gmail.com", status: "Unverified", role: "User", },
+        { id: "1", transacref: "TREF-9327", package: "Boracay Tour", status: "Paid", amount: 20000, },
+        { id: "2", transacref: "TREF-9281", package: "Japan Tour", status: "Pending", amount: 20000, },
+        { id: "3", transacref: "TREF-8422", package: "Korea Tour", status: "Unpaid", amount: 30000, },
+        { id: "4", transacref: "TREF-0492", package: "Shanghai Tour", status: "Paid", amount: 35000, },
+        { id: "5", transacref: "TREF-1323", package: "Bohol Tour", status: "Pending", amount: 40000, },
+        { id: "6", transacref: "TREF-4732", package: "El Nido Tour", status: "Pending", amount: 26000, },
+        { id: "7", transacref: "TREF-4821", package: "Korea Tour", status: "Pending", amount: 20000, },
+        { id: "8", transacref: "TREF-9231", package: "Japan Tour", status: "Pending", amount: 21000, },
     ])
 
     const [searchText, setSearchText] = useState('')
     const [statusFilter, setStatusFilter] = useState('All')
-    const [roleFilter, setroleFilter] = useState('All')
+    const [amountFilter, setAmountFilter] = useState('All')
 
     const filteredusers = users.filter(b => {
-        const matchesSearch = b.username.toLowerCase().includes(searchText.toLowerCase())
+        const matchesSearch = b.transacref.toLowerCase().includes(searchText.toLowerCase())
         const matchesStatus = statusFilter === 'All' || b.status === statusFilter
-        const matchesrole = roleFilter === 'All' || b.role.toString() === roleFilter
-        return matchesSearch && matchesStatus && matchesrole
+        const matchesAmount =
+            amountFilter === 'All' ||
+            (amountFilter === 'LOW' && b.amount < 10000) ||
+            (amountFilter === 'MID' && b.amount >= 10001 && b.amount <= 30000) ||
+            (amountFilter === 'HIGH' && b.amount > 30000)
+        return matchesSearch && matchesStatus && matchesAmount
     })
 
     const paginatedUsers = filteredusers.slice(
@@ -80,10 +84,10 @@ export default function TransactionManagement() {
 
     const renderItem = ({ item }) => (
         <View style={TransactionManagementStyles.tableRow}>
-            <Text style={[TransactionManagementStyles.tableCell, TransactionManagementStyles.usernameCell]}>{item.username}</Text>
-            <Text style={[TransactionManagementStyles.tableCell, TransactionManagementStyles.emailCell]}>{item.email}</Text>
+            <Text style={[TransactionManagementStyles.tableCell, TransactionManagementStyles.transacrefCell]}>{item.transacref}</Text>
+            <Text style={[TransactionManagementStyles.tableCell, TransactionManagementStyles.packageCell]}>{item.package}</Text>
             <Text style={[TransactionManagementStyles.tableCell, TransactionManagementStyles.statusCell]}>{item.status}</Text>
-            <Text style={[TransactionManagementStyles.tableCell, TransactionManagementStyles.roleCell]}>{item.role}</Text>
+            <Text style={[TransactionManagementStyles.tableCell, TransactionManagementStyles.amountCell]}>{item.amount}</Text>
             <View style={
                 TransactionManagementStyles.actionCell
             }>
@@ -165,26 +169,28 @@ export default function TransactionManagement() {
                     onValueChange={(value) => setStatusFilter(value)}
                 >
                     <Picker.Item label="All Status" value="All" />
-                    <Picker.Item label="Verified" value="Active" />
-                    <Picker.Item label="Unverified" value="Inactive" />
+                    <Picker.Item label="Paid" value="Paid" />
+                    <Picker.Item label="Pending" value="Pending" />
+                    <Picker.Item label="Unpaid" value="Unpaid" />
                 </Picker>
 
                 <Picker
                     style={TransactionManagementStyles.picker}
-                    selectedValue={roleFilter}
-                    onValueChange={(value) => setroleFilter(value)}
+                    selectedValue={amountFilter}
+                    onValueChange={(value) => setAmountFilter(value)}
                 >
-                    <Picker.Item label="All role" value="All" />
-                    <Picker.Item label="Admin" value="Admin" />
-                    <Picker.Item label="User" value="User" />
+                    <Picker.Item label="All Amounts" value="All" />
+                    <Picker.Item label="Below ₱10,000" value="LOW" />
+                    <Picker.Item label="₱10,001 – ₱30,000" value="MID" />
+                    <Picker.Item label="Above ₱30,000" value="HIGH" />
                 </Picker>
             </View>
 
             <View style={TransactionManagementStyles.tableHeader}>
-                <Text style={[TransactionManagementStyles.tableHeaderCell, TransactionManagementStyles.usernameCell]}>Username</Text>
-                <Text style={[TransactionManagementStyles.tableHeaderCell, TransactionManagementStyles.emailCell]}>Email</Text>
+                <Text style={[TransactionManagementStyles.tableHeaderCell, TransactionManagementStyles.transacrefCell]}>Reference</Text>
+                <Text style={[TransactionManagementStyles.tableHeaderCell, TransactionManagementStyles.packageCell]}>Package</Text>
                 <Text style={[TransactionManagementStyles.tableHeaderCell, TransactionManagementStyles.statusCell]}>Status</Text>
-                <Text style={[TransactionManagementStyles.tableHeaderCell, TransactionManagementStyles.roleCell]}>Role</Text>
+                <Text style={[TransactionManagementStyles.tableHeaderCell, TransactionManagementStyles.amountCell]}>Amount</Text>
                 <Text style={[TransactionManagementStyles.tableHeaderCell, TransactionManagementStyles.actionCell]}>Actions</Text>
             </View>
 

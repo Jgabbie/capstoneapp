@@ -59,6 +59,8 @@ const TransactionManagementStyles = StyleSheet.create({
     },
     SearchBar: {
         borderWidth: 1,
+        backgroundColor: '#fff',
+        fontFamily: "Montserrat_400Regular",
         borderColor: "#6d6d6d",
         borderRadius: 10,
         padding: 10,
@@ -67,12 +69,13 @@ const TransactionManagementStyles = StyleSheet.create({
     filtersContainer: {
         flexDirection: "row",
         justifyContent: "space-between",
-        marginBottom: 15
+        marginBottom: 15,
+        gap: 10
     },
     picker: {
         flex: 1,
         height: 40,
-        marginHorizontal: 5,
+        fontFamily: "Montserrat_400Regular",
         borderRadius: 10
     },
     table: {

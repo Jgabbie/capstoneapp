@@ -21,6 +21,8 @@ export default function CancellationRequests() {
     const [isSidebarVisible, setSidebarVisible] = useState(false);
     const cs = useNavigation()
 
+    const [selectedDate, setSelectedDate] = useState(null)
+    const [showDatePicker, setShowDatePicker] = useState(null)
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
     const [modalVisible, setModalVisible] = useState(false)
@@ -49,25 +51,25 @@ export default function CancellationRequests() {
     }
 
     const [users, setusers] = useState([
-        { id: "1", username: "jglanuza", email: "jglanuza@gmail.com", status: "Verified", role: "Admin", },
-        { id: "2", username: "tayshaun", email: "tayshaun@gmail.com", status: "Unverified", role: "User", },
-        { id: "3", username: "marionblmt", email: "marionblmt@gmail.com", status: "Verified", role: "User", },
-        { id: "4", username: "jsnnsbauca", email: "jnssnbauca@gmail.com", status: "Unverified", role: "User", },
-        { id: "5", username: "jglanuza", email: "jglanuza@gmail.com", status: "Verified", role: "Admin", },
-        { id: "6", username: "tayshaun", email: "tayshaun@gmail.com", status: "Unverified", role: "User", },
-        { id: "7", username: "marionblmt", email: "marionblmt@gmail.com", status: "Verified", role: "User", },
-        { id: "8", username: "jsnnsbauca", email: "jnssnbauca@gmail.com", status: "Unverified", role: "User", },
+        { id: "1", username: "jglanuza", package: "Boracay Tour", status: "Pending", date: "01-25-26", },
+        { id: "2", username: "tayshaun", package: "Japan Tour", status: "Pending", date: "01-22-26", },
+        { id: "3", username: "marionblmt", package: "Korea Tour", status: "Pending", date: "01-03-26", },
+        { id: "4", username: "jsnnsbauca", package: "Shanghai Tour", status: "Pending", date: "01-11-26", },
+        { id: "5", username: "jglanuza", package: "Boracay Tour", status: "Pending", date: "01-12-26", },
+        { id: "6", username: "tayshaun", package: "Boracay Tour", status: "Pending", date: "01-20-26", },
+        { id: "7", username: "marionblmt", package: "El Nido Tour", status: "Pending", date: "02-05-26", },
+        { id: "8", username: "jsnnsbauca", package: "Japan Tour", status: "Pending", date: "02-25-26", },
     ])
 
     const [searchText, setSearchText] = useState('')
     const [statusFilter, setStatusFilter] = useState('All')
-    const [roleFilter, setroleFilter] = useState('All')
+    const [dateFilter, setdateFilter] = useState('All')
 
     const filteredusers = users.filter(b => {
         const matchesSearch = b.username.toLowerCase().includes(searchText.toLowerCase())
         const matchesStatus = statusFilter === 'All' || b.status === statusFilter
-        const matchesrole = roleFilter === 'All' || b.role.toString() === roleFilter
-        return matchesSearch && matchesStatus && matchesrole
+        const matchesdate = dateFilter === 'All' || b.date.toString() === dateFilter
+        return matchesSearch && matchesStatus && matchesdate
     })
 
     const paginatedUsers = filteredusers.slice(
@@ -80,9 +82,9 @@ export default function CancellationRequests() {
     const renderItem = ({ item }) => (
         <View style={CancellationRequestStyles.tableRow}>
             <Text style={[CancellationRequestStyles.tableCell, CancellationRequestStyles.usernameCell]}>{item.username}</Text>
-            <Text style={[CancellationRequestStyles.tableCell, CancellationRequestStyles.emailCell]}>{item.email}</Text>
+            <Text style={[CancellationRequestStyles.tableCell, CancellationRequestStyles.packageCell]}>{item.package}</Text>
             <Text style={[CancellationRequestStyles.tableCell, CancellationRequestStyles.statusCell]}>{item.status}</Text>
-            <Text style={[CancellationRequestStyles.tableCell, CancellationRequestStyles.roleCell]}>{item.role}</Text>
+            <Text style={[CancellationRequestStyles.tableCell, CancellationRequestStyles.dateCell]}>{item.date}</Text>
             <View style={
                 CancellationRequestStyles.actionCell
             }>
@@ -92,7 +94,7 @@ export default function CancellationRequests() {
                         cs.navigate('bookinginvoice', { booking: item })
                     }}
                 >
-                    <Text style={CancellationRequestStyles.viewButtonText}>Edit</Text>
+                    <Text style={CancellationRequestStyles.viewButtonText}>Approve</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={CancellationRequestStyles.cancelButton}
@@ -100,7 +102,7 @@ export default function CancellationRequests() {
                         setModalVisible(true)
                     }}
                 >
-                    <Text style={CancellationRequestStyles.viewButtonText}>Remove</Text>
+                    <Text style={CancellationRequestStyles.viewButtonText}>Deny</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -129,31 +131,31 @@ export default function CancellationRequests() {
                 <View style={CancellationRequestStyles.statsRow}>
                     <View style={CancellationRequestStyles.card}>
                         <Text style={CancellationRequestStyles.cardValue}>40</Text>
-                        <Text style={CancellationRequestStyles.cardLabel}>Bookings</Text>
+                        <Text style={CancellationRequestStyles.cardLabel}>Requests</Text>
                     </View>
 
                     <View style={CancellationRequestStyles.card}>
                         <Text style={CancellationRequestStyles.cardValue}>20</Text>
-                        <Text style={CancellationRequestStyles.cardLabel}>Users</Text>
+                        <Text style={CancellationRequestStyles.cardLabel}>Pending</Text>
                     </View>
                 </View>
 
                 <View style={CancellationRequestStyles.statsRow}>
                     <View style={CancellationRequestStyles.card}>
-                        <Text style={CancellationRequestStyles.cardValue}>34</Text>
-                        <Text style={CancellationRequestStyles.cardLabel}>Transactions</Text>
+                        <Text style={CancellationRequestStyles.cardValue}>12</Text>
+                        <Text style={CancellationRequestStyles.cardLabel}>Approved</Text>
                     </View>
 
                     <View style={CancellationRequestStyles.card}>
-                        <Text style={CancellationRequestStyles.cardValue}>7</Text>
-                        <Text style={CancellationRequestStyles.cardLabel}>Cancellations</Text>
+                        <Text style={CancellationRequestStyles.cardValue}>8</Text>
+                        <Text style={CancellationRequestStyles.cardLabel}>Denied</Text>
                     </View>
                 </View>
             </View>
 
             <TextInput
                 style={CancellationRequestStyles.SearchBar}
-                placeholder='Search bookings...'
+                placeholder='Search username...'
                 value={searchText}
                 onChangeText={setSearchText}
             />
@@ -165,26 +167,40 @@ export default function CancellationRequests() {
                     onValueChange={(value) => setStatusFilter(value)}
                 >
                     <Picker.Item label="All Status" value="All" />
-                    <Picker.Item label="Verified" value="Active" />
-                    <Picker.Item label="Unverified" value="Inactive" />
+                    <Picker.Item label="Pending" value="Pending" />
+                    <Picker.Item label="Approved" value="Approved" />
+                    <Picker.Item label="Denied" value="Denied" />
                 </Picker>
 
-                <Picker
-                    style={CancellationRequestStyles.picker}
-                    selectedValue={roleFilter}
-                    onValueChange={(value) => setroleFilter(value)}
+                <TouchableOpacity
+                    style={CancellationRequestStyles.dateFilter}
+                    onPress={() => setShowDatePicker(true)}
                 >
-                    <Picker.Item label="All role" value="All" />
-                    <Picker.Item label="Admin" value="Admin" />
-                    <Picker.Item label="User" value="User" />
-                </Picker>
+                    <Text style={CancellationRequestStyles.dateFilterText}>
+                        {selectedDate
+                            ? selectedDate.toLocaleDateString()
+                            : "Select Date"}
+                    </Text>
+                </TouchableOpacity>
+
+                {showDatePicker && (
+                    <DateTimePicker
+                        value={selectedDate || new Date()}
+                        mode="date"
+                        display="default"
+                        onChange={(event, date) => {
+                            setShowDatePicker(false)
+                            if (date) setSelectedDate(date)
+                        }}
+                    />
+                )}
             </View>
 
             <View style={CancellationRequestStyles.tableHeader}>
                 <Text style={[CancellationRequestStyles.tableHeaderCell, CancellationRequestStyles.usernameCell]}>Username</Text>
-                <Text style={[CancellationRequestStyles.tableHeaderCell, CancellationRequestStyles.emailCell]}>Email</Text>
+                <Text style={[CancellationRequestStyles.tableHeaderCell, CancellationRequestStyles.packageCell]}>Package</Text>
                 <Text style={[CancellationRequestStyles.tableHeaderCell, CancellationRequestStyles.statusCell]}>Status</Text>
-                <Text style={[CancellationRequestStyles.tableHeaderCell, CancellationRequestStyles.roleCell]}>Role</Text>
+                <Text style={[CancellationRequestStyles.tableHeaderCell, CancellationRequestStyles.dateCell]}>Date</Text>
                 <Text style={[CancellationRequestStyles.tableHeaderCell, CancellationRequestStyles.actionCell]}>Actions</Text>
             </View>
 
