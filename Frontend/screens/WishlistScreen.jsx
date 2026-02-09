@@ -1,25 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, ScrollView } from "react-native";
 import Header from "../components/Header";
 import SearchFilter from "../components/SearchFilter";
 import WishlistCard from "../components/WishlistCard";
 import styles from "../styles/WishListStyles";
+import Sidebar from "../components/Sidebar";
 
 export default function WishlistScreen() {
-return (
-<View style={styles.container}>
-<Header />
+    const [isSidebarVisible, setSidebarVisible] = useState(false)
+    return (
+        <View style={styles.container}>
+            <Header />
 
-<Text style={styles.title}>Wishlisted Packages</Text>
+            <Sidebar
+                visible={isSidebarVisible}
+                onClose={() => setSidebarVisible(false)}
+            />
 
-<SearchFilter />
+            <Text style={styles.title}>Wishlisted Packages</Text>
 
-<ScrollView showsVerticalScrollIndicator={false}>
-<WishlistCard />
-<WishlistCard />
-<WishlistCard />
-<WishlistCard />
-</ScrollView>
-</View>
-);
+            <SearchFilter />
+
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <WishlistCard />
+                <WishlistCard />
+                <WishlistCard />
+                <WishlistCard />
+            </ScrollView>
+        </View>
+    );
 }

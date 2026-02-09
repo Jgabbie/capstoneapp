@@ -7,7 +7,7 @@ import Sidebar from '../components/Sidebar'
 export default function Home() {
     const cs = useNavigation()
     const [isSidebarVisible, setSidebarVisible] = useState(false);
-    
+
     // Component for the Small Travel Cards
     const TravelCard = () => (
         <View style={HomeStyle.card}>
@@ -45,7 +45,7 @@ export default function Home() {
     return (
         <ScrollView style={HomeStyle.container} showsVerticalScrollIndicator={false}>
             <Sidebar visible={isSidebarVisible} onClose={() => setSidebarVisible(false)} />
-            
+
             {/* Header Section */}
             <View style={HomeStyle.headerContainer}>
                 <TouchableOpacity style={HomeStyle.sideBarButton} onPress={() => setSidebarVisible(true)}>
@@ -63,8 +63,8 @@ export default function Home() {
             {/* Search box */}
             <View style={HomeStyle.searchBox}>
                 <Image source={require('../materials/search_icon.png')} style={HomeStyle.searchIcon} />
-                <TextInput 
-                    placeholder="Search any package.." 
+                <TextInput
+                    placeholder="Search any package.."
                     placeholderTextColor="#AAAAAA"
                     style={HomeStyle.searchInputText}
                 />

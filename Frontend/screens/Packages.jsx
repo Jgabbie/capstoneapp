@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import Header from "../components/Header";
 import styles from "../styles/DestinationStyles";
+import Sidebar from "../components/Sidebar";
 
 const PACKAGES = [
     {
@@ -38,9 +39,16 @@ const PACKAGES = [
 ];
 
 export default function Packages({ navigation }) {
+
+    const [isSidebarVisible, setSidebarVisible] = useState(false)
+
     return (
         <View style={styles.container}>
-            <Header />
+            {/* <Header /> */}
+            <Sidebar
+                visible={isSidebarVisible}
+                onClose={() => setSidebarVisible(false)}
+            />
 
             <Text style={styles.heroTitle}>Featured Packages</Text>
             <Text style={styles.heroSubtitle}>
