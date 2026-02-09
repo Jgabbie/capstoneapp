@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
+import {
+    View,
+    Text,
+    ScrollView,
+    Image,
+    TouchableOpacity,
+    TextInput,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import Header from "../components/Header";
 import styles from "../styles/DestinationStyles";
@@ -89,6 +96,27 @@ export default function Packages({ navigation }) {
                 Everyone loves to tour with friends, family, or teammates. We can
                 organize your tour to anywhere in the world.
             </Text>
+
+            <View style={styles.searchRow}>
+                <View style={styles.searchBar}>
+                    <Ionicons name="search" size={16} color="#777" />
+                    <TextInput
+                        style={styles.searchInput}
+                        placeholder="Search packages"
+                        placeholderTextColor="#777"
+                    />
+                </View>
+                <View style={styles.dropdownGroup}>
+                    <View style={styles.dropdownButton}>
+                        <Text style={styles.dropdownText}>Activities</Text>
+                        <Ionicons name="chevron-down" size={14} color="#2d5fb8" style={styles.dropdownIcon} />
+                    </View>
+                    <View style={styles.dropdownButton}>
+                        <Text style={styles.dropdownText}>Duration</Text>
+                        <Ionicons name="chevron-down" size={14} color="#2d5fb8" style={styles.dropdownIcon} />
+                    </View>
+                </View>
+            </View>
 
             <ScrollView showsVerticalScrollIndicator={false}>
                 {PACKAGES.map((item) => (
