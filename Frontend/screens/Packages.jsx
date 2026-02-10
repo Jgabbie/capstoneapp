@@ -29,7 +29,7 @@ const PACKAGES = [
         title: "Seoul City Escape",
         description:
             "Experience vibrant markets, modern culture, and historic palaces in South Korea.",
-        image: "https://ik.imgkit.net/3vlqs5axxjf/external/ik-seo/http://images.ntmllc.com/v4/destination/South-Korea/Seoul/219740_SCN_Seoul_iStock521707831_ZC35CD/Seoul-Scenery.jpg?tr=w-656%2Ch-390%2Cfo-auto",
+        image: "https://ik.imgkit.net/3vlqs5axxjf/external/http://images.ntmllc.com/v4/destination/South-Korea/Seoul/219740_SCN_Seoul_iStock521707831_ZC35CD.jpg?tr=w-1200%2Cfo-auto",
         price: "₱95,000",
         duration: "5 Days",
         isInternational: true,
@@ -39,7 +39,7 @@ const PACKAGES = [
         title: "Palawan Island Adventure",
         description:
             "Crystal-clear lagoons, island hopping, and beachside relaxation.",
-        image: "https://www.pelago.com/img/destinations/puerto-princesa/1011-1024_puertoprincesa.jpg",
+        image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/e7/b0/ea/photo0jpg.jpg?w=1400&h=1400&s=1",
         price: "₱82,000",
         duration: "4 Days",
         isInternational: false,

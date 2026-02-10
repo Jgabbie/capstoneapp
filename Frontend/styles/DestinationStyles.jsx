@@ -476,6 +476,11 @@ export default StyleSheet.create({
     borderRadius: 2,
     backgroundColor: Colors.primary,
   },
+  checkboxLabel: {
+    fontSize: 12,
+    color: Colors.text,
+    textAlign: "left",
+  },
   summaryText: {
     fontSize: 12,
     color: Colors.text,
