@@ -19,6 +19,9 @@ export default function Home() {
     const cs = useNavigation()
     const [isSidebarVisible, setSidebarVisible] = useState(false);
     const [searchText, setSearchText] = useState('')
+    const [isChatOpen, setChatOpen] = useState(false)
+    const [message, setMessage] = useState('')
+    const [messages, setMessages] = useState([])
 
     const [fontsLoaded] = useFonts({
         Montserrat_400Regular,
@@ -73,7 +76,9 @@ export default function Home() {
                 </TouchableOpacity>
                 <Image source={require('../materials/mrc_logo2.png')} style={HomeStyle.logo} />
                 <View style={HomeStyle.rightIconsContainer}>
-                    <TouchableOpacity style={HomeStyle.bellButton}>
+                    <TouchableOpacity style={HomeStyle.bellButton} onPress={() => {
+                        cs.navigate('notifications')
+                    }}>
                         <Image source={require('../materials/bell_icon.png')} style={HomeStyle.bellIcon} />
                     </TouchableOpacity>
                     <Image source={require('../materials/profile_icon.png')} style={HomeStyle.profileIcon} />
@@ -124,6 +129,57 @@ export default function Home() {
                 </ScrollView>
 
             </ScrollView>
+
+            <TouchableOpacity
+                style={HomeStyle.chatbotButton}
+                onPress={() => setChatOpen(true)}
+            >
+                <Image
+                    source={require('../materials/chatbot_icon.png')}
+                    style={HomeStyle.chatbotIcon}
+                />
+
+            </TouchableOpacity>
+
+            {isChatOpen && (
+                <View style={HomeStyle.chatOverlay}>
+                    <View style={HomeStyle.chatBox}>
+                        <View style={HomeStyle.chatHeader}>
+                            <Text style={HomeStyle.chatTitle}>Chat with Us</Text>
+                            <TouchableOpacity onPress={() => setChatOpen(false)}>
+                                <Text>X</Text>
+                            </TouchableOpacity>
+                        </View>
+
+                        <ScrollView style={HomeStyle.chatMessages}>
+                            {messages.map((msg, index) => (
+                                <View style={HomeStyle.chatBubble} key={index} >
+                                    <Text style={HomeStyle.chatText}>{msg}</Text>
+                                </View>
+                            ))}
+                        </ScrollView>
+
+                        <View style={HomeStyle.chatInputRow}>
+                            <TextInput
+                                style={HomeStyle.chatInput}
+                                placeholder='Type a message...'
+                                value={message}
+                                onChangeText={setMessage}
+                            />
+                            <TouchableOpacity
+                                style={HomeStyle.sendButton}
+                                onPress={() => {
+                                    if (!message.trim()) return;
+                                    setMessages([...messages, message])
+                                    setMessage('')
+                                }}
+                            >
+                                <Text style={HomeStyle.sendText}>Send</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+            )}
         </View>
 
     )

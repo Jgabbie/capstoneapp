@@ -11,7 +11,7 @@ const SidebarStyle = StyleSheet.create({
     },
     sidebarContainer: {
         width: '75%',
-        height: screenHeight,
+        flex: 1,
         backgroundColor: '#4076A0',
         paddingTop: 40,
         paddingHorizontal: 30,
