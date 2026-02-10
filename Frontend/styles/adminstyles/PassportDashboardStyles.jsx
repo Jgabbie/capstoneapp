@@ -4,6 +4,17 @@ import Colors from "../Colors";
 
 
 export default StyleSheet.create({
+
+
+  SearchBar: {
+    borderWidth: 1,
+    backgroundColor: '#fff',
+    fontFamily: "Montserrat_400Regular",
+    borderColor: "#6d6d6d",
+    borderRadius: 10,
+    padding: 10,
+    marginBottom: 15
+  },
   headerContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -28,10 +39,10 @@ export default StyleSheet.create({
   },
 
   pageTitle: {
-    fontSize: 16,
-    fontWeight: "700",
-    color: Colors.primary,
-    marginBottom: 10,
+    fontSize: 22,
+    color: "#305797",
+    fontWeight: '700',
+    marginBottom: 16,
   },
 
   statsRow: {
@@ -154,7 +165,7 @@ export default StyleSheet.create({
   },
 
   statusBadge: {
-    backgroundColor: "#2ecc71",
+    backgroundColor: "#ccbc2e",
     paddingHorizontal: 8,
     paddingVertical: 3,
     borderRadius: 12,
@@ -169,7 +180,7 @@ export default StyleSheet.create({
   },
 
   viewButton: {
-    backgroundColor: "#003d99",
+    backgroundColor: "#305797",
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 3,
@@ -240,7 +251,7 @@ export default StyleSheet.create({
   },
 
   viewFileButton: {
-    backgroundColor: "#003d99",
+    backgroundColor: "#305797",
     paddingHorizontal: 18,
     paddingVertical: 8,
     borderRadius: 4,
@@ -250,5 +261,41 @@ export default StyleSheet.create({
     color: "#fff",
     fontWeight: "700",
     fontSize: 11,
+  },
+
+  statsContainer: {
+    marginBottom: 20,
+  },
+  statsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 12,
+  },
+  card: {
+    backgroundColor: '#fff',
+    width: '48%',
+    padding: 16,
+    borderRadius: 10,
+    elevation: 3
+  },
+  cardValue: {
+    fontSize: 20,
+    fontWeight: '700',
+
+  },
+  cardLabel: {
+    marginTop: 4,
+    color: '#777'
+  },
+  button: {
+    marginTop: 10,
+    backgroundColor: "#305797",
+    padding: 10,
+    borderRadius: 10,
+    alignItems: "center"
+  },
+  buttonText: {
+    color: "#fff",
+    fontSize: 16
   },
 });

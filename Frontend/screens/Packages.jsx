@@ -8,10 +8,8 @@ import {
     TextInput,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import Header from "../components/Header";
 import styles from "../styles/DestinationStyles";
 import Sidebar from "../components/Sidebar";
-import { useNavigation } from "@react-navigation/native";
 
 const PACKAGES = [
     {

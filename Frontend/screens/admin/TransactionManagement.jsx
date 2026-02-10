@@ -24,8 +24,8 @@ export default function TransactionManagement() {
 
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
-    const [modalVisible, setModalVisible] = useState(false)
-    const [modalCancelVisible, setModalCancelVisible] = useState(false)
+    const [modalOkRemoveVisible, setModalOkRemoveVisible] = useState(false)
+    const [modalRemoveVisible, setModalRemoveVisible] = useState(false)
 
     const [fontsLoaded] = useFonts({
         Montserrat_400Regular,
@@ -36,17 +36,17 @@ export default function TransactionManagement() {
         Roboto_700Bold
     })
 
-    const confirmCancel = () => {
-        setModalVisible(false)
-        setModalCancelVisible(true)
+    const modalOkRemove = () => {
+        setModalRemoveVisible(false)
+        setModalOkRemoveVisible(true)
     }
 
-    const cancelCancel = () => {
-        setModalVisible(false)
+    const modalCancelRemove = () => {
+        setModalRemoveVisible(false)
     }
 
-    const modalOK = () => {
-        setModalCancelVisible(false)
+    const modalRemovedOk = () => {
+        setModalOkRemoveVisible(false)
     }
 
     const [users, setusers] = useState([
@@ -94,7 +94,7 @@ export default function TransactionManagement() {
                 <TouchableOpacity
                     style={TransactionManagementStyles.viewButton}
                     onPress={() => {
-                        cs.navigate('bookinginvoice', { booking: item })
+                        cs.navigate('admintransactionreceipt')
                     }}
                 >
                     <Text style={TransactionManagementStyles.viewButtonText}>Edit</Text>
@@ -102,7 +102,7 @@ export default function TransactionManagement() {
                 <TouchableOpacity
                     style={TransactionManagementStyles.cancelButton}
                     onPress={() => {
-                        setModalVisible(true)
+                        setModalRemoveVisible(true)
                     }}
                 >
                     <Text style={TransactionManagementStyles.viewButtonText}>Remove</Text>
@@ -112,7 +112,7 @@ export default function TransactionManagement() {
         </View>
     )
     return (
-        <View style={TransactionManagementStyles.container}>
+        <View>
             <AdminSidebar visible={isSidebarVisible} onClose={() => setSidebarVisible(false)} />
 
             {/* Header Section */}
@@ -128,98 +128,161 @@ export default function TransactionManagement() {
                     <Image source={require('../../materials/profile_icon.png')} style={HomeStyle.profileIcon} />
                 </View>
             </View>
-            <Text style={TransactionManagementStyles.header}>Transactions Management</Text>
-            <View style={TransactionManagementStyles.statsContainer}>
-                <View style={TransactionManagementStyles.statsRow}>
-                    <View style={TransactionManagementStyles.card}>
-                        <Text style={TransactionManagementStyles.cardValue}>40</Text>
-                        <Text style={TransactionManagementStyles.cardLabel}>Bookings</Text>
+            <View style={TransactionManagementStyles.container}>
+                <Text style={TransactionManagementStyles.header}>Transactions Management</Text>
+                <View style={TransactionManagementStyles.statsContainer}>
+                    <View style={TransactionManagementStyles.statsRow}>
+                        <View style={TransactionManagementStyles.card}>
+                            <Text style={TransactionManagementStyles.cardValue}>40</Text>
+                            <Text style={TransactionManagementStyles.cardLabel}>Bookings</Text>
+                        </View>
+
+                        <View style={TransactionManagementStyles.card}>
+                            <Text style={TransactionManagementStyles.cardValue}>20</Text>
+                            <Text style={TransactionManagementStyles.cardLabel}>Users</Text>
+                        </View>
                     </View>
 
-                    <View style={TransactionManagementStyles.card}>
-                        <Text style={TransactionManagementStyles.cardValue}>20</Text>
-                        <Text style={TransactionManagementStyles.cardLabel}>Users</Text>
+                    <View style={TransactionManagementStyles.statsRow}>
+                        <View style={TransactionManagementStyles.card}>
+                            <Text style={TransactionManagementStyles.cardValue}>34</Text>
+                            <Text style={TransactionManagementStyles.cardLabel}>Transactions</Text>
+                        </View>
+
+                        <View style={TransactionManagementStyles.card}>
+                            <Text style={TransactionManagementStyles.cardValue}>7</Text>
+                            <Text style={TransactionManagementStyles.cardLabel}>Cancellations</Text>
+                        </View>
                     </View>
                 </View>
 
-                <View style={TransactionManagementStyles.statsRow}>
-                    <View style={TransactionManagementStyles.card}>
-                        <Text style={TransactionManagementStyles.cardValue}>34</Text>
-                        <Text style={TransactionManagementStyles.cardLabel}>Transactions</Text>
-                    </View>
+                <TextInput
+                    style={TransactionManagementStyles.SearchBar}
+                    placeholder='Search transaction...'
+                    value={searchText}
+                    onChangeText={setSearchText}
+                />
 
-                    <View style={TransactionManagementStyles.card}>
-                        <Text style={TransactionManagementStyles.cardValue}>7</Text>
-                        <Text style={TransactionManagementStyles.cardLabel}>Cancellations</Text>
-                    </View>
+                <View style={TransactionManagementStyles.filtersContainer}>
+                    <Picker
+                        style={TransactionManagementStyles.picker}
+                        selectedValue={statusFilter}
+                        onValueChange={(value) => setStatusFilter(value)}
+                    >
+                        <Picker.Item label="All Status" value="All" />
+                        <Picker.Item label="Paid" value="Paid" />
+                        <Picker.Item label="Pending" value="Pending" />
+                        <Picker.Item label="Unpaid" value="Unpaid" />
+                    </Picker>
+
+                    <Picker
+                        style={TransactionManagementStyles.picker}
+                        selectedValue={amountFilter}
+                        onValueChange={(value) => setAmountFilter(value)}
+                    >
+                        <Picker.Item label="All Amounts" value="All" />
+                        <Picker.Item label="Below ₱10,000" value="LOW" />
+                        <Picker.Item label="₱10,001 – ₱30,000" value="MID" />
+                        <Picker.Item label="Above ₱30,000" value="HIGH" />
+                    </Picker>
+                </View>
+
+                <View style={TransactionManagementStyles.tableHeader}>
+                    <Text style={[TransactionManagementStyles.tableHeaderCell, TransactionManagementStyles.transacrefCell]}>Reference</Text>
+                    <Text style={[TransactionManagementStyles.tableHeaderCell, TransactionManagementStyles.packageCell]}>Package</Text>
+                    <Text style={[TransactionManagementStyles.tableHeaderCell, TransactionManagementStyles.statusCell]}>Status</Text>
+                    <Text style={[TransactionManagementStyles.tableHeaderCell, TransactionManagementStyles.amountCell]}>Amount</Text>
+                    <Text style={[TransactionManagementStyles.tableHeaderCell, TransactionManagementStyles.actionCell]}>Actions</Text>
+                </View>
+
+                <FlatList
+                    data={paginatedUsers}
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id}
+                    style={TransactionManagementStyles.table}
+                />
+
+                <View style={{ flexDirection: 'row', justifyContent: 'center', marginVertical: 10 }}>
+                    <TouchableOpacity
+                        onPress={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                        style={TransactionManagementStyles.paginationButton}
+                    >
+                        <Text style={TransactionManagementStyles.paginationText}>Previous</Text>
+                    </TouchableOpacity>
+
+                    <Text style={{ marginHorizontal: 10, alignSelf: 'center' }}>
+                        {currentPage} / {totalPages}
+                    </Text>
+
+                    <TouchableOpacity
+                        onPress={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                        style={TransactionManagementStyles.paginationButton}
+                    >
+                        <Text style={TransactionManagementStyles.paginationText}>Next</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
 
-            <TextInput
-                style={TransactionManagementStyles.SearchBar}
-                placeholder='Search transaction...'
-                value={searchText}
-                onChangeText={setSearchText}
-            />
+            <Modal
+                transparent
+                animationType='fade'
+                visible={modalRemoveVisible}
+                onRequestClose={() => { setModalRemoveVisible }}
+            >
 
-            <View style={TransactionManagementStyles.filtersContainer}>
-                <Picker
-                    style={TransactionManagementStyles.picker}
-                    selectedValue={statusFilter}
-                    onValueChange={(value) => setStatusFilter(value)}
-                >
-                    <Picker.Item label="All Status" value="All" />
-                    <Picker.Item label="Paid" value="Paid" />
-                    <Picker.Item label="Pending" value="Pending" />
-                    <Picker.Item label="Unpaid" value="Unpaid" />
-                </Picker>
+                <View style={TransactionManagementStyles.modalOverlay}>
+                    <View style={TransactionManagementStyles.modalBox}>
+                        <Text style={TransactionManagementStyles.modalTitle}>Remove Transaction</Text>
+                        <Text style={TransactionManagementStyles.modalText}>Are you sure you want to remove this transaction?</Text>
 
-                <Picker
-                    style={TransactionManagementStyles.picker}
-                    selectedValue={amountFilter}
-                    onValueChange={(value) => setAmountFilter(value)}
-                >
-                    <Picker.Item label="All Amounts" value="All" />
-                    <Picker.Item label="Below ₱10,000" value="LOW" />
-                    <Picker.Item label="₱10,001 – ₱30,000" value="MID" />
-                    <Picker.Item label="Above ₱30,000" value="HIGH" />
-                </Picker>
-            </View>
+                        <View style={{ flexDirection: "row", marginTop: 10, gap: 20 }}>
+                            <TouchableOpacity
+                                style={TransactionManagementStyles.modalButton}
+                                onPress={() => {
+                                    modalOkRemove()
+                                }}
+                            >
+                                <Text style={TransactionManagementStyles.modalButtonText}>Remove</Text>
+                            </TouchableOpacity>
 
-            <View style={TransactionManagementStyles.tableHeader}>
-                <Text style={[TransactionManagementStyles.tableHeaderCell, TransactionManagementStyles.transacrefCell]}>Reference</Text>
-                <Text style={[TransactionManagementStyles.tableHeaderCell, TransactionManagementStyles.packageCell]}>Package</Text>
-                <Text style={[TransactionManagementStyles.tableHeaderCell, TransactionManagementStyles.statusCell]}>Status</Text>
-                <Text style={[TransactionManagementStyles.tableHeaderCell, TransactionManagementStyles.amountCell]}>Amount</Text>
-                <Text style={[TransactionManagementStyles.tableHeaderCell, TransactionManagementStyles.actionCell]}>Actions</Text>
-            </View>
+                            <TouchableOpacity
+                                style={TransactionManagementStyles.modalCancelButton}
+                                onPress={() => {
+                                    modalCancelRemove()
+                                }}
+                            >
+                                <Text style={TransactionManagementStyles.modalButtonText}>Cancel</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+            </Modal>
 
-            <FlatList
-                data={paginatedUsers}
-                renderItem={renderItem}
-                keyExtractor={item => item.id}
-                style={TransactionManagementStyles.table}
-            />
 
-            <View style={{ flexDirection: 'row', justifyContent: 'center', marginVertical: 10 }}>
-                <TouchableOpacity
-                    onPress={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-                    style={TransactionManagementStyles.paginationButton}
-                >
-                    <Text style={TransactionManagementStyles.paginationText}>Previous</Text>
-                </TouchableOpacity>
+            <Modal
+                transparent
+                animationType='fade'
+                visible={modalOkRemoveVisible}
+                onRequestClose={() => { setModalOkRemoveVisible }}
+            >
 
-                <Text style={{ marginHorizontal: 10, alignSelf: 'center' }}>
-                    {currentPage} / {totalPages}
-                </Text>
+                <View style={TransactionManagementStyles.modalOverlay}>
+                    <View style={TransactionManagementStyles.modalBox}>
+                        <Text style={TransactionManagementStyles.modalTitle}>Transaction has been removed</Text>
+                        <Text style={TransactionManagementStyles.modalText}>This transaction has been successfully removed!</Text>
 
-                <TouchableOpacity
-                    onPress={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-                    style={TransactionManagementStyles.paginationButton}
-                >
-                    <Text style={TransactionManagementStyles.paginationText}>Next</Text>
-                </TouchableOpacity>
-            </View>
+                        <TouchableOpacity
+                            style={TransactionManagementStyles.modalButton}
+                            onPress={() => {
+                                modalRemovedOk()
+                            }}
+                        >
+                            <Text style={TransactionManagementStyles.modalButtonText}>OK</Text>
+                        </TouchableOpacity>
+
+                    </View>
+                </View>
+            </Modal>
         </View>
     )
 }

@@ -25,8 +25,10 @@ export default function CancellationRequests() {
     const [showDatePicker, setShowDatePicker] = useState(null)
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
-    const [modalVisible, setModalVisible] = useState(false)
-    const [modalCancelVisible, setModalCancelVisible] = useState(false)
+    const [modalApproveVisible, setModalApproveVisible] = useState(false)
+    const [modalApproveOkVisible, setModalApproveOkVisible] = useState(false)
+    const [modalDenyVisible, setModalDenyVisible] = useState(false)
+    const [modalDenyOkVisible, setModalDenyOkVisible] = useState(false)
 
     const [fontsLoaded] = useFonts({
         Montserrat_400Regular,
@@ -37,17 +39,30 @@ export default function CancellationRequests() {
         Roboto_700Bold
     })
 
-    const confirmCancel = () => {
-        setModalVisible(false)
-        setModalCancelVisible(true)
+    const approveOk = () => {
+        setModalApproveVisible(false)
+        setModalApproveOkVisible(true)
     }
 
-    const cancelCancel = () => {
-        setModalVisible(false)
+    const approveCancel = () => {
+        setModalApproveVisible(false)
     }
 
-    const modalOK = () => {
-        setModalCancelVisible(false)
+    const approveModalOK = () => {
+        setModalApproveOkVisible(false)
+    }
+
+    const denyOk = () => {
+        setModalDenyVisible(false)
+        setModalDenyOkVisible(true)
+    }
+
+    const denyCancel = () => {
+        setModalDenyVisible(false)
+    }
+
+    const denyModalOK = () => {
+        setModalDenyOkVisible(false)
     }
 
     const [users, setusers] = useState([
@@ -91,7 +106,7 @@ export default function CancellationRequests() {
                 <TouchableOpacity
                     style={CancellationRequestStyles.viewButton}
                     onPress={() => {
-                        cs.navigate('bookinginvoice', { booking: item })
+                        setModalApproveVisible(true)
                     }}
                 >
                     <Text style={CancellationRequestStyles.viewButtonText}>Approve</Text>
@@ -99,7 +114,7 @@ export default function CancellationRequests() {
                 <TouchableOpacity
                     style={CancellationRequestStyles.cancelButton}
                     onPress={() => {
-                        setModalVisible(true)
+                        setModalDenyVisible(true)
                     }}
                 >
                     <Text style={CancellationRequestStyles.viewButtonText}>Deny</Text>
@@ -109,7 +124,7 @@ export default function CancellationRequests() {
     )
 
     return (
-        <View style={CancellationRequestStyles.container}>
+        <View>
             <AdminSidebar visible={isSidebarVisible} onClose={() => setSidebarVisible(false)} />
 
             {/* Header Section */}
@@ -125,111 +140,235 @@ export default function CancellationRequests() {
                     <Image source={require('../../materials/profile_icon.png')} style={HomeStyle.profileIcon} />
                 </View>
             </View>
+            <View style={CancellationRequestStyles.container}>
+                <Text style={CancellationRequestStyles.header}>Cancellation Requests</Text>
+                <View style={CancellationRequestStyles.statsContainer}>
+                    <View style={CancellationRequestStyles.statsRow}>
+                        <View style={CancellationRequestStyles.card}>
+                            <Text style={CancellationRequestStyles.cardValue}>40</Text>
+                            <Text style={CancellationRequestStyles.cardLabel}>Requests</Text>
+                        </View>
 
-            <Text style={CancellationRequestStyles.header}>Cancellation Requests</Text>
-            <View style={CancellationRequestStyles.statsContainer}>
-                <View style={CancellationRequestStyles.statsRow}>
-                    <View style={CancellationRequestStyles.card}>
-                        <Text style={CancellationRequestStyles.cardValue}>40</Text>
-                        <Text style={CancellationRequestStyles.cardLabel}>Requests</Text>
+                        <View style={CancellationRequestStyles.card}>
+                            <Text style={CancellationRequestStyles.cardValue}>20</Text>
+                            <Text style={CancellationRequestStyles.cardLabel}>Pending</Text>
+                        </View>
                     </View>
 
-                    <View style={CancellationRequestStyles.card}>
-                        <Text style={CancellationRequestStyles.cardValue}>20</Text>
-                        <Text style={CancellationRequestStyles.cardLabel}>Pending</Text>
+                    <View style={CancellationRequestStyles.statsRow}>
+                        <View style={CancellationRequestStyles.card}>
+                            <Text style={CancellationRequestStyles.cardValue}>12</Text>
+                            <Text style={CancellationRequestStyles.cardLabel}>Approved</Text>
+                        </View>
+
+                        <View style={CancellationRequestStyles.card}>
+                            <Text style={CancellationRequestStyles.cardValue}>8</Text>
+                            <Text style={CancellationRequestStyles.cardLabel}>Denied</Text>
+                        </View>
                     </View>
                 </View>
 
-                <View style={CancellationRequestStyles.statsRow}>
-                    <View style={CancellationRequestStyles.card}>
-                        <Text style={CancellationRequestStyles.cardValue}>12</Text>
-                        <Text style={CancellationRequestStyles.cardLabel}>Approved</Text>
-                    </View>
+                <TextInput
+                    style={CancellationRequestStyles.SearchBar}
+                    placeholder='Search username...'
+                    value={searchText}
+                    onChangeText={setSearchText}
+                />
 
-                    <View style={CancellationRequestStyles.card}>
-                        <Text style={CancellationRequestStyles.cardValue}>8</Text>
-                        <Text style={CancellationRequestStyles.cardLabel}>Denied</Text>
-                    </View>
+                <View style={CancellationRequestStyles.filtersContainer}>
+                    <Picker
+                        style={CancellationRequestStyles.picker}
+                        selectedValue={statusFilter}
+                        onValueChange={(value) => setStatusFilter(value)}
+                    >
+                        <Picker.Item label="All Status" value="All" />
+                        <Picker.Item label="Pending" value="Pending" />
+                        <Picker.Item label="Approved" value="Approved" />
+                        <Picker.Item label="Denied" value="Denied" />
+                    </Picker>
+
+                    <TouchableOpacity
+                        style={CancellationRequestStyles.dateFilter}
+                        onPress={() => setShowDatePicker(true)}
+                    >
+                        <Text style={CancellationRequestStyles.dateFilterText}>
+                            {selectedDate
+                                ? selectedDate.toLocaleDateString()
+                                : "Select Date"}
+                        </Text>
+                    </TouchableOpacity>
+
+                    {showDatePicker && (
+                        <DateTimePicker
+                            value={selectedDate || new Date()}
+                            mode="date"
+                            display="default"
+                            onChange={(event, date) => {
+                                setShowDatePicker(false)
+                                if (date) setSelectedDate(date)
+                            }}
+                        />
+                    )}
                 </View>
-            </View>
 
-            <TextInput
-                style={CancellationRequestStyles.SearchBar}
-                placeholder='Search username...'
-                value={searchText}
-                onChangeText={setSearchText}
-            />
+                <View style={CancellationRequestStyles.tableHeader}>
+                    <Text style={[CancellationRequestStyles.tableHeaderCell, CancellationRequestStyles.usernameCell]}>Username</Text>
+                    <Text style={[CancellationRequestStyles.tableHeaderCell, CancellationRequestStyles.packageCell]}>Package</Text>
+                    <Text style={[CancellationRequestStyles.tableHeaderCell, CancellationRequestStyles.statusCell]}>Status</Text>
+                    <Text style={[CancellationRequestStyles.tableHeaderCell, CancellationRequestStyles.dateCell]}>Date</Text>
+                    <Text style={[CancellationRequestStyles.tableHeaderCell, CancellationRequestStyles.actionCell]}>Actions</Text>
+                </View>
 
-            <View style={CancellationRequestStyles.filtersContainer}>
-                <Picker
-                    style={CancellationRequestStyles.picker}
-                    selectedValue={statusFilter}
-                    onValueChange={(value) => setStatusFilter(value)}
-                >
-                    <Picker.Item label="All Status" value="All" />
-                    <Picker.Item label="Pending" value="Pending" />
-                    <Picker.Item label="Approved" value="Approved" />
-                    <Picker.Item label="Denied" value="Denied" />
-                </Picker>
+                <FlatList
+                    data={paginatedUsers}
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id}
+                    style={CancellationRequestStyles.table}
+                />
 
-                <TouchableOpacity
-                    style={CancellationRequestStyles.dateFilter}
-                    onPress={() => setShowDatePicker(true)}
-                >
-                    <Text style={CancellationRequestStyles.dateFilterText}>
-                        {selectedDate
-                            ? selectedDate.toLocaleDateString()
-                            : "Select Date"}
+                <View style={{ flexDirection: 'row', justifyContent: 'center', marginVertical: 10 }}>
+                    <TouchableOpacity
+                        onPress={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                        style={CancellationRequestStyles.paginationButton}
+                    >
+                        <Text style={CancellationRequestStyles.paginationText}>Previous</Text>
+                    </TouchableOpacity>
+
+                    <Text style={{ marginHorizontal: 10, alignSelf: 'center' }}>
+                        {currentPage} / {totalPages}
                     </Text>
-                </TouchableOpacity>
 
-                {showDatePicker && (
-                    <DateTimePicker
-                        value={selectedDate || new Date()}
-                        mode="date"
-                        display="default"
-                        onChange={(event, date) => {
-                            setShowDatePicker(false)
-                            if (date) setSelectedDate(date)
-                        }}
-                    />
-                )}
+                    <TouchableOpacity
+                        onPress={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                        style={CancellationRequestStyles.paginationButton}
+                    >
+                        <Text style={CancellationRequestStyles.paginationText}>Next</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
 
-            <View style={CancellationRequestStyles.tableHeader}>
-                <Text style={[CancellationRequestStyles.tableHeaderCell, CancellationRequestStyles.usernameCell]}>Username</Text>
-                <Text style={[CancellationRequestStyles.tableHeaderCell, CancellationRequestStyles.packageCell]}>Package</Text>
-                <Text style={[CancellationRequestStyles.tableHeaderCell, CancellationRequestStyles.statusCell]}>Status</Text>
-                <Text style={[CancellationRequestStyles.tableHeaderCell, CancellationRequestStyles.dateCell]}>Date</Text>
-                <Text style={[CancellationRequestStyles.tableHeaderCell, CancellationRequestStyles.actionCell]}>Actions</Text>
-            </View>
+            <Modal
+                transparent
+                animationType='fade'
+                visible={modalApproveVisible}
+                onRequestClose={() => { setModalApproveVisible }}
+            >
 
-            <FlatList
-                data={paginatedUsers}
-                renderItem={renderItem}
-                keyExtractor={item => item.id}
-                style={CancellationRequestStyles.table}
-            />
+                <View style={CancellationRequestStyles.modalOverlay}>
+                    <View style={CancellationRequestStyles.modalBox}>
+                        <Text style={CancellationRequestStyles.modalTitle}>Approve Request</Text>
+                        <Text style={CancellationRequestStyles.modalText}>Are you sure you want to approve this cancellation request?</Text>
 
-            <View style={{ flexDirection: 'row', justifyContent: 'center', marginVertical: 10 }}>
-                <TouchableOpacity
-                    onPress={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-                    style={CancellationRequestStyles.paginationButton}
-                >
-                    <Text style={CancellationRequestStyles.paginationText}>Previous</Text>
-                </TouchableOpacity>
+                        <View style={{ flexDirection: "row", marginTop: 10, gap: 20 }}>
+                            <TouchableOpacity
+                                style={CancellationRequestStyles.modalButton}
+                                onPress={() => {
+                                    approveOk()
+                                }}
+                            >
+                                <Text style={CancellationRequestStyles.modalButtonText}>Yes</Text>
+                            </TouchableOpacity>
 
-                <Text style={{ marginHorizontal: 10, alignSelf: 'center' }}>
-                    {currentPage} / {totalPages}
-                </Text>
+                            <TouchableOpacity
+                                style={CancellationRequestStyles.modalCancelButton}
+                                onPress={() => {
+                                    approveCancel()
+                                }}
+                            >
+                                <Text style={CancellationRequestStyles.modalButtonText}>Cancel</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+            </Modal>
 
-                <TouchableOpacity
-                    onPress={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-                    style={CancellationRequestStyles.paginationButton}
-                >
-                    <Text style={CancellationRequestStyles.paginationText}>Next</Text>
-                </TouchableOpacity>
-            </View>
+
+            <Modal
+                transparent
+                animationType='fade'
+                visible={modalApproveOkVisible}
+                onRequestClose={() => { setModalApproveOkVisible }}
+            >
+
+                <View style={CancellationRequestStyles.modalOverlay}>
+                    <View style={CancellationRequestStyles.modalBox}>
+                        <Text style={CancellationRequestStyles.modalTitle}>Cancellation Approve</Text>
+                        <Text style={CancellationRequestStyles.modalText}>This cancellation request has been approved!</Text>
+
+                        <TouchableOpacity
+                            style={CancellationRequestStyles.modalButton}
+                            onPress={() => {
+                                approveModalOK()
+                            }}
+                        >
+                            <Text style={CancellationRequestStyles.modalButtonText}>OK</Text>
+                        </TouchableOpacity>
+
+                    </View>
+                </View>
+            </Modal>
+
+            <Modal
+                transparent
+                animationType='fade'
+                visible={modalDenyVisible}
+                onRequestClose={() => { setModalDenyVisible }}
+            >
+
+                <View style={CancellationRequestStyles.modalOverlay}>
+                    <View style={CancellationRequestStyles.modalBox}>
+                        <Text style={CancellationRequestStyles.modalTitle}>Deny Request</Text>
+                        <Text style={CancellationRequestStyles.modalText}>Are you sure you want to deny this cancellation request?</Text>
+
+                        <View style={{ flexDirection: "row", marginTop: 10, gap: 20 }}>
+                            <TouchableOpacity
+                                style={CancellationRequestStyles.modalButton}
+                                onPress={() => {
+                                    denyOk()
+                                }}
+                            >
+                                <Text style={CancellationRequestStyles.modalButtonText}>Yes</Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity
+                                style={CancellationRequestStyles.modalCancelButton}
+                                onPress={() => {
+                                    denyCancel()
+                                }}
+                            >
+                                <Text style={CancellationRequestStyles.modalButtonText}>Cancel</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+            </Modal>
+
+
+            <Modal
+                transparent
+                animationType='fade'
+                visible={modalDenyOkVisible}
+                onRequestClose={() => { setModalDenyOkVisible }}
+            >
+
+                <View style={CancellationRequestStyles.modalOverlay}>
+                    <View style={CancellationRequestStyles.modalBox}>
+                        <Text style={CancellationRequestStyles.modalTitle}>Cancellation Denied</Text>
+                        <Text style={CancellationRequestStyles.modalText}>This cancellation request has been denied!</Text>
+
+                        <TouchableOpacity
+                            style={CancellationRequestStyles.modalButton}
+                            onPress={() => {
+                                denyModalOK()
+                            }}
+                        >
+                            <Text style={CancellationRequestStyles.modalButtonText}>OK</Text>
+                        </TouchableOpacity>
+
+                    </View>
+                </View>
+            </Modal>
+
         </View>
     )
 }

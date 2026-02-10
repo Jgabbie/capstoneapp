@@ -14,6 +14,7 @@ import {
     Roboto_500Medium,
     Roboto_700Bold
 } from "@expo-google-fonts/roboto"
+import Header from '../components/Header'
 
 export default function Home() {
     const cs = useNavigation()
@@ -68,22 +69,9 @@ export default function Home() {
     return (
         <View style={{ flex: 1 }}>
             <Sidebar visible={isSidebarVisible} onClose={() => setSidebarVisible(false)} />
-
-            {/* Header Section */}
-            <View style={HomeStyle.headerContainer}>
-                <TouchableOpacity style={HomeStyle.sideBarButton} onPress={() => setSidebarVisible(true)}>
-                    <Image source={require('../materials/sidebar_btn.png')} style={HomeStyle.sideBarImage} />
-                </TouchableOpacity>
-                <Image source={require('../materials/mrc_logo2.png')} style={HomeStyle.logo} />
-                <View style={HomeStyle.rightIconsContainer}>
-                    <TouchableOpacity style={HomeStyle.bellButton} onPress={() => {
-                        cs.navigate('notifications')
-                    }}>
-                        <Image source={require('../materials/bell_icon.png')} style={HomeStyle.bellIcon} />
-                    </TouchableOpacity>
-                    <Image source={require('../materials/profile_icon.png')} style={HomeStyle.profileIcon} />
-                </View>
-            </View>
+            <Header openSidebar={() => {
+                setSidebarVisible(true)
+            }} />
 
             <ScrollView style={HomeStyle.container} showsVerticalScrollIndicator={false}>
                 <TextInput

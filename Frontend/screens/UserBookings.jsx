@@ -149,11 +149,6 @@ export default function UserBookings() {
             </View>
 
             <View style={UserBookingStyle.container}>
-
-
-
-
-
                 <Text style={UserBookingStyle.userbookingheading}>Booking History</Text>
                 <TextInput
                     style={UserBookingStyle.SearchBar}

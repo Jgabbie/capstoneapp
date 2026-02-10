@@ -163,6 +163,79 @@ const UserManagementStyles = StyleSheet.create({
         color: '#fff',
         fontWeight: '600',
     },
+    modalOverlay: {
+        flex: 1,
+        backgroundColor: "rgba(0,0,0,0.4)",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    modalBox: {
+        width: 400,
+        backgroundColor: "#fff",
+        borderRadius: 15,
+        padding: 20,
+        alignItems: "center"
+    },
+    modalTitle: {
+        fontSize: 22,
+        fontFamily: "Montserrat_700Bold",
+        color: "#305797",
+        marginBottom: 10
+    },
+    modalText: {
+        fontSize: 16,
+        fontFamily: "Roboto_400Regular",
+        textAlign: "center",
+        marginBottom: 20,
+    },
+    modalButton: {
+        backgroundColor: "#305797",
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 8
+    },
+    modalCancelButton: {
+        backgroundColor: "#9E2847",
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 8
+    },
+    modalButtonText: {
+        color: "#fff",
+        fontSize: 16,
+        fontFamily: "Roboto_500Medium"
+    },
+    profilelabel: {
+        fontSize: 16,
+        color: "#305797",
+        marginLeft: 20
+    },
+    profileinputs: {
+        fontSize: 20,
+        borderWidth: 1,
+        borderRadius: 10,
+        borderColor: "#6d6d6d",
+        padding: 10,
+        marginLeft: 20,
+        marginBottom: 10,
+        width: 360,
+        height: 45
+    },
+    fullnamecontainer: {
+        display: "flex",
+        flexDirection: "row"
+    },
+    nameinputs: {
+        fontSize: 20,
+        borderWidth: 1,
+        borderRadius: 10,
+        borderColor: "#6d6d6d",
+        padding: 10,
+        marginLeft: 20,
+        marginBottom: 10,
+        width: 170,
+        height: 45
+    },
 })
 
 export default UserManagementStyles

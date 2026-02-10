@@ -25,7 +25,9 @@ export default function UserManagement() {
 
     const [isSidebarVisible, setSidebarVisible] = useState(false);
     const [modalVisible, setModalVisible] = useState(false)
-    const [modalCancelVisible, setModalCancelVisible] = useState(false)
+    const [modalRemoveVisible, setModalRemoveVisible] = useState(false)
+    const [saveModalVisible, setSaveModalVisible] = useState(false)
+    const [modalOkRemoveVisible, setModalOkRemoveVisible] = useState(false)
 
     const [fontsLoaded] = useFonts({
         Montserrat_400Regular,
@@ -36,17 +38,31 @@ export default function UserManagement() {
         Roboto_700Bold
     })
 
-    const confirmCancel = () => {
+    const confirmSave = () => {
         setModalVisible(false)
-        setModalCancelVisible(true)
+        setSaveModalVisible(true)
+        console.log("Saved")
     }
 
-    const cancelCancel = () => {
+    const cancelSave = () => {
         setModalVisible(false)
     }
 
-    const modalOK = () => {
-        setModalCancelVisible(false)
+    const modalOKSave = () => {
+        setSaveModalVisible(false)
+    }
+
+    const modalOkRemove = () => {
+        setModalRemoveVisible(false)
+        setModalOkRemoveVisible(true)
+    }
+
+    const modalCancelRemove = () => {
+        setModalRemoveVisible(false)
+    }
+
+    const modalRemovedOk = () => {
+        setModalOkRemoveVisible(false)
     }
 
     const [users, setusers] = useState([
@@ -90,7 +106,7 @@ export default function UserManagement() {
                 <TouchableOpacity
                     style={UserManagementStyles.viewButton}
                     onPress={() => {
-                        cs.navigate('bookinginvoice', { booking: item })
+                        setModalVisible(true)
                     }}
                 >
                     <Text style={UserManagementStyles.viewButtonText}>Edit</Text>
@@ -98,7 +114,7 @@ export default function UserManagement() {
                 <TouchableOpacity
                     style={UserManagementStyles.cancelButton}
                     onPress={() => {
-                        setModalVisible(true)
+                        setModalRemoveVisible(true)
                     }}
                 >
                     <Text style={UserManagementStyles.viewButtonText}>Remove</Text>
@@ -108,7 +124,7 @@ export default function UserManagement() {
         </View>
     )
     return (
-        <View style={UserManagementStyles.container}>
+        <View>
             <AdminSidebar visible={isSidebarVisible} onClose={() => setSidebarVisible(false)} />
 
             {/* Header Section */}
@@ -124,96 +140,247 @@ export default function UserManagement() {
                     <Image source={require('../../materials/profile_icon.png')} style={HomeStyle.profileIcon} />
                 </View>
             </View>
-            <Text style={UserManagementStyles.header}>User Management</Text>
-            <View style={UserManagementStyles.statsContainer}>
-                <View style={UserManagementStyles.statsRow}>
-                    <View style={UserManagementStyles.card}>
-                        <Text style={UserManagementStyles.cardValue}>8</Text>
-                        <Text style={UserManagementStyles.cardLabel}>Users</Text>
+
+            <View style={UserManagementStyles.container}>
+                <Text style={UserManagementStyles.header}>User Management</Text>
+                <View style={UserManagementStyles.statsContainer}>
+                    <View style={UserManagementStyles.statsRow}>
+                        <View style={UserManagementStyles.card}>
+                            <Text style={UserManagementStyles.cardValue}>8</Text>
+                            <Text style={UserManagementStyles.cardLabel}>Users</Text>
+                        </View>
+
+                        <View style={UserManagementStyles.card}>
+                            <Text style={UserManagementStyles.cardValue}>4</Text>
+                            <Text style={UserManagementStyles.cardLabel}>Verified</Text>
+                        </View>
                     </View>
 
-                    <View style={UserManagementStyles.card}>
-                        <Text style={UserManagementStyles.cardValue}>4</Text>
-                        <Text style={UserManagementStyles.cardLabel}>Verified</Text>
+                    <View style={UserManagementStyles.statsRow}>
+                        <View style={UserManagementStyles.card}>
+                            <Text style={UserManagementStyles.cardValue}>4</Text>
+                            <Text style={UserManagementStyles.cardLabel}>Unverified</Text>
+                        </View>
+
+                        <View style={UserManagementStyles.card}>
+                            <Text style={UserManagementStyles.cardValue}>2</Text>
+                            <Text style={UserManagementStyles.cardLabel}>Admins</Text>
+                        </View>
                     </View>
                 </View>
 
-                <View style={UserManagementStyles.statsRow}>
-                    <View style={UserManagementStyles.card}>
-                        <Text style={UserManagementStyles.cardValue}>4</Text>
-                        <Text style={UserManagementStyles.cardLabel}>Unverified</Text>
-                    </View>
+                <TextInput
+                    style={UserManagementStyles.SearchBar}
+                    placeholder='Search users...'
+                    value={searchText}
+                    onChangeText={setSearchText}
+                />
 
-                    <View style={UserManagementStyles.card}>
-                        <Text style={UserManagementStyles.cardValue}>2</Text>
-                        <Text style={UserManagementStyles.cardLabel}>Admins</Text>
-                    </View>
+                <View style={UserManagementStyles.filtersContainer}>
+                    <Picker
+                        style={UserManagementStyles.picker}
+                        selectedValue={statusFilter}
+                        onValueChange={(value) => setStatusFilter(value)}
+                    >
+                        <Picker.Item label="All Status" value="All" />
+                        <Picker.Item label="Verified" value="Active" />
+                        <Picker.Item label="Unverified" value="Inactive" />
+                    </Picker>
+
+                    <Picker
+                        style={UserManagementStyles.picker}
+                        selectedValue={roleFilter}
+                        onValueChange={(value) => setroleFilter(value)}
+                    >
+                        <Picker.Item label="All role" value="All" />
+                        <Picker.Item label="Admin" value="Admin" />
+                        <Picker.Item label="User" value="User" />
+                    </Picker>
+                </View>
+
+                <View style={UserManagementStyles.tableHeader}>
+                    <Text style={[UserManagementStyles.tableHeaderCell, UserManagementStyles.usernameCell]}>Username</Text>
+                    <Text style={[UserManagementStyles.tableHeaderCell, UserManagementStyles.emailCell]}>Email</Text>
+                    <Text style={[UserManagementStyles.tableHeaderCell, UserManagementStyles.statusCell]}>Status</Text>
+                    <Text style={[UserManagementStyles.tableHeaderCell, UserManagementStyles.roleCell]}>Role</Text>
+                    <Text style={[UserManagementStyles.tableHeaderCell, UserManagementStyles.actionCell]}>Actions</Text>
+                </View>
+
+                <FlatList
+                    data={paginatedUsers}
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id}
+                    style={UserManagementStyles.table}
+                />
+
+                <View style={{ flexDirection: 'row', justifyContent: 'center', marginVertical: 10 }}>
+                    <TouchableOpacity
+                        onPress={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                        style={UserManagementStyles.paginationButton}
+                    >
+                        <Text style={UserManagementStyles.paginationText}>Previous</Text>
+                    </TouchableOpacity>
+
+                    <Text style={{ marginHorizontal: 10, alignSelf: 'center' }}>
+                        {currentPage} / {totalPages}
+                    </Text>
+
+                    <TouchableOpacity
+                        onPress={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                        style={UserManagementStyles.paginationButton}
+                    >
+                        <Text style={UserManagementStyles.paginationText}>Next</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
+            <Modal
+                transparent
+                animationType='fade'
+                visible={modalVisible}
+                onRequestClose={() => { setModalVisible }}
+            >
+                <View style={UserManagementStyles.modalOverlay}>
+                    <View style={UserManagementStyles.modalBox}>
+                        <Text style={UserManagementStyles.modalTitle}>Edit Profile</Text>
 
-            <TextInput
-                style={UserManagementStyles.SearchBar}
-                placeholder='Search users...'
-                value={searchText}
-                onChangeText={setSearchText}
-            />
+                        <Text style={UserManagementStyles.profilelabel}>Username</Text>
+                        <TextInput style={UserManagementStyles.profileinputs}></TextInput>
 
-            <View style={UserManagementStyles.filtersContainer}>
-                <Picker
-                    style={UserManagementStyles.picker}
-                    selectedValue={statusFilter}
-                    onValueChange={(value) => setStatusFilter(value)}
-                >
-                    <Picker.Item label="All Status" value="All" />
-                    <Picker.Item label="Verified" value="Active" />
-                    <Picker.Item label="Unverified" value="Inactive" />
-                </Picker>
+                        <View style={UserManagementStyles.fullnamecontainer}>
+                            <View>
+                                <Text style={UserManagementStyles.profilelabel} >First Name</Text>
+                                <TextInput style={UserManagementStyles.nameinputs}></TextInput>
+                            </View>
 
-                <Picker
-                    style={UserManagementStyles.picker}
-                    selectedValue={roleFilter}
-                    onValueChange={(value) => setroleFilter(value)}
-                >
-                    <Picker.Item label="All role" value="All" />
-                    <Picker.Item label="Admin" value="Admin" />
-                    <Picker.Item label="User" value="User" />
-                </Picker>
-            </View>
+                            <View>
+                                <Text style={UserManagementStyles.profilelabel}>Last Name</Text>
+                                <TextInput style={UserManagementStyles.nameinputs}></TextInput>
+                            </View>
+                        </View>
 
-            <View style={UserManagementStyles.tableHeader}>
-                <Text style={[UserManagementStyles.tableHeaderCell, UserManagementStyles.usernameCell]}>Username</Text>
-                <Text style={[UserManagementStyles.tableHeaderCell, UserManagementStyles.emailCell]}>Email</Text>
-                <Text style={[UserManagementStyles.tableHeaderCell, UserManagementStyles.statusCell]}>Status</Text>
-                <Text style={[UserManagementStyles.tableHeaderCell, UserManagementStyles.roleCell]}>Role</Text>
-                <Text style={[UserManagementStyles.tableHeaderCell, UserManagementStyles.actionCell]}>Actions</Text>
-            </View>
+                        <Text style={UserManagementStyles.profilelabel}>Email</Text>
+                        <TextInput style={UserManagementStyles.profileinputs}></TextInput>
 
-            <FlatList
-                data={paginatedUsers}
-                renderItem={renderItem}
-                keyExtractor={item => item.id}
-                style={UserManagementStyles.table}
-            />
+                        <Text style={UserManagementStyles.profilelabel}>Phone Number</Text>
+                        <TextInput style={UserManagementStyles.profileinputs}></TextInput>
 
-            <View style={{ flexDirection: 'row', justifyContent: 'center', marginVertical: 10 }}>
-                <TouchableOpacity
-                    onPress={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-                    style={UserManagementStyles.paginationButton}
-                >
-                    <Text style={UserManagementStyles.paginationText}>Previous</Text>
-                </TouchableOpacity>
+                        <Text style={UserManagementStyles.profilelabel}>Address</Text>
+                        <TextInput style={UserManagementStyles.profileinputs}></TextInput>
 
-                <Text style={{ marginHorizontal: 10, alignSelf: 'center' }}>
-                    {currentPage} / {totalPages}
-                </Text>
+                        <Text style={UserManagementStyles.profilelabel}>Gender</Text>
+                        <TextInput style={UserManagementStyles.profileinputs}></TextInput>
 
-                <TouchableOpacity
-                    onPress={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-                    style={UserManagementStyles.paginationButton}
-                >
-                    <Text style={UserManagementStyles.paginationText}>Next</Text>
-                </TouchableOpacity>
-            </View>
+                        <View style={{ flexDirection: "row", marginTop: 10, gap: 20 }}>
+                            <TouchableOpacity
+                                style={UserManagementStyles.modalButton}
+                                onPress={() => {
+                                    confirmSave()
+                                }}
+                            >
+                                <Text style={UserManagementStyles.modalButtonText}>Save Changes</Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity
+                                style={UserManagementStyles.modalCancelButton}
+                                onPress={() => {
+                                    cancelSave()
+                                }}
+                            >
+                                <Text style={UserManagementStyles.modalButtonText}>Cancel</Text>
+                            </TouchableOpacity>
+                        </View>
+
+                    </View>
+                </View>
+            </Modal>
+
+
+            <Modal
+                transparent
+                animationType='fade'
+                visible={saveModalVisible}
+                onRequestClose={() => { setSaveModalVisible }}
+            >
+
+                <View style={UserManagementStyles.modalOverlay}>
+                    <View style={UserManagementStyles.modalBox}>
+                        <Text style={UserManagementStyles.modalTitle}>Change Successful</Text>
+                        <Text style={UserManagementStyles.modalText}>The information of the user has been changed!</Text>
+
+                        <TouchableOpacity
+                            style={UserManagementStyles.modalButton}
+                            onPress={() => {
+                                modalOKSave()
+                            }}
+                        >
+                            <Text style={UserManagementStyles.modalButtonText}>OK</Text>
+                        </TouchableOpacity>
+
+                    </View>
+                </View>
+            </Modal>
+
+
+            <Modal
+                transparent
+                animationType='fade'
+                visible={modalRemoveVisible}
+                onRequestClose={() => { setModalRemoveVisible }}
+            >
+
+                <View style={UserManagementStyles.modalOverlay}>
+                    <View style={UserManagementStyles.modalBox}>
+                        <Text style={UserManagementStyles.modalTitle}>Remove User</Text>
+                        <Text style={UserManagementStyles.modalText}>Are you sure you want to remove this user?</Text>
+
+                        <View style={{ flexDirection: "row", marginTop: 10, gap: 20 }}>
+                            <TouchableOpacity
+                                style={UserManagementStyles.modalButton}
+                                onPress={() => {
+                                    modalOkRemove()
+                                }}
+                            >
+                                <Text style={UserManagementStyles.modalButtonText}>Remove</Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity
+                                style={UserManagementStyles.modalCancelButton}
+                                onPress={() => {
+                                    modalCancelRemove()
+                                }}
+                            >
+                                <Text style={UserManagementStyles.modalButtonText}>Cancel</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+            </Modal>
+
+
+            <Modal
+                transparent
+                animationType='fade'
+                visible={modalOkRemoveVisible}
+                onRequestClose={() => { setModalOkRemoveVisible }}
+            >
+
+                <View style={UserManagementStyles.modalOverlay}>
+                    <View style={UserManagementStyles.modalBox}>
+                        <Text style={UserManagementStyles.modalTitle}>User has been removed</Text>
+                        <Text style={UserManagementStyles.modalText}>This user has been successfully removed!</Text>
+
+                        <TouchableOpacity
+                            style={UserManagementStyles.modalButton}
+                            onPress={() => {
+                                modalRemovedOk()
+                            }}
+                        >
+                            <Text style={UserManagementStyles.modalButtonText}>OK</Text>
+                        </TouchableOpacity>
+
+                    </View>
+                </View>
+            </Modal>
         </View>
     )
 }

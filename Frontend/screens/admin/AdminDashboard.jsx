@@ -32,7 +32,7 @@ export default function AdminDashboard() {
     )
 
     return (
-        <View style={AdminDashboardStyles.container}>
+        <View>
             <AdminSidebar visible={isSidebarVisible} onClose={() => setSidebarVisible(false)} />
 
             {/* Header Section */}
@@ -49,82 +49,84 @@ export default function AdminDashboard() {
                 </View>
             </View>
 
-            <Text style={AdminDashboardStyles.header}>AdminDashboard</Text>
+            <View style={AdminDashboardStyles.container}>
+                <Text style={AdminDashboardStyles.header}>AdminDashboard</Text>
 
-            <View style={AdminDashboardStyles.statsContainer}>
-                <View style={AdminDashboardStyles.statsRow}>
-                    <View style={AdminDashboardStyles.card}>
-                        <Text style={AdminDashboardStyles.cardValue}>40</Text>
-                        <Text style={AdminDashboardStyles.cardLabel}>Bookings</Text>
+                <View style={AdminDashboardStyles.statsContainer}>
+                    <View style={AdminDashboardStyles.statsRow}>
+                        <View style={AdminDashboardStyles.card}>
+                            <Text style={AdminDashboardStyles.cardValue}>40</Text>
+                            <Text style={AdminDashboardStyles.cardLabel}>Bookings</Text>
+                        </View>
+
+                        <View style={AdminDashboardStyles.card}>
+                            <Text style={AdminDashboardStyles.cardValue}>20</Text>
+                            <Text style={AdminDashboardStyles.cardLabel}>Users</Text>
+                        </View>
                     </View>
 
-                    <View style={AdminDashboardStyles.card}>
-                        <Text style={AdminDashboardStyles.cardValue}>20</Text>
-                        <Text style={AdminDashboardStyles.cardLabel}>Users</Text>
+                    <View style={AdminDashboardStyles.statsRow}>
+                        <View style={AdminDashboardStyles.card}>
+                            <Text style={AdminDashboardStyles.cardValue}>34</Text>
+                            <Text style={AdminDashboardStyles.cardLabel}>Transactions</Text>
+                        </View>
+
+                        <View style={AdminDashboardStyles.card}>
+                            <Text style={AdminDashboardStyles.cardValue}>7</Text>
+                            <Text style={AdminDashboardStyles.cardLabel}>Cancellations</Text>
+                        </View>
                     </View>
                 </View>
 
-                <View style={AdminDashboardStyles.statsRow}>
-                    <View style={AdminDashboardStyles.card}>
-                        <Text style={AdminDashboardStyles.cardValue}>34</Text>
-                        <Text style={AdminDashboardStyles.cardLabel}>Transactions</Text>
-                    </View>
-
-                    <View style={AdminDashboardStyles.card}>
-                        <Text style={AdminDashboardStyles.cardValue}>7</Text>
-                        <Text style={AdminDashboardStyles.cardLabel}>Cancellations</Text>
-                    </View>
-                </View>
-            </View>
-
-            <Text style={AdminDashboardStyles.sectionTitle}>Monthly Bookings</Text>
-            <LineChart
-                data={{
-                    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-                    datasets: [
-                        {
-                            data: [20, 45, 28, 80, 99, 43]
+                <Text style={AdminDashboardStyles.sectionTitle}>Monthly Bookings</Text>
+                <LineChart
+                    data={{
+                        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+                        datasets: [
+                            {
+                                data: [20, 45, 28, 80, 99, 43]
+                            }
+                        ]
+                    }}
+                    width={screenWidth - 32}
+                    height={220}
+                    chartConfig={{
+                        backgroundColor: "#fff",
+                        backgroundGradientFrom: "#fff",
+                        backgroundGradientTo: "#fff",
+                        decimalPlaces: 0,
+                        color: (opacity = 1) => `rgba(0,0,0, ${opacity})`,
+                        labelColor: () => "#777",
+                        propsForDots: {
+                            r: "5",
+                            strokeWith: "2",
+                            stroke: "#305797",
+                            fill: "#305797"
                         }
-                    ]
-                }}
-                width={screenWidth - 32}
-                height={220}
-                chartConfig={{
-                    backgroundColor: "#fff",
-                    backgroundGradientFrom: "#fff",
-                    backgroundGradientTo: "#fff",
-                    decimalPlaces: 0,
-                    color: (opacity = 1) => `rgba(0,0,0, ${opacity})`,
-                    labelColor: () => "#777",
-                    propsForDots: {
-                        r: "5",
-                        strokeWith: "2",
-                        stroke: "#305797",
-                        fill: "#305797"
-                    }
-                }}
-                style={{
-                    borderRadius: 12,
-                    marginBottom: 20
-                }}
-            />
+                    }}
+                    style={{
+                        borderRadius: 12,
+                        marginBottom: 20
+                    }}
+                />
 
-            <Text style={AdminDashboardStyles.sectionTitle}>Latest Bookings</Text>
+                <Text style={AdminDashboardStyles.sectionTitle}>Latest Bookings</Text>
 
-            <View style={UserBookingStyle.tableHeader}>
-                <Text style={[UserBookingStyle.tableHeaderCell, { flex: 2 }]}>Package</Text>
-                <Text style={[UserBookingStyle.tableHeaderCell, { flex: 2 }]}>Date</Text>
-                <Text style={[UserBookingStyle.tableHeaderCell, { flex: 2 }]}>Status</Text>
-                <Text style={[UserBookingStyle.tableHeaderCell, { flex: 2 }]}>Pax</Text>
-                <Text style={[UserBookingStyle.tableHeaderCell, { flex: 2 }]}>Amount</Text>
+                <View style={UserBookingStyle.tableHeader}>
+                    <Text style={[UserBookingStyle.tableHeaderCell, { flex: 2 }]}>Package</Text>
+                    <Text style={[UserBookingStyle.tableHeaderCell, { flex: 2 }]}>Date</Text>
+                    <Text style={[UserBookingStyle.tableHeaderCell, { flex: 2 }]}>Status</Text>
+                    <Text style={[UserBookingStyle.tableHeaderCell, { flex: 2 }]}>Pax</Text>
+                    <Text style={[UserBookingStyle.tableHeaderCell, { flex: 2 }]}>Amount</Text>
+                </View>
+
+                <FlatList
+                    data={bookings}
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id}
+                    style={UserBookingStyle.table}
+                />
             </View>
-
-            <FlatList
-                data={bookings}
-                renderItem={renderItem}
-                keyExtractor={item => item.id}
-                style={UserBookingStyle.table}
-            />
         </View>
     )
 }

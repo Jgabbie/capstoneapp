@@ -1,8 +1,12 @@
-import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import { View, Text, ScrollView, TouchableOpacity, Image, Modal } from 'react-native'
+import React, { useState } from 'react'
 import UserInvoiceStyle from '../../styles/UserInvoiceStyle'
+import { useNavigation } from '@react-navigation/native'
 
 export default function AdminBookingInvoice(props) {
+
+    const [sendModalVisible, setSendModalVisible] = useState('')
+
     const cs = useNavigation()
     const { booking } = props.route.params
     return (
@@ -94,7 +98,7 @@ export default function AdminBookingInvoice(props) {
             <TouchableOpacity
                 style={UserInvoiceStyle.button}
                 onPress={() => {
-                    cs.navigate('paymentmethod')
+                    setSendModalVisible(true)
                 }}>
                 <Text style={UserInvoiceStyle.buttonText}>Send</Text>
             </TouchableOpacity>
@@ -102,10 +106,34 @@ export default function AdminBookingInvoice(props) {
             <TouchableOpacity
                 style={UserInvoiceStyle.button}
                 onPress={() => {
-                    cs.navigate('userbookings')
+                    cs.navigate('bookingmanagement')
                 }}>
                 <Text style={UserInvoiceStyle.buttonText}>Back</Text>
             </TouchableOpacity>
+
+            <Modal
+                transparent
+                animationType='fade'
+                visible={sendModalVisible}
+                onRequestClose={() => { setSendModalVisible }}
+            >
+
+                <View style={UserInvoiceStyle.modalOverlay}>
+                    <View style={UserInvoiceStyle.modalBox}>
+                        <Text style={UserInvoiceStyle.modalTitle}>Booking Invoice</Text>
+                        <Text style={UserInvoiceStyle.modalText}>Booking invoice has been sent!</Text>
+                        <TouchableOpacity
+                            style={UserInvoiceStyle.modalButton}
+                            onPress={() => {
+                                setSendModalVisible(false)
+                            }}
+                        >
+                            <Text style={UserInvoiceStyle.modalButtonText}>OK</Text>
+                        </TouchableOpacity>
+
+                    </View>
+                </View>
+            </Modal>
         </ScrollView>
     )
 }

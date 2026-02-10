@@ -26,6 +26,17 @@ export default function Login() {
         Roboto_700Bold
     })
 
+    const login = () => {
+        const role = "User"
+        if (role === "User") {
+            cs.navigate("home")
+        }
+
+        if (role === "Admin") {
+            cs.navigate("admindashboard")
+        }
+    }
+
     return (
         <ImageBackground
             source={require("../materials/login_background.png")}
@@ -47,7 +58,7 @@ export default function Login() {
                     <Text onPress={() => { cs.navigate("resetpassword") }} style={LoginStyle.loginlinks}>Forgot your password?</Text>
                 </View>
 
-                <TouchableOpacity style={LoginStyle.loginbutton} onPress={() => { cs.navigate("home") }}>
+                <TouchableOpacity style={LoginStyle.loginbutton} onPress={() => { login() }}>
                     <Text style={LoginStyle.loginbuttontext}>Login</Text>
                 </TouchableOpacity>
             </View>

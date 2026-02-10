@@ -232,4 +232,18 @@ export default StyleSheet.create({
     fontWeight: "700",
     fontSize: 16,
   },
+
+  button: {
+    marginTop: 10,
+    backgroundColor: "#305797",
+    padding: 10,
+    borderRadius: 10,
+    alignItems: "center"
+  },
+  buttonText: {
+    color: "#fff",
+    fontSize: 16
+  },
+
+
 });

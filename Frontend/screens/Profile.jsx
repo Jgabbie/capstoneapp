@@ -11,9 +11,9 @@ import {
     Roboto_500Medium,
     Roboto_700Bold
 } from "@expo-google-fonts/roboto"
-import { useNavigation } from '@react-navigation/native'
 import ProfileStyle from '../styles/ProfileStyle'
 import Sidebar from '../components/Sidebar'
+import Header from '../components/Header'
 
 export default function Profile() {
     const [editing, setEditing] = useState(false)
@@ -61,36 +61,7 @@ export default function Profile() {
                 onClose={() => setSidebarVisible(false)}
             />
 
-            <View style={ProfileStyle.headerContainer}>
-                <TouchableOpacity
-                    style={ProfileStyle.sideBarButton}
-                    onPress={() => setSidebarVisible(true)}
-                >
-                    <Image
-                        source={require('../materials/sidebar_btn.png')}
-                        style={ProfileStyle.sideBarImage}
-                    />
-                </TouchableOpacity>
-
-                <Image
-                    source={require('../materials/mrc_logo2.png')}
-                    style={ProfileStyle.logo}
-                />
-
-                <View style={ProfileStyle.rightIconsContainer}>
-                    <TouchableOpacity style={ProfileStyle.bellButton}>
-                        <Image
-                            source={require('../materials/bell_icon.png')}
-                            style={ProfileStyle.bellIcon}
-                        />
-                    </TouchableOpacity>
-
-                    <Image
-                        source={require('../materials/profile_icon.png')}
-                        style={ProfileStyle.profileIcon}
-                    />
-                </View>
-            </View>
+            <Header openSidebar={() => { setSidebarVisible(true) }} />
 
 
             <View style={ProfileStyle.container}>

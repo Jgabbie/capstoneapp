@@ -129,7 +129,49 @@ const UserInvoiceStyle = StyleSheet.create({
     },
     invoiceMetaValue: {
         fontWeight: '600'
-    }
+    },
+    modalOverlay: {
+        flex: 1,
+        backgroundColor: "rgba(0,0,0,0.4)",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    modalBox: {
+        width: 300,
+        backgroundColor: "#fff",
+        borderRadius: 15,
+        padding: 20,
+        alignItems: "center"
+    },
+    modalTitle: {
+        fontSize: 22,
+        fontFamily: "Montserrat_700Bold",
+        color: "#305797",
+        marginBottom: 10
+    },
+    modalText: {
+        fontSize: 16,
+        fontFamily: "Roboto_400Regular",
+        textAlign: "center",
+        marginBottom: 20,
+    },
+    modalButton: {
+        backgroundColor: "#305797",
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 8
+    },
+    modalCancelButton: {
+        backgroundColor: "#9E2847",
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 8
+    },
+    modalButtonText: {
+        color: "#fff",
+        fontSize: 16,
+        fontFamily: "Roboto_500Medium"
+    },
 })
 
 export default UserInvoiceStyle

@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { View, Text, ScrollView, Image, TouchableOpacity, TextInput } from "react-native";
-import Header from "../components/Header";
-import SearchFilter from "../components/SearchFilter";
 import WishlistCard from "../components/WishlistCard";
 import styles from "../styles/WishListStyles";
 import Sidebar from "../components/Sidebar";
-import { useNavigation } from "@react-navigation/native";
 import WishListStyles from "../styles/WishListStyles";
 import { useFonts } from 'expo-font'
 import {

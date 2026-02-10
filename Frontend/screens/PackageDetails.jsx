@@ -8,7 +8,6 @@ import {
   Modal,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import Header from "../components/Header";
 import styles from "../styles/DestinationStyles";
 import Colors from "../styles/Colors";
 import { Calendar } from "react-native-calendars";
@@ -365,37 +364,37 @@ export default function PackageDetails({ route, navigation }) {
 
   return (
     <View style={styles.detailsContainer}>
-      <Sidebar 
-        visible={isSidebarVisible} 
-        onClose={() => setSidebarVisible(false)} 
+      <Sidebar
+        visible={isSidebarVisible}
+        onClose={() => setSidebarVisible(false)}
       />
 
       <View style={styles.headerContainer}>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.sideBarButton}
           onPress={() => setSidebarVisible(true)}
         >
-          <Image 
-            source={require('../materials/sidebar_btn.png')} 
+          <Image
+            source={require('../materials/sidebar_btn.png')}
             style={styles.sideBarImage}
           />
         </TouchableOpacity>
 
-        <Image 
-          source={require('../materials/mrc_logo2.png')} 
+        <Image
+          source={require('../materials/mrc_logo2.png')}
           style={styles.logo}
         />
 
         <View style={styles.rightIconsContainer}>
           <TouchableOpacity style={styles.bellButton}>
-            <Image 
-              source={require('../materials/bell_icon.png')} 
+            <Image
+              source={require('../materials/bell_icon.png')}
               style={styles.bellIcon}
             />
           </TouchableOpacity>
 
-          <Image 
-            source={require('../materials/profile_icon.png')} 
+          <Image
+            source={require('../materials/profile_icon.png')}
             style={styles.profileIcon}
           />
         </View>
@@ -519,7 +518,7 @@ export default function PackageDetails({ route, navigation }) {
                   <View style={styles.modalBox}>
                     <Text style={styles.modalParagraph}>{pkg.title}</Text>
                     <Text style={styles.modalParagraph}>
-                        {modalContent.dateDetails.packageLine}
+                      {modalContent.dateDetails.packageLine}
                     </Text>
                     <Text style={styles.modalParagraph}>
                       Starting Date: {selectedDate}
