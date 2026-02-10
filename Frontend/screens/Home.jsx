@@ -32,10 +32,10 @@ export default function Home() {
         Roboto_500Medium,
         Roboto_700Bold
     })
-    // Component for the Small Travel Cards
-    const TravelCard = () => (
+
+    const TravelCard = ({ image, location, price }) => (
         <View style={HomeStyle.card}>
-            <Image source={require('../materials/japan_imagesmall.png')} style={HomeStyle.cardImage} />
+            <Image source={image} style={HomeStyle.cardImage} />
             <Text style={HomeStyle.cardTitle}>Travel Package Name</Text>
             <View style={HomeStyle.infoRow}>
                 <Image source={require('../materials/date_iconsmall.png')} style={HomeStyle.infoIcon} />
@@ -43,16 +43,15 @@ export default function Home() {
             </View>
             <View style={HomeStyle.infoRow}>
                 <Image source={require('../materials/location_iconsmall.png')} style={HomeStyle.infoIcon} />
-                <Text style={HomeStyle.infoText}>Japan</Text>
+                <Text style={HomeStyle.infoText}>{location}</Text>
             </View>
-            <Text style={HomeStyle.priceText}>₱20000</Text>
+            <Text style={HomeStyle.priceText}>₱{price}</Text>
         </View>
     );
 
-    // Component for the Large Banner Cards
-    const BannerCard = () => (
+    const BannerCard = ({ image }) => (
         <View style={HomeStyle.bannerCard}>
-            <Image source={require('../materials/baguio_imagemedium.png')} style={HomeStyle.bannerImage} />
+            <Image source={image} style={HomeStyle.bannerImage} />
             <View style={HomeStyle.bannerFooter}>
                 <View>
                     <Text style={HomeStyle.bannerTitle}>New Packages</Text>
@@ -66,12 +65,12 @@ export default function Home() {
         </View>
     );
 
+    if (!fontsLoaded) return null;
+
     return (
         <View style={{ flex: 1 }}>
             <Sidebar visible={isSidebarVisible} onClose={() => setSidebarVisible(false)} />
-            <Header openSidebar={() => {
-                setSidebarVisible(true)
-            }} />
+            <Header openSidebar={() => setSidebarVisible(true)} />
 
             <ScrollView style={HomeStyle.container} showsVerticalScrollIndicator={false}>
                 <TextInput
@@ -81,7 +80,6 @@ export default function Home() {
                     onChangeText={setSearchText}
                 />
 
-                {/* Popular packages header */}
                 <View style={HomeStyle.sectionHeader}>
                     <Text style={HomeStyle.sectionTitle}>Popular Packages</Text>
                     <View style={HomeStyle.buttonRow}>
@@ -96,26 +94,37 @@ export default function Home() {
                     </View>
                 </View>
 
-                {/* Horizontal scroll small cards */}
                 <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginBottom: 20 }}>
-                    <TravelCard />
-                    <TravelCard />
-                    <TravelCard />
+                    <TravelCard 
+                        image={require('../materials/japan_imagesmall.png')} 
+                        location="Japan" 
+                        price="20000" 
+                    />
+                    <TravelCard 
+                        image={require('../materials/boracay_imagesmall.png')} 
+                        location="Boracay" 
+                        price="12000" 
+                    />
+                    <TravelCard 
+                        image={require('../materials/palawan_imagesmall.png')} 
+                        location="Palawan" 
+                        price="15000" 
+                    />
                 </ScrollView>
 
-                {/* Horizontal scroll big cards */}
+                
                 <Text style={HomeStyle.secondsectionTitle}>Packages for you</Text>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                    <BannerCard />
-                    <BannerCard />
+                    <BannerCard image={require('../materials/southkorea_image.png')} />
+                    <BannerCard image={require('../materials/germany_image.png')} />
                 </ScrollView>
 
+               
                 <Text style={HomeStyle.secondsectionTitle}>Local Packages</Text>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                    <BannerCard />
-                    <BannerCard />
+                    <BannerCard image={require('../materials/mindanao_image.png')} />
+                    <BannerCard image={require('../materials/baguio_imagemedium.png')} />
                 </ScrollView>
-
             </ScrollView>
 
             <TouchableOpacity
@@ -126,7 +135,6 @@ export default function Home() {
                     source={require('../materials/chatbot_icon.png')}
                     style={HomeStyle.chatbotIcon}
                 />
-
             </TouchableOpacity>
 
             {isChatOpen && (
@@ -135,7 +143,7 @@ export default function Home() {
                         <View style={HomeStyle.chatHeader}>
                             <Text style={HomeStyle.chatTitle}>Chat with Us</Text>
                             <TouchableOpacity onPress={() => setChatOpen(false)}>
-                                <Text>X</Text>
+                                <Text style={{ color: 'white' }}>X</Text>
                             </TouchableOpacity>
                         </View>
 
@@ -169,6 +177,5 @@ export default function Home() {
                 </View>
             )}
         </View>
-
     )
 }

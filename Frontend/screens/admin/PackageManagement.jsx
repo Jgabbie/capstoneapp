@@ -24,11 +24,39 @@ export default function PackageManagement() {
     });
 
     const [packages, setPackages] = useState([
-        { id: "1", name: "Japan Tour Package", slots: "30", price: "42,000", desc: "Experience the best of Japan with a thoughtfully curated tour package that blends tradition and modern culture." },
-        { id: "2", name: "Boracay Tour Package", slots: "30", price: "12,000", desc: "Enjoy a relaxing getaway to Boracay, featuring its famous white-sand beaches and crystal-clear waters." },
-        { id: "3", name: "Batanes Tour Package", slots: "30", price: "7,000", desc: "Experience the breathtaking beauty of Batanes with a curated tour package showcasing rolling hills." },
-        { id: "4", name: "Palawan Special", slots: "15", price: "15,000", desc: "Visit the underground river and enjoy the crystal clear lagoons of El Nido." },
-    ]);
+    { 
+        id: "1", 
+        name: "Japan Tour Package", 
+        slots: "30", 
+        price: "42,000", 
+        desc: "Experience the best of Japan with a thoughtfully curated tour package that blends tradition and modern culture.",
+        image: require('../../materials/japan_imagesmall.png')
+    },
+    { 
+        id: "2", 
+        name: "Boracay Tour Package", 
+        slots: "30", 
+        price: "12,000", 
+        desc: "Enjoy a relaxing getaway to Boracay, featuring its famous white-sand beaches and crystal-clear waters.",
+        image: require('../../materials/boracay_imagesmall.png')
+    },
+    { 
+        id: "3", 
+        name: "Batanes Tour Package", 
+        slots: "30", 
+        price: "7,000", 
+        desc: "Experience the breathtaking beauty of Batanes with a curated tour package showcasing rolling hills.",
+        image: require('../../materials/batanes_imagesmall.png')
+    },
+    { 
+        id: "4", 
+        name: "Palawan Tour Package", 
+        slots: "15", 
+        price: "15,000", 
+        desc: "Visit the underground river and enjoy the crystal clear lagoons of El Nido.",
+        image: require('../../materials/palawan_imagesmall.png')
+    },
+]);
 
     const filteredPackages = packages.filter(pkg =>
         pkg.name.toLowerCase().includes(searchText.toLowerCase())
@@ -45,41 +73,42 @@ export default function PackageManagement() {
         setSuccessModalVisible(true);
     };
 
-    const renderPackageItem = ({ item }) => (
-        <View style={PackageManagementStyles.packageCard}>
-            <Image source={require('../../materials/japan_imagesmall.png')} style={PackageManagementStyles.cardImage} />
+  const renderPackageItem = ({ item }) => (
+    <View style={PackageManagementStyles.packageCard}>
+        
+        <Image source={item.image} style={PackageManagementStyles.packageCardImage} />
 
-            <View style={PackageManagementStyles.cardContent}>
-                <View style={PackageManagementStyles.cardHeaderRow}>
-                    <Text style={PackageManagementStyles.packageName}>{item.name}</Text>
-                    <Text style={PackageManagementStyles.slotsText}>Slots Available: {item.slots}</Text>
-                </View>
+        <View style={PackageManagementStyles.cardContent}>
+            <View style={PackageManagementStyles.cardHeaderRow}>
+                <Text style={PackageManagementStyles.packageName}>{item.name}</Text>
+                <Text style={PackageManagementStyles.slotsText}>Slots Available: {item.slots}</Text>
+            </View>
 
-                <Text style={PackageManagementStyles.packageDesc} numberOfLines={3}>
-                    {item.desc}
-                </Text>
+            <Text style={PackageManagementStyles.packageDesc} numberOfLines={3}>
+                {item.desc}
+            </Text>
 
-                <View style={PackageManagementStyles.cardFooter}>
-                    <Text style={PackageManagementStyles.priceText}>₱{item.price}</Text>
-                    <View style={PackageManagementStyles.actionButtons}>
-                        <TouchableOpacity
-                            style={PackageManagementStyles.editBtn}
-                            onPress={() => { navigation.navigate("editpackage") }}
-                        >
-                            <Text style={PackageManagementStyles.btnText}>Edit</Text>
-                        </TouchableOpacity>
+            <View style={PackageManagementStyles.cardFooter}>
+                <Text style={PackageManagementStyles.priceText}>₱{item.price}</Text>
+                <View style={PackageManagementStyles.actionButtons}>
+                    <TouchableOpacity
+                        style={PackageManagementStyles.editBtn}
+                        onPress={() => { navigation.navigate("editpackage") }}
+                    >
+                        <Text style={PackageManagementStyles.btnText}>Edit</Text>
+                    </TouchableOpacity>
 
-                        <TouchableOpacity
-                            style={PackageManagementStyles.removeBtn}
-                            onPress={() => setRemoveModalVisible(true)}
-                        >
-                            <Text style={PackageManagementStyles.btnText}>Remove</Text>
-                        </TouchableOpacity>
-                    </View>
+                    <TouchableOpacity
+                        style={PackageManagementStyles.removeBtn}
+                        onPress={() => setRemoveModalVisible(true)}
+                    >
+                        <Text style={PackageManagementStyles.btnText}>Remove</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         </View>
-    );
+    </View>
+);
 
     if (!fontsLoaded) return null;
 
