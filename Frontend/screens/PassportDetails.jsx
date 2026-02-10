@@ -58,7 +58,7 @@ export default function PassportDetails({ route }) {
         
         <View style={styles.card}>
           <Image
-            source={{ uri: "https://picsum.photos/100" }}
+            source={{ uri: "https://businessregistrationphilippines.com/wp-content/uploads/2024/06/valid-ids-philippines.jpg" }}
             style={styles.cardImage}
           />
           <View style={styles.cardContent}>
@@ -75,7 +75,7 @@ export default function PassportDetails({ route }) {
 
         <View style={styles.card}>
           <Image
-            source={{ uri: "https://picsum.photos/101" }}
+            source={{ uri: "https://static.photobooth.online/wp-content/uploads/2024/04/12074312/2-x-2-photo.jpg" }}
             style={styles.cardImage}
           />
           <View style={styles.cardContent}>

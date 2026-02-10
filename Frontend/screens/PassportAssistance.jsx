@@ -52,7 +52,7 @@ export default function PassportAssistance({ navigation }) {
           <VisaCard
             country="APPLY FOR PASSPORT"
             description="Applying for a passport is the first step to traveling abroad, serving as your official travel document and proof of identity."
-            image="https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg"
+            image="https://www.kayak.com/rimg/dimg/dynamic/19/2023/10/4505cae772ba9dc830a129823f8e7f4d.webp"
             price="₱2,000"
             onPress={() => navigation.navigate("PassportDetails", { type: "apply", price: 2000 })}
           />
@@ -60,7 +60,7 @@ export default function PassportAssistance({ navigation }) {
           <VisaCard
             country="RENEW PASSPORT"
             description="Renewing your passport ensures that your travel document remains valid for international trips without interruptions."
-            image="https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg"
+            image="https://ik.imagekit.io/tvlk/blog/2022/05/philippine-passport.jpg?tr=q-70,c-at_max,w-1000,h-600"
             price="₱2,000"
             onPress={() => navigation.navigate("PassportDetails", { type: "renew", price: 2000 })}
           />
