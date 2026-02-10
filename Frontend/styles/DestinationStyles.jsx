@@ -321,6 +321,16 @@ export default StyleSheet.create({
     borderRadius: 10,
     padding: 10,
   },
+  calendarBox: {
+    borderWidth: 2,
+    borderColor: Colors.primary,
+    borderRadius: 10,
+    padding: 10,
+    overflow: "hidden",
+  },
+  calendar: {
+    marginTop: 8,
+  },
   modalSubTitle: {
     fontSize: 13,
     fontWeight: "700",

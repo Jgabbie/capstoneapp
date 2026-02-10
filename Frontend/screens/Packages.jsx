@@ -19,7 +19,7 @@ const PACKAGES = [
         title: "Baguio City Tour",
         description:
             "Explore the city of pines with scenic viewpoints, heritage stops, and cool mountain air.",
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEzrsEyMckUwfSniZm11T3L2RkA6yq_e3ALg&s",
+        image: "https://res.klook.com/image/upload/fl_lossy.progressive,q_60/Mobile/City/dqm8q1e6jyqaxapkgqy3.jpg",
         price: "₱67,000",
         duration: "3 Days",
         isInternational: false,
@@ -29,7 +29,7 @@ const PACKAGES = [
         title: "Seoul City Escape",
         description:
             "Experience vibrant markets, modern culture, and historic palaces in South Korea.",
-        image: "https://ggscore.com/media/logo/p11350.png?34",
+        image: "https://ik.imgkit.net/3vlqs5axxjf/external/ik-seo/http://images.ntmllc.com/v4/destination/South-Korea/Seoul/219740_SCN_Seoul_iStock521707831_ZC35CD/Seoul-Scenery.jpg?tr=w-656%2Ch-390%2Cfo-auto",
         price: "₱95,000",
         duration: "5 Days",
         isInternational: true,
@@ -39,7 +39,7 @@ const PACKAGES = [
         title: "Palawan Island Adventure",
         description:
             "Crystal-clear lagoons, island hopping, and beachside relaxation.",
-        image: "https://www.leytesamardailynews.com/wp-content/uploads/2023/10/Incoming-tourism-chief-receives-warm-welcome-from-employees-HERO.jpg",
+        image: "https://www.pelago.com/img/destinations/puerto-princesa/1011-1024_puertoprincesa.jpg",
         price: "₱82,000",
         duration: "4 Days",
         isInternational: false,
