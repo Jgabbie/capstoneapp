@@ -86,4 +86,18 @@ export default StyleSheet.create({
     fontSize: 13,
     color: "#666",
   },
+
+  button: {
+    marginTop: 10,
+    backgroundColor: "#305797",
+    padding: 10,
+    borderRadius: 10,
+    alignItems: "center"
+  },
+  buttonText: {
+    color: "#fff",
+    fontSize: 16
+  },
+
+
 });

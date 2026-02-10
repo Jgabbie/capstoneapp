@@ -3,7 +3,11 @@ import { StyleSheet } from "react-native";
 
 const NewPasswordStyle = StyleSheet.create({
 
-
+    container: {
+        flex: 1,
+        paddingTop: 200,
+        marginLeft: 5
+    },
     newpasswordheading: {
         fontSize: 40,
         fontWeight: 600,

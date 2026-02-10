@@ -10,6 +10,8 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import Header from "../components/Header";
 import styles from "../styles/DestinationStyles";
+import Colors from "../styles/Colors";
+import { Calendar } from "react-native-calendars";
 import Sidebar from "../components/Sidebar";
 
 const MODAL_CONTENT = {
@@ -213,8 +215,15 @@ export default function PackageDetails({ route, navigation }) {
 
   const [activeTab, setActiveTab] = useState("itinerary");
   const [activeModal, setActiveModal] = useState(null);
-  const [selectedDate, setSelectedDate] = useState(
-    () => modalContent.dateDetails.startingDate
+  const [selectedDateKey, setSelectedDateKey] = useState(() =>
+    new Date(modalContent.dateDetails.startingDate).toISOString().slice(0, 10)
+  );
+  const [selectedDate, setSelectedDate] = useState(() =>
+    new Date(modalContent.dateDetails.startingDate).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    })
   );
   const [availableDateId, setAvailableDateId] = useState(
     () => modalContent.availableDates[0]?.id ?? "date-1"
@@ -323,6 +332,18 @@ export default function PackageDetails({ route, navigation }) {
   };
 
   const closeModal = () => setActiveModal(null);
+
+  const handleDateSelect = (day) => {
+    setSelectedDateKey(day.dateString);
+    const parsedDate = new Date(day.dateString);
+    setSelectedDate(
+      parsedDate.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      })
+    );
+  };
 
   const adjustTraveler = (key, delta) => {
     setTravelers((prev) => {
@@ -474,11 +495,25 @@ export default function PackageDetails({ route, navigation }) {
             <View style={styles.modalBody}>
               {activeModal === "date" && (
                 <>
-                  <View style={styles.modalBox}>
-                    <Text style={styles.modalParagraph}>May 2023</Text>
-                    <Text style={styles.modalParagraph}>
-                      Calendar placeholder (select date)
-                    </Text>
+                  <View style={styles.calendarBox}>
+                    <Text style={styles.modalParagraph}>Choose Date</Text>
+                    <Calendar
+                      current={selectedDateKey}
+                      onDayPress={handleDateSelect}
+                      markedDates={{
+                        [selectedDateKey]: {
+                          selected: true,
+                          selectedColor: Colors.primary,
+                        },
+                      }}
+                      theme={{
+                        arrowColor: Colors.primary,
+                        todayTextColor: Colors.primary,
+                        textMonthFontWeight: "700",
+                        textDayHeaderFontWeight: "600",
+                      }}
+                      style={styles.calendar}
+                    />
                   </View>
                   <Text style={styles.modalSubTitle}>Package Details</Text>
                   <View style={styles.modalBox}>

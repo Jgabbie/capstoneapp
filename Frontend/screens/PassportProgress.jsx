@@ -1,8 +1,11 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import ProgressTracker from "../components/ProgressTracker";
 import styles from "../styles/ProgressTrackerStyles";
+import { useNavigation } from "@react-navigation/native";
+
 export default function PassportProgress() {
+  const cs = useNavigation()
   const passportSteps = [
     {
       title: "Documents Submitted",
@@ -31,6 +34,14 @@ export default function PassportProgress() {
       <Text style={styles.header}>Passport Assistance</Text>
 
       <ProgressTracker steps={passportSteps} currentStep={1} />
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          cs.navigate('PassportAssistance')
+        }}>
+        <Text style={styles.buttonText}>Back</Text>
+      </TouchableOpacity>
     </View>
   );
 }

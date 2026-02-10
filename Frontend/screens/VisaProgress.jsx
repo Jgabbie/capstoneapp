@@ -1,9 +1,12 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import ProgressTracker from "../components/ProgressTracker";
 import styles from "../styles/ProgressTrackerStyles";
+import { useNavigation } from "@react-navigation/native";
 
 export default function VisaProgress() {
+  const cs = useNavigation()
+
   const visaSteps = [
     {
       title: "Documents Submitted",
@@ -31,8 +34,16 @@ export default function VisaProgress() {
     <View style={styles.screen}>
       <Text style={styles.header}>Visa Assistance</Text>
 
-      
+
       <ProgressTracker steps={visaSteps} currentStep={2} />
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          cs.navigate('VisaAssistance')
+        }}>
+        <Text style={styles.buttonText}>Back</Text>
+      </TouchableOpacity>
     </View>
   );
 }

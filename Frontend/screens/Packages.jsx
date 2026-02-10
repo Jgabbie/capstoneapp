@@ -51,8 +51,7 @@ export default function Packages({ navigation }) {
     const [isSidebarVisible, setSidebarVisible] = useState(false);
 
     return (
-        <View style={styles.container}>
-
+        <View style={{ flex: 1 }}>
             <Sidebar
                 visible={isSidebarVisible}
                 onClose={() => setSidebarVisible(false)}
@@ -89,36 +88,40 @@ export default function Packages({ navigation }) {
                 </View>
             </View>
 
-            {/* <Header /> */}
 
-            <Text style={styles.heroTitle}>Featured Packages</Text>
-            <Text style={styles.heroSubtitle}>
-                Everyone loves to tour with friends, family, or teammates. We can
-                organize your tour to anywhere in the world.
-            </Text>
+            <ScrollView
+                style={styles.container}
+                contentContainerStyle={{ paddingBottom: 40 }}
+            >
+                {/* <Header /> */}
 
-            <View style={styles.searchRow}>
-                <View style={styles.searchBar}>
-                    <Ionicons name="search" size={16} color="#777" />
-                    <TextInput
-                        style={styles.searchInput}
-                        placeholder="Search packages"
-                        placeholderTextColor="#777"
-                    />
-                </View>
-                <View style={styles.dropdownGroup}>
-                    <View style={styles.dropdownButton}>
-                        <Text style={styles.dropdownText}>Activities</Text>
-                        <Ionicons name="chevron-down" size={14} color="#2d5fb8" style={styles.dropdownIcon} />
+                <Text style={styles.heroTitle}>Featured Packages</Text>
+                <Text style={styles.heroSubtitle}>
+                    Everyone loves to tour with friends, family, or teammates. We can
+                    organize your tour to anywhere in the world.
+                </Text>
+
+                <View style={styles.searchRow}>
+                    <View style={styles.searchBar}>
+                        <Ionicons name="search" size={16} color="#777" />
+                        <TextInput
+                            style={styles.searchInput}
+                            placeholder="Search packages"
+                            placeholderTextColor="#777"
+                        />
                     </View>
-                    <View style={styles.dropdownButton}>
-                        <Text style={styles.dropdownText}>Duration</Text>
-                        <Ionicons name="chevron-down" size={14} color="#2d5fb8" style={styles.dropdownIcon} />
+                    <View style={styles.dropdownGroup}>
+                        <View style={styles.dropdownButton}>
+                            <Text style={styles.dropdownText}>Activities</Text>
+                            <Ionicons name="chevron-down" size={14} color="#2d5fb8" style={styles.dropdownIcon} />
+                        </View>
+                        <View style={styles.dropdownButton}>
+                            <Text style={styles.dropdownText}>Duration</Text>
+                            <Ionicons name="chevron-down" size={14} color="#2d5fb8" style={styles.dropdownIcon} />
+                        </View>
                     </View>
                 </View>
-            </View>
 
-            <ScrollView showsVerticalScrollIndicator={false}>
                 {PACKAGES.map((item) => (
                     <View key={item.id} style={styles.packageCard}>
                         <Image source={{ uri: item.image }} style={styles.packageImage} />
@@ -144,7 +147,9 @@ export default function Packages({ navigation }) {
                         </View>
                     </View>
                 ))}
+
             </ScrollView>
-        </View>
+        </View >
+
     );
 }
