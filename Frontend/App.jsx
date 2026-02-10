@@ -30,8 +30,15 @@ import AddPackage from './screens/admin/AddPackage';
 import EditPackage from './screens/admin/EditPackage';
 import VisaProgress from './screens/VisaProgress';
 import PassportProgress from './screens/PassportProgress';
+import AdminBookingInvoice from './screens/admin/AdminBookingInvoice';
 import Auditing from './screens/admin/Auditing';
 import Logging from './screens/admin/Logging';
+import PassportApplications from './screens/admin/PassportApplications';
+import PassportDocuments from './screens/admin/PassportDocuments';
+import VisaApplications from './screens/admin/VisaApplications';
+import VisaDocuments from './screens/admin/VisaDocuments';
+import Notifications from './screens/Notifications';
+import AdminTransactionReceipt from './screens/admin/AdminTransactionReceipt';
 
 const Stack = createNativeStackNavigator();
 
@@ -39,7 +46,7 @@ export default function App() {
   return (
     <NavigationContainer>
 
-      <Stack.Navigator initialRouteName="admindashboard">
+      <Stack.Navigator initialRouteName="login">
         <Stack.Screen name="login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="signup" component={Signup} options={{ headerShown: false }} />
         <Stack.Screen name="home" component={Home} options={{ headerShown: false }} />
@@ -70,9 +77,15 @@ export default function App() {
         <Stack.Screen name="editpackage" component={EditPackage} options={{ headerShown: false }} />
         <Stack.Screen name="visaprogress" component={VisaProgress} options={{ headerShown: false }} />
         <Stack.Screen name="passportprogress" component={PassportProgress} options={{ headerShown: false }} />
+        <Stack.Screen name="adminbookinginvoice" component={AdminBookingInvoice} options={{ headerShown: false }} />
         <Stack.Screen name="auditing" component={Auditing} options={{ headerShown: false }} />
         <Stack.Screen name="logging" component={Logging} options={{ headerShown: false }} />
-  
+        <Stack.Screen name="passportapplications" component={PassportApplications} options={{ headerShown: false }} />
+        <Stack.Screen name="passportdocuments" component={PassportDocuments} options={{ headerShown: false }} />
+        <Stack.Screen name="visaapplications" component={VisaApplications} options={{ headerShown: false }} />
+        <Stack.Screen name="visadocuments" component={VisaDocuments} options={{ headerShown: false }} />
+        <Stack.Screen name="notifications" component={Notifications} options={{ headerShown: false }} />
+        <Stack.Screen name="admintransactionreceipt" component={AdminTransactionReceipt} options={{ headerShown: false }} />
       </Stack.Navigator>
 
     </NavigationContainer>

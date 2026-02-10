@@ -79,7 +79,7 @@ const AddPackageStyles = StyleSheet.create({
         fontSize: 14,
         fontWeight: '600'
     },
-    
+
     modalOverlay: {
         flex: 1,
         backgroundColor: 'rgba(0,0,0,0.5)',
@@ -88,7 +88,7 @@ const AddPackageStyles = StyleSheet.create({
     },
     modalContainer: {
         width: '80%',
-        backgroundColor: '#F0F8FF',
+        backgroundColor: '#fff',
         borderRadius: 20,
         padding: 25,
         alignItems: 'center',

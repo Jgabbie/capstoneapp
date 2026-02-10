@@ -13,11 +13,12 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 10,
-    marginBottom: 10,
+    paddingHorizontal: 30,
+    paddingTop: 25,
+    paddingBottom: 20
   },
   sideBarButton: {
-    backgroundColor: '#E0E0E0', 
+    backgroundColor: '#E0E0E0',
     width: 45,
     height: 45,
     borderRadius: 22.5,
@@ -70,8 +71,9 @@ export default StyleSheet.create({
   },
 
   title: {
-    fontSize: 22,
+    fontSize: 30,
     fontWeight: "700",
+    fontFamily: "Montserrat_700Bold",
     color: Colors.primary,
     marginVertical: 12,
   },
@@ -81,7 +83,15 @@ export default StyleSheet.create({
     gap: 10,
     marginBottom: 16,
   },
-
+  SearchBar: {
+    borderWidth: 1,
+    backgroundColor: '#fff',
+    fontFamily: "Montserrat_400Regular",
+    borderColor: "#6d6d6d",
+    borderRadius: 10,
+    padding: 10,
+    marginBottom: 15
+  },
   searchBox: {
     flexDirection: "row",
     alignItems: "center",

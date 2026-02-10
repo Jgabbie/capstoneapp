@@ -34,7 +34,6 @@ const UserManagementStyles = StyleSheet.create({
     cardValue: {
         fontSize: 20,
         fontWeight: '700',
-
     },
     cardLabel: {
         marginTop: 4,
@@ -45,7 +44,8 @@ const UserManagementStyles = StyleSheet.create({
         fontWeight: "600",
         color: "#305797",
         marginBottom: 12
-    }, userbookingheading: {
+    },
+    userbookingheading: {
         fontSize: 35,
         fontWeight: 600,
         fontFamily: "Montserrat_700Bold",
@@ -59,6 +59,8 @@ const UserManagementStyles = StyleSheet.create({
     },
     SearchBar: {
         borderWidth: 1,
+        backgroundColor: '#fff',
+        fontFamily: "Montserrat_400Regular",
         borderColor: "#6d6d6d",
         borderRadius: 10,
         padding: 10,
@@ -67,12 +69,13 @@ const UserManagementStyles = StyleSheet.create({
     filtersContainer: {
         flexDirection: "row",
         justifyContent: "space-between",
-        marginBottom: 15
+        marginBottom: 15,
+        gap: 10
     },
     picker: {
         flex: 1,
         height: 40,
-        marginHorizontal: 5,
+        fontFamily: "Montserrat_400Regular",
         borderRadius: 10
     },
     table: {
@@ -159,6 +162,79 @@ const UserManagementStyles = StyleSheet.create({
     paginationText: {
         color: '#fff',
         fontWeight: '600',
+    },
+    modalOverlay: {
+        flex: 1,
+        backgroundColor: "rgba(0,0,0,0.4)",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    modalBox: {
+        width: 400,
+        backgroundColor: "#fff",
+        borderRadius: 15,
+        padding: 20,
+        alignItems: "center"
+    },
+    modalTitle: {
+        fontSize: 22,
+        fontFamily: "Montserrat_700Bold",
+        color: "#305797",
+        marginBottom: 10
+    },
+    modalText: {
+        fontSize: 16,
+        fontFamily: "Roboto_400Regular",
+        textAlign: "center",
+        marginBottom: 20,
+    },
+    modalButton: {
+        backgroundColor: "#305797",
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 8
+    },
+    modalCancelButton: {
+        backgroundColor: "#9E2847",
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 8
+    },
+    modalButtonText: {
+        color: "#fff",
+        fontSize: 16,
+        fontFamily: "Roboto_500Medium"
+    },
+    profilelabel: {
+        fontSize: 16,
+        color: "#305797",
+        marginLeft: 20
+    },
+    profileinputs: {
+        fontSize: 20,
+        borderWidth: 1,
+        borderRadius: 10,
+        borderColor: "#6d6d6d",
+        padding: 10,
+        marginLeft: 20,
+        marginBottom: 10,
+        width: 360,
+        height: 45
+    },
+    fullnamecontainer: {
+        display: "flex",
+        flexDirection: "row"
+    },
+    nameinputs: {
+        fontSize: 20,
+        borderWidth: 1,
+        borderRadius: 10,
+        borderColor: "#6d6d6d",
+        padding: 10,
+        marginLeft: 20,
+        marginBottom: 10,
+        width: 170,
+        height: 45
     },
 })
 

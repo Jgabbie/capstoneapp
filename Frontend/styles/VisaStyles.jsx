@@ -4,20 +4,19 @@ import Colors from "./Colors";
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    paddingTop: 30,
+    backgroundColor: "#f5f5f5",
+    padding: 10
   },
-
-  
   headerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 20,
-    marginBottom: 20,
+    paddingHorizontal: 30,
+    paddingTop: 25,
+    paddingBottom: 20
   },
   sideBarButton: {
-    backgroundColor: '#E0E0E0', 
+    backgroundColor: '#E0E0E0',
     width: 45,
     height: 45,
     borderRadius: 22.5,
@@ -60,9 +59,17 @@ export default StyleSheet.create({
     fontWeight: "700",
     color: Colors.primary,
     marginBottom: 12,
-    paddingHorizontal: 16,
+    paddingHorizontal: 5,
   },
-
+  SearchBar: {
+    borderWidth: 1,
+    backgroundColor: '#fff',
+    fontFamily: "Montserrat_400Regular",
+    borderColor: "#6d6d6d",
+    borderRadius: 10,
+    padding: 10,
+    marginBottom: 15
+  },
   searchBox: {
     flexDirection: "row",
     backgroundColor: "#eee",
@@ -88,8 +95,9 @@ export default StyleSheet.create({
   },
 
   cardImage: {
-    width: 100,
-    height: 100,
+    width: 200,
+    height: 150,
+    resizeMode: "fill"
   },
 
   cardContent: {
@@ -224,4 +232,18 @@ export default StyleSheet.create({
     fontWeight: "700",
     fontSize: 16,
   },
+
+  button: {
+    marginTop: 10,
+    backgroundColor: "#305797",
+    padding: 10,
+    borderRadius: 10,
+    alignItems: "center"
+  },
+  buttonText: {
+    color: "#fff",
+    fontSize: 16
+  },
+
+
 });

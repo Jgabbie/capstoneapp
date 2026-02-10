@@ -11,10 +11,11 @@ const HomeStyle = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         paddingHorizontal: 30,
-        marginBottom: 20,
+        paddingTop: 25,
+        paddingBottom: 20
     },
     sideBarButton: {
-        backgroundColor: '#E0E0E0', 
+        backgroundColor: '#E0E0E0',
         width: 45,
         height: 45,
         borderRadius: 22.5,
@@ -35,6 +36,15 @@ const HomeStyle = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         position: 'relative',
+    },
+    SearchBar: {
+        borderWidth: 1,
+        backgroundColor: '#fff',
+        fontFamily: "Montserrat_400Regular",
+        borderColor: "#6d6d6d",
+        borderRadius: 10,
+        margin: 10,
+        padding: 10,
     },
     profileIcon: {
         width: 45,
@@ -67,7 +77,7 @@ const HomeStyle = StyleSheet.create({
         marginRight: 13,
     },
     searchInputText: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto_400Regular',
         color: '#000000',
         fontSize: 22,
     },
@@ -81,8 +91,16 @@ const HomeStyle = StyleSheet.create({
         marginBottom: 15,
     },
     sectionTitle: {
-        fontFamily: 'Montserrat',
+        fontFamily: 'Montserrat_500Medium',
         fontSize: 22,
+        fontWeight: '600',
+        color: '#305797',
+    },
+    secondsectionTitle: {
+        fontFamily: 'Montserrat_500Medium',
+        fontSize: 22,
+        marginLeft: 30,
+        marginBottom: 10,
         fontWeight: '600',
         color: '#305797',
     },
@@ -105,7 +123,7 @@ const HomeStyle = StyleSheet.create({
         height: 15,
     },
     buttonText: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto_400Regular',
         fontSize: 12,
         color: '#000',
     },
@@ -121,7 +139,7 @@ const HomeStyle = StyleSheet.create({
         marginBottom: 5,
     },
     cardTitle: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Montserrat_500Medium',
         color: '#305797',
         fontSize: 14,
         fontWeight: '500',
@@ -137,12 +155,12 @@ const HomeStyle = StyleSheet.create({
         height: 12,
     },
     infoText: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto_400Regular',
         fontSize: 11,
         color: '#555',
     },
     priceText: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto_400Regular',
         fontSize: 12,
         fontWeight: 'bold',
         marginTop: 5,
@@ -174,13 +192,13 @@ const HomeStyle = StyleSheet.create({
         padding: 15,
     },
     bannerTitle: {
-        fontFamily: 'Montserrat',
+        fontFamily: 'Montserrat_500Medium',
         fontSize: 18,
         fontWeight: 'bold',
         color: '#305797',
     },
     bannerSub: {
-        fontFamily: 'Roboto',
+        fontFamily: 'Roboto_400Regular',
         fontSize: 14,
         color: '#555',
     },
@@ -202,6 +220,96 @@ const HomeStyle = StyleSheet.create({
         width: 12,
         height: 12,
         tintColor: '#fff',
+    },
+    //chatbot
+    chatbotButton: {
+        position: 'absolute',
+        bottom: 25,
+        right: 20,
+        width: 60,
+        height: 60,
+        borderRadius: 30,
+        backgroundColor: '#305797',
+        justifyContent: 'center',
+        alignItems: 'center',
+        elevation: 6
+    },
+    chatbotIcon: {
+        width: 30,
+        height: 30,
+        resizeMode: 'contain'
+    },
+
+    chatOverlay: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0,0,0,0.3)',
+        justifyContent: 'flex-end'
+    },
+
+    chatBox: {
+        height: '60%',
+        backgroundColor: '#fff',
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        padding: 15
+    },
+
+    chatHeader: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 10
+    },
+    chatTitle: {
+        fontSize: 18,
+        fontFamily: 'Montserrat_500Medium',
+        color: '#305797'
+    },
+    chatClose: {
+        fontSize: 22,
+        color: '#305797'
+    },
+    chatMessages: {
+        flex: 1,
+        marginVertical: 10
+    },
+    chatBubble: {
+        backgroundColor: '#305797',
+        padding: 10,
+        borderRadius: 10,
+        marginBottom: 8,
+        alignSelf: 'flex-start'
+    },
+    chatText: {
+        color: "#fff",
+        fontSize: 14,
+    },
+    chatInputRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 10
+    },
+    chatInput: {
+        flex: 1,
+        borderWidth: 1,
+        borderColor: "#ccc",
+        borderRadius: 20,
+        paddingHorizontal: 15,
+        height: 40
+    },
+    sendButton: {
+        backgroundColor: '#305797',
+        paddingHorizontal: 20,
+        paddingVertical: 10,
+        borderRadius: 20
+    },
+    sendText: {
+        color: '#fff',
+        fontWeight: '600'
     }
 })
 

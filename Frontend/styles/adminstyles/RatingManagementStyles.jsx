@@ -34,7 +34,6 @@ const RatingManagementStyles = StyleSheet.create({
     cardValue: {
         fontSize: 20,
         fontWeight: '700',
-
     },
     cardLabel: {
         marginTop: 4,
@@ -45,7 +44,106 @@ const RatingManagementStyles = StyleSheet.create({
         fontWeight: "600",
         color: "#305797",
         marginBottom: 12
-    }
+    },
+    reviewCard: {
+        backgroundColor: '#fff',
+        padding: 14,
+        borderRadius: 10,
+        marginBottom: 12,
+        elevation: 2
+    },
+    reviewHeader: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 6
+    },
+    username: {
+        fontWeight: '700',
+        color: '#305797'
+    },
+    stars: {
+        color: '#f4b400',
+        fontSize: 14
+    },
+    package: {
+        fontSize: 12,
+        color: '#555',
+        marginBottom: 6
+    },
+    comment: {
+        fontSize: 13,
+        color: '#333'
+    },
+    searchBar: {
+        borderWidth: 1,
+        backgroundColor: "#fff",
+        borderColor: "#6d6d6d",
+        fontFamily: "Montserrat_400Regular",
+        borderRadius: 10,
+        padding: 10,
+        marginBottom: 10
+    },
+    picker: {
+        fontFamily: "Montserrat_400Regular",
+        height: 50,
+        marginBottom: 10,
+        borderRadius: 10
+    },
+    removeButton: {
+        marginTop: 10,
+        alignSelf: 'flex-end',
+        backgroundColor: '#9E2847',
+        paddingVertical: 6,
+        paddingHorizontal: 14,
+        borderRadius: 8
+    },
+    removeButtonText: {
+        color: '#fff',
+        fontSize: 12,
+        fontWeight: '600'
+    },
+    modalOverlay: {
+        flex: 1,
+        backgroundColor: "rgba(0,0,0,0.4)",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    modalBox: {
+        width: 400,
+        backgroundColor: "#fff",
+        borderRadius: 15,
+        padding: 20,
+        alignItems: "center"
+    },
+    modalTitle: {
+        fontSize: 22,
+        fontFamily: "Montserrat_700Bold",
+        color: "#305797",
+        marginBottom: 10
+    },
+    modalText: {
+        fontSize: 16,
+        fontFamily: "Roboto_400Regular",
+        textAlign: "center",
+        marginBottom: 20,
+    },
+    modalButton: {
+        backgroundColor: "#305797",
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 8
+    },
+    modalCancelButton: {
+        backgroundColor: "#9E2847",
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 8
+    },
+    modalButtonText: {
+        color: "#fff",
+        fontSize: 16,
+        fontFamily: "Roboto_500Medium"
+    },
 })
 
 export default RatingManagementStyles

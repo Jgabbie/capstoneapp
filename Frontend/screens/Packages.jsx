@@ -8,10 +8,8 @@ import {
     TextInput,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import Header from "../components/Header";
 import styles from "../styles/DestinationStyles";
 import Sidebar from "../components/Sidebar";
-import { useNavigation } from "@react-navigation/native";
 
 const PACKAGES = [
     {
@@ -19,7 +17,7 @@ const PACKAGES = [
         title: "Baguio City Tour",
         description:
             "Explore the city of pines with scenic viewpoints, heritage stops, and cool mountain air.",
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEzrsEyMckUwfSniZm11T3L2RkA6yq_e3ALg&s",
+        image: "https://res.klook.com/image/upload/fl_lossy.progressive,q_60/Mobile/City/dqm8q1e6jyqaxapkgqy3.jpg",
         price: "₱67,000",
         duration: "3 Days",
         isInternational: false,
@@ -29,7 +27,7 @@ const PACKAGES = [
         title: "Seoul City Escape",
         description:
             "Experience vibrant markets, modern culture, and historic palaces in South Korea.",
-        image: "https://ggscore.com/media/logo/p11350.png?34",
+        image: "https://ik.imgkit.net/3vlqs5axxjf/external/http://images.ntmllc.com/v4/destination/South-Korea/Seoul/219740_SCN_Seoul_iStock521707831_ZC35CD.jpg?tr=w-1200%2Cfo-auto",
         price: "₱95,000",
         duration: "5 Days",
         isInternational: true,
@@ -39,7 +37,7 @@ const PACKAGES = [
         title: "Palawan Island Adventure",
         description:
             "Crystal-clear lagoons, island hopping, and beachside relaxation.",
-        image: "https://www.leytesamardailynews.com/wp-content/uploads/2023/10/Incoming-tourism-chief-receives-warm-welcome-from-employees-HERO.jpg",
+        image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/e7/b0/ea/photo0jpg.jpg?w=1400&h=1400&s=1",
         price: "₱82,000",
         duration: "4 Days",
         isInternational: false,
@@ -51,8 +49,7 @@ export default function Packages({ navigation }) {
     const [isSidebarVisible, setSidebarVisible] = useState(false);
 
     return (
-        <View style={styles.container}>
-
+        <View style={{ flex: 1 }}>
             <Sidebar
                 visible={isSidebarVisible}
                 onClose={() => setSidebarVisible(false)}
@@ -89,36 +86,40 @@ export default function Packages({ navigation }) {
                 </View>
             </View>
 
-            {/* <Header /> */}
 
-            <Text style={styles.heroTitle}>Featured Packages</Text>
-            <Text style={styles.heroSubtitle}>
-                Everyone loves to tour with friends, family, or teammates. We can
-                organize your tour to anywhere in the world.
-            </Text>
+            <ScrollView
+                style={styles.container}
+                contentContainerStyle={{ paddingBottom: 40 }}
+            >
+                {/* <Header /> */}
 
-            <View style={styles.searchRow}>
-                <View style={styles.searchBar}>
-                    <Ionicons name="search" size={16} color="#777" />
-                    <TextInput
-                        style={styles.searchInput}
-                        placeholder="Search packages"
-                        placeholderTextColor="#777"
-                    />
-                </View>
-                <View style={styles.dropdownGroup}>
-                    <View style={styles.dropdownButton}>
-                        <Text style={styles.dropdownText}>Activities</Text>
-                        <Ionicons name="chevron-down" size={14} color="#2d5fb8" style={styles.dropdownIcon} />
+                <Text style={styles.heroTitle}>Featured Packages</Text>
+                <Text style={styles.heroSubtitle}>
+                    Everyone loves to tour with friends, family, or teammates. We can
+                    organize your tour to anywhere in the world.
+                </Text>
+
+                <View style={styles.searchRow}>
+                    <View style={styles.searchBar}>
+                        <Ionicons name="search" size={16} color="#777" />
+                        <TextInput
+                            style={styles.searchInput}
+                            placeholder="Search packages"
+                            placeholderTextColor="#777"
+                        />
                     </View>
-                    <View style={styles.dropdownButton}>
-                        <Text style={styles.dropdownText}>Duration</Text>
-                        <Ionicons name="chevron-down" size={14} color="#2d5fb8" style={styles.dropdownIcon} />
+                    <View style={styles.dropdownGroup}>
+                        <View style={styles.dropdownButton}>
+                            <Text style={styles.dropdownText}>Activities</Text>
+                            <Ionicons name="chevron-down" size={14} color="#2d5fb8" style={styles.dropdownIcon} />
+                        </View>
+                        <View style={styles.dropdownButton}>
+                            <Text style={styles.dropdownText}>Duration</Text>
+                            <Ionicons name="chevron-down" size={14} color="#2d5fb8" style={styles.dropdownIcon} />
+                        </View>
                     </View>
                 </View>
-            </View>
 
-            <ScrollView showsVerticalScrollIndicator={false}>
                 {PACKAGES.map((item) => (
                     <View key={item.id} style={styles.packageCard}>
                         <Image source={{ uri: item.image }} style={styles.packageImage} />
@@ -144,7 +145,9 @@ export default function Packages({ navigation }) {
                         </View>
                     </View>
                 ))}
+
             </ScrollView>
-        </View>
+        </View >
+
     );
 }

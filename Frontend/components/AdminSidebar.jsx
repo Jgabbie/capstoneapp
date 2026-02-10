@@ -102,8 +102,21 @@ const AdminSidebar = ({ visible, onClose }) => {
                             onPress={() => handleNavigation("ratingmanagement")}
                         />
                         <MenuItem
-                            title="Passport and Visa Applications"
-                            onPress={() => handleNavigation("passvisamanagement")}
+                            title="Passport Applications"
+                            onPress={() => handleNavigation("passportapplications")}
+                        />
+                        <MenuItem
+                            title="VISA Applications"
+                            onPress={() => handleNavigation("visaapplications")}
+                        />
+                        <MenuItem
+                            title="Logging"
+                            onPress={() => handleNavigation("logging")}
+                        />
+
+                        <MenuItem
+                            title="Auditing"
+                            onPress={() => handleNavigation("auditing")}
                         />
 
                         <View style={SidebarStyle.divider} />

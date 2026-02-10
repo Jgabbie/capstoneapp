@@ -181,7 +181,7 @@ const PackageManagementStyles = StyleSheet.create({
     },
     modalContainer: {
         width: '85%',
-        backgroundColor: '#F0F8FF',
+        backgroundColor: '#fff',
         borderRadius: 25,
         padding: 30,
         alignItems: 'center',

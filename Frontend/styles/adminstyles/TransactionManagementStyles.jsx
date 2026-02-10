@@ -59,6 +59,8 @@ const TransactionManagementStyles = StyleSheet.create({
     },
     SearchBar: {
         borderWidth: 1,
+        backgroundColor: '#fff',
+        fontFamily: "Montserrat_400Regular",
         borderColor: "#6d6d6d",
         borderRadius: 10,
         padding: 10,
@@ -67,12 +69,13 @@ const TransactionManagementStyles = StyleSheet.create({
     filtersContainer: {
         flexDirection: "row",
         justifyContent: "space-between",
-        marginBottom: 15
+        marginBottom: 15,
+        gap: 10
     },
     picker: {
         flex: 1,
         height: 40,
-        marginHorizontal: 5,
+        fontFamily: "Montserrat_400Regular",
         borderRadius: 10
     },
     table: {
@@ -159,6 +162,48 @@ const TransactionManagementStyles = StyleSheet.create({
     paginationText: {
         color: '#fff',
         fontWeight: '600',
+    },
+    modalOverlay: {
+        flex: 1,
+        backgroundColor: "rgba(0,0,0,0.4)",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    modalBox: {
+        width: 400,
+        backgroundColor: "#fff",
+        borderRadius: 15,
+        padding: 20,
+        alignItems: "center"
+    },
+    modalTitle: {
+        fontSize: 22,
+        fontFamily: "Montserrat_700Bold",
+        color: "#305797",
+        marginBottom: 10
+    },
+    modalText: {
+        fontSize: 16,
+        fontFamily: "Roboto_400Regular",
+        textAlign: "center",
+        marginBottom: 20,
+    },
+    modalButton: {
+        backgroundColor: "#305797",
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 8
+    },
+    modalCancelButton: {
+        backgroundColor: "#9E2847",
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 8
+    },
+    modalButtonText: {
+        color: "#fff",
+        fontSize: 16,
+        fontFamily: "Roboto_500Medium"
     },
 })
 

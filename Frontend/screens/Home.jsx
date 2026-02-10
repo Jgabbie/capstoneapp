@@ -3,11 +3,35 @@ import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import HomeStyle from '../styles/HomeStyle'
 import Sidebar from '../components/Sidebar'
+import { useFonts } from 'expo-font'
+import {
+    Montserrat_400Regular,
+    Montserrat_500Medium,
+    Montserrat_700Bold
+} from "@expo-google-fonts/montserrat"
+import {
+    Roboto_400Regular,
+    Roboto_500Medium,
+    Roboto_700Bold
+} from "@expo-google-fonts/roboto"
+import Header from '../components/Header'
 
 export default function Home() {
     const cs = useNavigation()
     const [isSidebarVisible, setSidebarVisible] = useState(false);
+    const [searchText, setSearchText] = useState('')
+    const [isChatOpen, setChatOpen] = useState(false)
+    const [message, setMessage] = useState('')
+    const [messages, setMessages] = useState([])
 
+    const [fontsLoaded] = useFonts({
+        Montserrat_400Regular,
+        Montserrat_500Medium,
+        Montserrat_700Bold,
+        Roboto_400Regular,
+        Roboto_500Medium,
+        Roboto_700Bold
+    })
     // Component for the Small Travel Cards
     const TravelCard = () => (
         <View style={HomeStyle.card}>
@@ -43,61 +67,108 @@ export default function Home() {
     );
 
     return (
-        <ScrollView style={HomeStyle.container} showsVerticalScrollIndicator={false}>
+        <View style={{ flex: 1 }}>
             <Sidebar visible={isSidebarVisible} onClose={() => setSidebarVisible(false)} />
+            <Header openSidebar={() => {
+                setSidebarVisible(true)
+            }} />
 
-            {/* Header Section */}
-            <View style={HomeStyle.headerContainer}>
-                <TouchableOpacity style={HomeStyle.sideBarButton} onPress={() => setSidebarVisible(true)}>
-                    <Image source={require('../materials/sidebar_btn.png')} style={HomeStyle.sideBarImage} />
-                </TouchableOpacity>
-                <Image source={require('../materials/mrc_logo2.png')} style={HomeStyle.logo} />
-                <View style={HomeStyle.rightIconsContainer}>
-                    <TouchableOpacity style={HomeStyle.bellButton}>
-                        <Image source={require('../materials/bell_icon.png')} style={HomeStyle.bellIcon} />
-                    </TouchableOpacity>
-                    <Image source={require('../materials/profile_icon.png')} style={HomeStyle.profileIcon} />
-                </View>
-            </View>
-
-            {/* Search box */}
-            <View style={HomeStyle.searchBox}>
-                <Image source={require('../materials/search_icon.png')} style={HomeStyle.searchIcon} />
+            <ScrollView style={HomeStyle.container} showsVerticalScrollIndicator={false}>
                 <TextInput
-                    placeholder="Search any package.."
-                    placeholderTextColor="#AAAAAA"
-                    style={HomeStyle.searchInputText}
+                    style={HomeStyle.SearchBar}
+                    placeholder='Search any Package...'
+                    value={searchText}
+                    onChangeText={setSearchText}
                 />
-            </View>
 
-            {/* Popular packages header */}
-            <View style={HomeStyle.sectionHeader}>
-                <Text style={HomeStyle.sectionTitle}>Popular Packages</Text>
-                <View style={HomeStyle.buttonRow}>
-                    <TouchableOpacity style={HomeStyle.filterButton}>
-                        <Text style={HomeStyle.buttonText}>Sort</Text>
-                        <Image source={require('../materials/sort_icon.png')} style={HomeStyle.buttonIcon} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={HomeStyle.filterButton}>
-                        <Text style={HomeStyle.buttonText}>Filter</Text>
-                        <Image source={require('../materials/filter_icon.png')} style={HomeStyle.buttonIcon} />
-                    </TouchableOpacity>
+                {/* Popular packages header */}
+                <View style={HomeStyle.sectionHeader}>
+                    <Text style={HomeStyle.sectionTitle}>Popular Packages</Text>
+                    <View style={HomeStyle.buttonRow}>
+                        <TouchableOpacity style={HomeStyle.filterButton}>
+                            <Text style={HomeStyle.buttonText}>Sort</Text>
+                            <Image source={require('../materials/sort_icon.png')} style={HomeStyle.buttonIcon} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={HomeStyle.filterButton}>
+                            <Text style={HomeStyle.buttonText}>Filter</Text>
+                            <Image source={require('../materials/filter_icon.png')} style={HomeStyle.buttonIcon} />
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
 
-            {/* Horizontal scroll small cards */}
-            <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginBottom: 20 }}>
-                <TravelCard />
-                <TravelCard />
-                <TravelCard />
+                {/* Horizontal scroll small cards */}
+                <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginBottom: 20 }}>
+                    <TravelCard />
+                    <TravelCard />
+                    <TravelCard />
+                </ScrollView>
+
+                {/* Horizontal scroll big cards */}
+                <Text style={HomeStyle.secondsectionTitle}>Packages for you</Text>
+                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                    <BannerCard />
+                    <BannerCard />
+                </ScrollView>
+
+                <Text style={HomeStyle.secondsectionTitle}>Local Packages</Text>
+                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                    <BannerCard />
+                    <BannerCard />
+                </ScrollView>
+
             </ScrollView>
 
-            {/* Horizontal scroll big cards */}
-            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                <BannerCard />
-                <BannerCard />
-            </ScrollView>
+            <TouchableOpacity
+                style={HomeStyle.chatbotButton}
+                onPress={() => setChatOpen(true)}
+            >
+                <Image
+                    source={require('../materials/chatbot_icon.png')}
+                    style={HomeStyle.chatbotIcon}
+                />
 
-        </ScrollView>
+            </TouchableOpacity>
+
+            {isChatOpen && (
+                <View style={HomeStyle.chatOverlay}>
+                    <View style={HomeStyle.chatBox}>
+                        <View style={HomeStyle.chatHeader}>
+                            <Text style={HomeStyle.chatTitle}>Chat with Us</Text>
+                            <TouchableOpacity onPress={() => setChatOpen(false)}>
+                                <Text>X</Text>
+                            </TouchableOpacity>
+                        </View>
+
+                        <ScrollView style={HomeStyle.chatMessages}>
+                            {messages.map((msg, index) => (
+                                <View style={HomeStyle.chatBubble} key={index} >
+                                    <Text style={HomeStyle.chatText}>{msg}</Text>
+                                </View>
+                            ))}
+                        </ScrollView>
+
+                        <View style={HomeStyle.chatInputRow}>
+                            <TextInput
+                                style={HomeStyle.chatInput}
+                                placeholder='Type a message...'
+                                value={message}
+                                onChangeText={setMessage}
+                            />
+                            <TouchableOpacity
+                                style={HomeStyle.sendButton}
+                                onPress={() => {
+                                    if (!message.trim()) return;
+                                    setMessages([...messages, message])
+                                    setMessage('')
+                                }}
+                            >
+                                <Text style={HomeStyle.sendText}>Send</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+            )}
+        </View>
+
     )
 }

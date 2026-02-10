@@ -8,8 +8,9 @@ import {
   Modal,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import Header from "../components/Header";
 import styles from "../styles/DestinationStyles";
+import Colors from "../styles/Colors";
+import { Calendar } from "react-native-calendars";
 import Sidebar from "../components/Sidebar";
 
 const MODAL_CONTENT = {
@@ -32,34 +33,34 @@ const MODAL_CONTENT = {
       },
     ],
     allIn: {
-      image: "https://i.redd.it/xatekhpxhh891.jpg",
+      image: "https://i.imgur.com/wwoZU53.png",
       title: "All in Package",
       text:
         "Air or land arrangement with transfers, hotel, and guided tours included.",
     },
     land: {
-      image: "https://onegirlonejourneyblog324418716.wordpress.com/wp-content/uploads/2018/03/img_4173.jpg",
+      image: "https://i.imgur.com/vkmY0GO.png",
       title: "Land Arrangement",
       text:
         "Land-only package with tours, accommodations, and transfers arranged.",
     },
     fixed: {
-      image: "https://www.moneymax.ph/hs-fs/hubfs/Pics%20for%20blog%20-%20600x400%20(27)-Apr-11-2024-04-17-18-9105-AM.png?width=600&height=400&name=Pics%20for%20blog%20-%20600x400%20(27)-Apr-11-2024-04-17-18-9105-AM.png",
+      image: "https://i.imgur.com/J3tnzCw.png",
       title: "Fixed Package",
       text: "Pre-arranged inclusions for a worry-free Baguio getaway.",
     },
     custom: {
-      image: "https://i.pinimg.com/736x/0e/13/21/0e13218963a471182fdd4a1a3af219f0.jpg",
+      image: "https://i.imgur.com/IIaHcNF.png",
       title: "Customized Package",
       text: "Pick your preferred hotel, side trips, and add-on experiences.",
     },
     solo: {
-      image: "https://minio.havehalalwilltravel.com/hhwt-upload/images/20250630223354-20250630223354-igorto_selfie.min-922x800.format-webp.webp",
+      image: "https://i.imgur.com/cu1Wc6u.png",
       title: "Solo Booking",
       text: "A personal itinerary crafted just for you.",
     },
     group: {
-      image: "https://minio.havehalalwilltravel.com/hhwt-upload/images/20250630223354-20250630223354-igorot_performers.min-1002x800.format-webp.webp",
+      image: "https://i.imgur.com/K8MkNl7.png",
       title: "Grouped Booking",
       text: "Plan a trip for family or friends and enjoy group perks.",
     },
@@ -87,32 +88,32 @@ const MODAL_CONTENT = {
       },
     ],
     allIn: {
-      image: "https://pbs.twimg.com/media/FcO9-kBXgAEPGVf.png",
+      image: "https://i.imgur.com/wwoZU53.png",
       title: "All in Package",
       text: "International flights, hotel, transfers, and daily tours included.",
     },
     land: {
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHx76PlYXmk2C8qh_Od_Kct6jinoLBl2PZWw&s",
+      image: "https://i.imgur.com/vkmY0GO.png",
       title: "Land Arrangement",
       text: "Ground arrangements only; bring your own flights.",
     },
     fixed: {
-      image: "https://cdn.cdnstep.com/fl7WjMXR4v9TZjperd4h/cover-1.thumb256.png",
+      image: "https://i.imgur.com/J3tnzCw.png",
       title: "Fixed Package",
       text: "Set itinerary for a seamless Seoul experience.",
     },
     custom: {
-      image: "https://xkxqjlzvieat874751.gcdn.ntruss.com/2/2026/6509/26509d72ce78a9bd4416e59f932d9d8ac98594d0140dca58ccba858cadd14e57f_o_st.jpg",
+      image: "https://i.imgur.com/IIaHcNF.png",
       title: "Customized Package",
       text: "Build your Seoul journey with flexible activities.",
     },
     solo: {
-      image: "https://www.nme.com/wp-content/uploads/2025/03/njz-newjeans-danielle-instagram-live-kpop-training-system.jpg",
+      image: "https://i.imgur.com/cu1Wc6u.png",
       title: "Solo Booking",
       text: "Independent travel with curated must-see stops.",
     },
     group: {
-      image: "https://i.imgur.com/EC90nOQ.jpeg",
+      image: "https://i.imgur.com/K8MkNl7.png",
       title: "Grouped Booking",
       text: "Perfect for teams and friends traveling together.",
     },
@@ -140,32 +141,32 @@ const MODAL_CONTENT = {
       },
     ],
     allIn: {
-      image: "https://lifestyle.inquirer.net/files/2025/08/red-sec-christina15304-scaled-e1755599910744-1200x630.jpg",
+      image: "https://i.imgur.com/wwoZU53.png",
       title: "All in Package",
       text: "Flights, island tours, hotel, and transfers included.",
     },
     land: {
-      image: "https://contents.pep.ph/images2/images2/2026/01/02/frasco-dot-1767368623.jpg",
+      image: "https://i.imgur.com/vkmY0GO.png",
       title: "Land Arrangement",
       text: "Island tours and stays covered, flights excluded.",
     },
     fixed: {
-      image: "https://sugbo.ph/wp-content/uploads/2022/06/Mayor-Christina-Frasco-768x432.jpg",
+      image: "https://i.imgur.com/J3tnzCw.png",
       title: "Fixed Package",
       text: "Pre-set schedule for beaches and lagoon tours.",
     },
     custom: {
-      image: "https://files01.pna.gov.ph/category-list/2025/03/24/ylim4134.jpg",
+      image: "https://i.imgur.com/IIaHcNF.png",
       title: "Customized Package",
       text: "Choose your islands, resorts, and excursions.",
     },
     solo: {
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6QTy_aIguqkQ5x_74FjpCh0WSpfgNfisXWQ&s",
+      image: "https://i.imgur.com/cu1Wc6u.png",
       title: "Solo Booking",
       text: "A flexible island escape for one.",
     },
     group: {
-      image: "https://cdn.i-scmp.com/sites/default/files/styles/1020x680/public/d8/images/canvas/2026/01/12/a5c8adfa-4955-4b9e-9b70-6f1ddc99aac9_24a85e0f.jpg?itok=Uemrmzrt&v=1768204156",
+      image: "https://i.imgur.com/K8MkNl7.png",
       title: "Grouped Booking",
       text: "Share island adventures with your group.",
     },
@@ -213,8 +214,15 @@ export default function PackageDetails({ route, navigation }) {
 
   const [activeTab, setActiveTab] = useState("itinerary");
   const [activeModal, setActiveModal] = useState(null);
-  const [selectedDate, setSelectedDate] = useState(
-    () => modalContent.dateDetails.startingDate
+  const [selectedDateKey, setSelectedDateKey] = useState(() =>
+    new Date(modalContent.dateDetails.startingDate).toISOString().slice(0, 10)
+  );
+  const [selectedDate, setSelectedDate] = useState(() =>
+    new Date(modalContent.dateDetails.startingDate).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    })
   );
   const [availableDateId, setAvailableDateId] = useState(
     () => modalContent.availableDates[0]?.id ?? "date-1"
@@ -324,6 +332,18 @@ export default function PackageDetails({ route, navigation }) {
 
   const closeModal = () => setActiveModal(null);
 
+  const handleDateSelect = (day) => {
+    setSelectedDateKey(day.dateString);
+    const parsedDate = new Date(day.dateString);
+    setSelectedDate(
+      parsedDate.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      })
+    );
+  };
+
   const adjustTraveler = (key, delta) => {
     setTravelers((prev) => {
       const nextValue = Math.max(0, prev[key] + delta);
@@ -344,37 +364,37 @@ export default function PackageDetails({ route, navigation }) {
 
   return (
     <View style={styles.detailsContainer}>
-      <Sidebar 
-        visible={isSidebarVisible} 
-        onClose={() => setSidebarVisible(false)} 
+      <Sidebar
+        visible={isSidebarVisible}
+        onClose={() => setSidebarVisible(false)}
       />
 
       <View style={styles.headerContainer}>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.sideBarButton}
           onPress={() => setSidebarVisible(true)}
         >
-          <Image 
-            source={require('../materials/sidebar_btn.png')} 
+          <Image
+            source={require('../materials/sidebar_btn.png')}
             style={styles.sideBarImage}
           />
         </TouchableOpacity>
 
-        <Image 
-          source={require('../materials/mrc_logo2.png')} 
+        <Image
+          source={require('../materials/mrc_logo2.png')}
           style={styles.logo}
         />
 
         <View style={styles.rightIconsContainer}>
           <TouchableOpacity style={styles.bellButton}>
-            <Image 
-              source={require('../materials/bell_icon.png')} 
+            <Image
+              source={require('../materials/bell_icon.png')}
               style={styles.bellIcon}
             />
           </TouchableOpacity>
 
-          <Image 
-            source={require('../materials/profile_icon.png')} 
+          <Image
+            source={require('../materials/profile_icon.png')}
             style={styles.profileIcon}
           />
         </View>
@@ -474,17 +494,31 @@ export default function PackageDetails({ route, navigation }) {
             <View style={styles.modalBody}>
               {activeModal === "date" && (
                 <>
-                  <View style={styles.modalBox}>
-                    <Text style={styles.modalParagraph}>May 2023</Text>
-                    <Text style={styles.modalParagraph}>
-                      Calendar placeholder (select date)
-                    </Text>
+                  <View style={styles.calendarBox}>
+                    <Text style={styles.modalParagraph}>Choose Date</Text>
+                    <Calendar
+                      current={selectedDateKey}
+                      onDayPress={handleDateSelect}
+                      markedDates={{
+                        [selectedDateKey]: {
+                          selected: true,
+                          selectedColor: Colors.primary,
+                        },
+                      }}
+                      theme={{
+                        arrowColor: Colors.primary,
+                        todayTextColor: Colors.primary,
+                        textMonthFontWeight: "700",
+                        textDayHeaderFontWeight: "600",
+                      }}
+                      style={styles.calendar}
+                    />
                   </View>
                   <Text style={styles.modalSubTitle}>Package Details</Text>
                   <View style={styles.modalBox}>
                     <Text style={styles.modalParagraph}>{pkg.title}</Text>
                     <Text style={styles.modalParagraph}>
-                        {modalContent.dateDetails.packageLine}
+                      {modalContent.dateDetails.packageLine}
                     </Text>
                     <Text style={styles.modalParagraph}>
                       Starting Date: {selectedDate}
@@ -730,7 +764,7 @@ export default function PackageDetails({ route, navigation }) {
                             <View style={styles.checkboxFill} />
                           )}
                         </View>
-                        <Text style={styles.modalParagraph}>{option.label}</Text>
+                        <Text style={styles.checkboxLabel}>{option.label}</Text>
                       </TouchableOpacity>
                     ))}
                   </View>
@@ -748,7 +782,7 @@ export default function PackageDetails({ route, navigation }) {
                             <View style={styles.checkboxFill} />
                           )}
                         </View>
-                        <Text style={styles.modalParagraph}>{option.label}</Text>
+                        <Text style={styles.checkboxLabel}>{option.label}</Text>
                       </TouchableOpacity>
                     ))}
                   </View>
