@@ -5,25 +5,24 @@ const ProfileStyle = StyleSheet.create({
 
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-        paddingTop: 25,
+        backgroundColor: '#f5f5f5'
     },
     headerContainer: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         paddingHorizontal: 30,
-        marginBottom: 20,
+        paddingTop: 25,
+        paddingBottom: 20
     },
     sideBarButton: {
-        backgroundColor: '#E0E0E0', 
+        backgroundColor: '#E0E0E0',
         width: 45,
         height: 45,
         borderRadius: 22.5,
         justifyContent: 'center',
         alignItems: 'center',
     },
-
     sideBarImage: {
         width: 45,
         height: 45,
@@ -54,8 +53,6 @@ const ProfileStyle = StyleSheet.create({
         width: 25,
         height: 25,
     },
-
-
     profileheading: {
         fontSize: 30,
         fontWeight: 600,
@@ -134,7 +131,7 @@ const ProfileStyle = StyleSheet.create({
         height: 100,
         borderRadius: 60,
         marginBottom: 10,
-        marginTop: 80
+        marginTop: 40
     },
     modalOverlay: {
         flex: 1,
@@ -177,7 +174,8 @@ const ProfileStyle = StyleSheet.create({
         color: "#fff",
         fontSize: 16,
         fontFamily: "Roboto_500Medium"
-    }
+    },
+
 
 
 })

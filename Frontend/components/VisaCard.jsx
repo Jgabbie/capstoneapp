@@ -23,7 +23,6 @@ export default function VisaCard({ country, description, image, price, onPress }
           </TouchableOpacity>
         </View>
       </View>
-
     </View>
   );
 }

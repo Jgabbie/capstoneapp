@@ -3,11 +3,31 @@ import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import HomeStyle from '../styles/HomeStyle'
 import Sidebar from '../components/Sidebar'
+import { useFonts } from 'expo-font'
+import {
+    Montserrat_400Regular,
+    Montserrat_500Medium,
+    Montserrat_700Bold
+} from "@expo-google-fonts/montserrat"
+import {
+    Roboto_400Regular,
+    Roboto_500Medium,
+    Roboto_700Bold
+} from "@expo-google-fonts/roboto"
 
 export default function Home() {
     const cs = useNavigation()
     const [isSidebarVisible, setSidebarVisible] = useState(false);
+    const [searchText, setSearchText] = useState('')
 
+    const [fontsLoaded] = useFonts({
+        Montserrat_400Regular,
+        Montserrat_500Medium,
+        Montserrat_700Bold,
+        Roboto_400Regular,
+        Roboto_500Medium,
+        Roboto_700Bold
+    })
     // Component for the Small Travel Cards
     const TravelCard = () => (
         <View style={HomeStyle.card}>
@@ -43,7 +63,7 @@ export default function Home() {
     );
 
     return (
-        <ScrollView style={HomeStyle.container} showsVerticalScrollIndicator={false}>
+        <View style={{ flex: 1 }}>
             <Sidebar visible={isSidebarVisible} onClose={() => setSidebarVisible(false)} />
 
             {/* Header Section */}
@@ -60,44 +80,51 @@ export default function Home() {
                 </View>
             </View>
 
-            {/* Search box */}
-            <View style={HomeStyle.searchBox}>
-                <Image source={require('../materials/search_icon.png')} style={HomeStyle.searchIcon} />
+            <ScrollView style={HomeStyle.container} showsVerticalScrollIndicator={false}>
                 <TextInput
-                    placeholder="Search any package.."
-                    placeholderTextColor="#AAAAAA"
-                    style={HomeStyle.searchInputText}
+                    style={HomeStyle.SearchBar}
+                    placeholder='Search any Package...'
+                    value={searchText}
+                    onChangeText={setSearchText}
                 />
-            </View>
 
-            {/* Popular packages header */}
-            <View style={HomeStyle.sectionHeader}>
-                <Text style={HomeStyle.sectionTitle}>Popular Packages</Text>
-                <View style={HomeStyle.buttonRow}>
-                    <TouchableOpacity style={HomeStyle.filterButton}>
-                        <Text style={HomeStyle.buttonText}>Sort</Text>
-                        <Image source={require('../materials/sort_icon.png')} style={HomeStyle.buttonIcon} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={HomeStyle.filterButton}>
-                        <Text style={HomeStyle.buttonText}>Filter</Text>
-                        <Image source={require('../materials/filter_icon.png')} style={HomeStyle.buttonIcon} />
-                    </TouchableOpacity>
+                {/* Popular packages header */}
+                <View style={HomeStyle.sectionHeader}>
+                    <Text style={HomeStyle.sectionTitle}>Popular Packages</Text>
+                    <View style={HomeStyle.buttonRow}>
+                        <TouchableOpacity style={HomeStyle.filterButton}>
+                            <Text style={HomeStyle.buttonText}>Sort</Text>
+                            <Image source={require('../materials/sort_icon.png')} style={HomeStyle.buttonIcon} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={HomeStyle.filterButton}>
+                            <Text style={HomeStyle.buttonText}>Filter</Text>
+                            <Image source={require('../materials/filter_icon.png')} style={HomeStyle.buttonIcon} />
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
 
-            {/* Horizontal scroll small cards */}
-            <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginBottom: 20 }}>
-                <TravelCard />
-                <TravelCard />
-                <TravelCard />
+                {/* Horizontal scroll small cards */}
+                <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginBottom: 20 }}>
+                    <TravelCard />
+                    <TravelCard />
+                    <TravelCard />
+                </ScrollView>
+
+                {/* Horizontal scroll big cards */}
+                <Text style={HomeStyle.secondsectionTitle}>Packages for you</Text>
+                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                    <BannerCard />
+                    <BannerCard />
+                </ScrollView>
+
+                <Text style={HomeStyle.secondsectionTitle}>Local Packages</Text>
+                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                    <BannerCard />
+                    <BannerCard />
+                </ScrollView>
+
             </ScrollView>
+        </View>
 
-            {/* Horizontal scroll big cards */}
-            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                <BannerCard />
-                <BannerCard />
-            </ScrollView>
-
-        </ScrollView>
     )
 }

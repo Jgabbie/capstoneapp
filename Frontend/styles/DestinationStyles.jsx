@@ -4,20 +4,18 @@ import Colors from "./Colors";
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    paddingHorizontal: 16,
-    paddingTop: 30,
+    backgroundColor: "#f5f5f5",
   },
-
   headerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 14,
-    marginBottom: 10,
+    paddingHorizontal: 30,
+    paddingTop: 25,
+    paddingBottom: 20
   },
   sideBarButton: {
-    backgroundColor: '#E0E0E0', 
+    backgroundColor: '#E0E0E0',
     width: 45,
     height: 45,
     borderRadius: 22.5,

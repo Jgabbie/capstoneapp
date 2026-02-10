@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity, Modal } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, Modal, ImageBackground } from 'react-native'
 import React, { useState } from 'react'
 import { useFonts } from '@expo-google-fonts/montserrat'
 import {
@@ -32,51 +32,57 @@ export default function ResetPassword() {
         setModalVisible(true)
     }
     return (
-        <View>
-            <Text style={ResetPasswordStyle.resetpasswordheading}>Reset Password</Text>
-            <Text style={ResetPasswordStyle.resetpasswordsecondheading}>Enter your Email</Text>
+        <ImageBackground
+            source={require("../materials/resetpassword_background.png")}
+            resizeMode='cover'
+        >
+            <View style={ResetPasswordStyle.container}>
+                <Text style={ResetPasswordStyle.resetpasswordheading}>Reset Password</Text>
+                <Text style={ResetPasswordStyle.resetpasswordsecondheading}>Enter your Email</Text>
 
-            <Text style={ResetPasswordStyle.resetpasswordlabel}>Email</Text>
-            <TextInput style={ResetPasswordStyle.resetpasswordinputs}></TextInput>
+                <Text style={ResetPasswordStyle.resetpasswordlabel}>Email</Text>
+                <TextInput style={ResetPasswordStyle.resetpasswordinputs}></TextInput>
 
-            <View style={ResetPasswordStyle.resetpasswordlinkscontainer}>
-                <Text onPress={() => { cs.navigate("login") }} style={ResetPasswordStyle.resetpasswordlinks}>Remembered your Password? Login here</Text>
-            </View>
-
-
-            <TouchableOpacity onPress={() => { handleOtp() }} style={ResetPasswordStyle.resetpasswordbutton} >
-                <Text style={ResetPasswordStyle.resetpasswordbuttontext}>Reset Password</Text>
-            </TouchableOpacity>
-
-            <Modal
-                transparent
-                animationType='fade'
-                visible={modalVisible}
-                onRequestClose={() => { setModalVisible }}
-            >
-
-                <View style={ResetPasswordStyle.modalOverlay}>
-                    <View style={ResetPasswordStyle.modalBox}>
-                        <Text style={ResetPasswordStyle.modalTitle}>OTP Sent</Text>
-                        <Text style={ResetPasswordStyle.modalText}>Enter your One-Time-Password here</Text>
-
-                        <TextInput
-                            style={ResetPasswordStyle.otpInput}
-                            keyboardType='number-pad'
-                            maxLength={6}
-                        />
-                        <TouchableOpacity
-                            style={ResetPasswordStyle.modalButton}
-                            onPress={() => {
-                                setModalVisible(false)
-                                cs.navigate("newpassword")
-                            }}
-                        >
-                            <Text style={ResetPasswordStyle.modalButtonText}>Submit</Text>
-                        </TouchableOpacity>
-                    </View>
+                <View style={ResetPasswordStyle.resetpasswordlinkscontainer}>
+                    <Text onPress={() => { cs.navigate("login") }} style={ResetPasswordStyle.resetpasswordlinks}>Remembered your Password? Login here</Text>
                 </View>
-            </Modal>
-        </View>
+
+
+                <TouchableOpacity onPress={() => { handleOtp() }} style={ResetPasswordStyle.resetpasswordbutton} >
+                    <Text style={ResetPasswordStyle.resetpasswordbuttontext}>Reset Password</Text>
+                </TouchableOpacity>
+
+                <Modal
+                    transparent
+                    animationType='fade'
+                    visible={modalVisible}
+                    onRequestClose={() => { setModalVisible }}
+                >
+
+                    <View style={ResetPasswordStyle.modalOverlay}>
+                        <View style={ResetPasswordStyle.modalBox}>
+                            <Text style={ResetPasswordStyle.modalTitle}>OTP Sent</Text>
+                            <Text style={ResetPasswordStyle.modalText}>Enter your One-Time-Password here</Text>
+
+                            <TextInput
+                                style={ResetPasswordStyle.otpInput}
+                                keyboardType='number-pad'
+                                maxLength={6}
+                            />
+                            <TouchableOpacity
+                                style={ResetPasswordStyle.modalButton}
+                                onPress={() => {
+                                    setModalVisible(false)
+                                    cs.navigate("newpassword")
+                                }}
+                            >
+                                <Text style={ResetPasswordStyle.modalButtonText}>Submit</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </Modal>
+            </View>
+        </ImageBackground>
+
     )
 }
